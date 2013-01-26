@@ -1,4 +1,7 @@
 Mexilist::Application.routes.draw do
+  resources :anuncios
+
+
   authenticated :user do
     root :to => 'home#index'
   end

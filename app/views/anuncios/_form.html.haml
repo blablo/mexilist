@@ -1,0 +1,17 @@
+= simple_form_for(@anuncio) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title, :label => 'Título'
+    = f.input :category_id, :label => 'Categoría', :collection => Category.all
+    = f.input :tipo, :label => 'Tipo', :collection => [['Compra',1], ['Venta',2]]
+    = f.input :price, :label => 'Precio'
+    = f.input :texto
+    = f.input :city_id, :label => 'Ciudad'
+    = f.input :district, :label => 'Colonia'
+    = f.input :street, :label => 'Calle y número'
+    = f.input :latitude, :as => :hidden
+    = f.input :longitude, :as => :hidden
+
+  .form-actions
+    = f.button :submit, 'Crear Anuncio'

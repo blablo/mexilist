@@ -13,11 +13,32 @@
       %nav.navbar-inner
         .container
           = render 'layouts/navigation'
+        .linea
+        .container
+          #busca_por_categoria
+            Busca por
+            %strong categoría
+          #search_bar.span7
+            #all_categories.btn-group
+              %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                todas
+                %span.caret
+              %ul.dropdown-menu
+                -Category.all.each do |cat|
+                  %li
+                    %a=cat.name
+            %form.navbar-form.pull-left
+              %input.span5{:type => 'text'}
+              %button.btn{:type => 'submit'} Buscar
+          %button.publicar_btn.btn.btn-large.btn-primary{:type=>'button'}Publicar Anuncio
+
     #main{:role => "main"}
       .container
         .content
           .row
-            .span12
+            .span2
+              = render 'layouts/left_menu'
+            .span10
               = render 'layouts/messages'
               = yield
           %footer

@@ -11,7 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130103010208) do
+ActiveRecord::Schema.define(:version => 20130126072953) do
+
+  create_table "anuncios", :force => true do |t|
+    t.string   "title"
+    t.integer  "category_id"
+    t.integer  "tipo"
+    t.decimal  "price",       :precision => 10, :scale => 0
+    t.date     "expiracy"
+    t.date     "renovation"
+    t.text     "texto"
+    t.integer  "city_id"
+    t.string   "district"
+    t.string   "street"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.boolean  "main"
+    t.integer  "parent_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"

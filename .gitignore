@@ -75,3 +75,11 @@ pickle-email-*.html
 
 # Ignore application configuration
 /config/application.yml
+
+# Emacs backup files
+*.~*~
+\#*\#
+# Emacs backups of hidden files, like ".gitignore.~3~"
+.*.~*~
+.\#*
+*~

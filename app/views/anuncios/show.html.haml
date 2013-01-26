@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @anuncio.title
+%p
+  %b Category:
+  = @anuncio.category_id
+%p
+  %b Tipo:
+  = @anuncio.tipo
+%p
+  %b Price:
+  = @anuncio.price
+%p
+  %b Expiracy:
+  = @anuncio.expiracy
+%p
+  %b Renovation:
+  = @anuncio.renovation
+%p
+  %b Texto:
+  = @anuncio.texto
+%p
+  %b City:
+  = @anuncio.city_id
+%p
+  %b District:
+  = @anuncio.district
+%p
+  %b Street:
+  = @anuncio.street
+%p
+  %b Latitude:
+  = @anuncio.latitude
+%p
+  %b Longitude:
+  = @anuncio.longitude
+
+= link_to 'Edit', edit_anuncio_path(@anuncio)
+\|
+= link_to 'Back', anuncios_path
