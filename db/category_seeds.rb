@@ -1,18 +1,25 @@
 # -*- coding: utf-8 -*-
 # tipos. 1 = normal, 2 = car, 3 = moto, 4 = house
 Category.create_or_update([
-                           { :id => 1, :name => 'Vehículos', :main => true, :tipo => 2 },
-                           { :id => 2, :name => 'Autos', :parent_id => 1},
-                           { :id => 3, :name => 'Motocicletas', :parent_id => 1, :tipo => 3},
-                           { :id => 4, :name => 'Autoesterio', :parent_id => 1},
-                           { :id => 5, :name => 'Auto Partes', :parent_id => 1},
+                           { :id => 10, :name => 'Vehículos', :main => true, :tipo => 2 },
+                           { :id => 20, :name => 'Autos', :parent_id => 10},
+                           { :id => 30, :name => 'Pickups', :parent_id => 10},
+                           { :id => 40, :name => 'Jeeps, SUVs y Vans', :parent_id => 10},
+                           { :id => 50, :name => 'Motocicletas', :parent_id => 10, :tipo => 3},
+                           { :id => 60, :name => 'Auto accesorios', :parent_id => 10},
+                           { :id => 70, :name => 'Camiones e Industriales', :parent_id => 10},
+                           { :id => 80, :name => 'Náutica y Aeronáutica', :parent_id => 10},
 
-                           { :id => 6, :name => 'Electrónica', :main => true},
-                           { :id => 7, :name => 'Audio', :parent_id => 6},
-                           { :id => 8, :name => 'Consolas y Videojuegos', :parent_id => 6},
-                           { :id => 9, :name => 'Discos', :parent_id => 6},
-                           { :id => 10, :name => 'TV y Video', :parent_id => 6},
-                           { :id => 11, :name => 'Computadoras', :parent_id => 6},
+                           { :id => 100, :name => 'Electrónica e Informática', :main => true},
+                           { :id => 110, :name => 'Celulares y Tabletas', :parent_id => 100},
+                           
+                           { :id => 120, :name => 'Laptops', :parent_id => 100},
+                           { :id => 130, :name => 'Audio', :parent_id => 100},
+                           { :id => 140, :name => 'Consolas y Videojuegos', :parent_id => 100},
+                           
+                           { :id => 150, :name => 'Discos', :parent_id => 100},
+                           { :id => 160, :name => 'TV y Video', :parent_id => 100},
+                           { :id => 170, :name => 'Computadoras', :parent_id => 100},
 
                            { :id => 12, :name => 'Inmuebles', :main => true, :tipo => 4},
                            { :id => 13, :name => 'Casas', :parent_id => 12},
