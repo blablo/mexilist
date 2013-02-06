@@ -51,4 +51,9 @@ Mexilist::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  ENV['facebook_app_id'] = "339455912827352"
+
+
+  
 end

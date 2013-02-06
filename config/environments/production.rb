@@ -79,7 +79,7 @@ Mexilist::Application.configure do
     password: ENV["GMAIL_PASSWORD"]
   }
 
-
+  ENV['facebook_app_id'] = "124337484410517"
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
