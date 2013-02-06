@@ -1,0 +1,9 @@
+%fieldset
+  %legend Caracteristicas del Anuncio
+  =f.input :tipo, :label => 'Tipo', :collection => Anuncio::TIPOS
+  =f.input :tel, :label => 'Teléfonos de Contacto',  hint: "Separa tus teléfonos con comas ','"
+  =f.input :title, :label => 'Título', input_html: { class: 'span8'}
+  =f.input :texto, input_html: { class: 'span8'}
+
+  =f.simple_fields_for :assets do |asset_form|
+    =asset_form.input :file

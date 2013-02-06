@@ -9,6 +9,24 @@
         = csrf_meta_tags
         = yield(:head)
   %body{:class => "#{controller_name} #{action_name}"}
+    #fb-root
+    :javascript
+      window.fbAsyncInit = function() {
+      FB.init({
+      appId : '339455912827352',
+      status : true, // check login status
+      cookie : true, // enable cookies to allow the server to access the session
+      xfbml : true // parse XFBML
+      });
+      };
+      (function(d) {
+      var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+      js = d.createElement('script'); js.id = id; js.async = true;
+      js.src = "//connect.facebook.net/en_US/all.js";
+      d.getElementsByTagName('head')[0].appendChild(js);
+      }(document));
+
+
     %header.navbar.navbar-fixed-top
       %nav.navbar-inner
         .container
@@ -18,6 +36,7 @@
           #busca_por_categoria
             Busca por
             %strong categoría
+            =render 'layouts/left_menu'
           #search_bar.span7
             #all_categories.btn-group
               %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
@@ -30,17 +49,26 @@
             %form.navbar-form.pull-left
               %input.span5{:type => 'text'}
               %button.btn{:type => 'submit'} Buscar
-          %button.publicar_btn.btn.btn-large.btn-primary{:type=>'button'}Publicar Anuncio
+          %a{:href => new_anuncio_url }
+            %button.publicar_btn.btn.btn-danger{:type=>'button'}Publicar Anuncio
 
     #main{:role => "main"}
       .container
         .content
           .row
             .span2
-              = render 'layouts/left_menu'
-            .span10
+            .span8
               = render 'layouts/messages'
               = yield
+            #right_banner.span2
+              :javascript
+                google_ad_client = "ca-pub-9284427016001944";
+                /* mexilist */
+                google_ad_slot = "5065937288";
+                google_ad_width = 120;
+                google_ad_height = 600;
+                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+
           %footer
       / ! end of .container
     / ! end of #main

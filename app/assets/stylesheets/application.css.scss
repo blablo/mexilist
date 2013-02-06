@@ -64,16 +64,17 @@
 
 button.publicar_btn{
   float: right;
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: bold;
-  padding: 1em;
+  padding: 0.5em;
   position: relative;
-  top: -40px;
+
 }
 
 #category_menu{
   position: relative;
-  top: -17px;
+  top: 0px;
+  left: -12px;
 }
 
 #all_categories{
@@ -90,3 +91,8 @@ button.publicar_btn{
   height: 1px;
   background: #CCC;
 }
+
+#right_banner{
+
+}
+	

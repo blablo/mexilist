@@ -1,0 +1,19 @@
+=simple_fields_for @anuncio do |f|
+  %fieldset.perk.controls-row 
+    %legend Ubicación de la Casa
+    =f.input :district, :label => 'Colonia'
+    =f.input :street, :label => 'Calle y número'
+    =f.input :latitude, :as => :hidden
+    =f.input :longitude, :as => :hidden
+
+  %fieldset.perk.controls-row 
+    %legend Caracteristicas de la Casa
+    =f.simple_fields_for :house_perk do |asset_form|
+      =asset_form.input :rooms, :collection => 1..20
+      =asset_form.input :m2int, :label => "Metros Interior"
+      =asset_form.input :m2ext, :label => "Metros Exterior"
+    =f.input :price, :label => 'Precio', input_html: { class: 'span2'}
+
+
+
+  =render 'anuncio_basic', :f => f

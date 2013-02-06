@@ -1,4 +1,32 @@
 class AnunciosController < ApplicationController
+load_and_authorize_resource
+
+ def update_cities
+   # updates artists and songs based on genre selected
+   state = State.find(params[:state_id])
+   # map to name and id for use in our options_for_select
+   @cities = state.cities.map{|a| [a.name, a.id]}
+   respond_to do |format|
+      format.js
+    end
+ end
+
+ def update_category
+   # updates artists and songs based on genre selected
+   category = Category.find(params[:category_id])
+   # map to name and id for use in our options_for_select
+   @anuncio = current_user.anuncios.build(:category_id => category.id)
+   
+   5.times { @anuncio.assets.build }
+   @anuncio.build_perk
+
+
+   respond_to do |format|
+      format.js
+    end
+ end
+
+
   # GET /anuncios
   # GET /anuncios.json
   def index
@@ -24,7 +52,10 @@ class AnunciosController < ApplicationController
   # GET /anuncios/new
   # GET /anuncios/new.json
   def new
-    @anuncio = Anuncio.new
+    @anuncio = current_user.anuncios.build
+    @states = State.all
+    @cities = City.all
+    5.times { @anuncio.assets.build }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +65,13 @@ class AnunciosController < ApplicationController
 
   # GET /anuncios/1/edit
   def edit
-    @anuncio = Anuncio.find(params[:id])
+    @anuncio = current_user.anuncios.find(params[:id])
   end
 
   # POST /anuncios
   # POST /anuncios.json
   def create
-    @anuncio = Anuncio.new(params[:anuncio])
+    @anuncio = current_user.anuncios.build(params[:anuncio])
 
     respond_to do |format|
       if @anuncio.save
@@ -56,7 +87,7 @@ class AnunciosController < ApplicationController
   # PUT /anuncios/1
   # PUT /anuncios/1.json
   def update
-    @anuncio = Anuncio.find(params[:id])
+    @anuncio = current_user.anuncios.find(params[:id])
 
     respond_to do |format|
       if @anuncio.update_attributes(params[:anuncio])
@@ -72,7 +103,7 @@ class AnunciosController < ApplicationController
   # DELETE /anuncios/1
   # DELETE /anuncios/1.json
   def destroy
-    @anuncio = Anuncio.find(params[:id])
+    @anuncio = current_user.anuncios.find(params[:id])
     @anuncio.destroy
 
     respond_to do |format|
@@ -80,4 +111,6 @@ class AnunciosController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130126072953) do
+ActiveRecord::Schema.define(:version => 20130206043741) do
 
   create_table "anuncios", :force => true do |t|
     t.string   "title"
@@ -28,12 +28,93 @@ ActiveRecord::Schema.define(:version => 20130126072953) do
     t.float    "longitude"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
+    t.string   "tel"
+    t.integer  "user_id"
+  end
+
+  create_table "assets", :force => true do |t|
+    t.integer  "anuncio_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
+
+  create_table "authentications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "brands", :force => true do |t|
+    t.string   "name"
+    t.integer  "tipo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "car_perks", :force => true do |t|
+    t.integer  "brand_id"
+    t.integer  "model_id"
+    t.integer  "year"
+    t.float    "km"
+    t.integer  "anuncio_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.boolean  "main"
     t.integer  "parent_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "tipo"
+  end
+
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.integer  "state_id"
+    t.integer  "metropoly_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "house_perks", :force => true do |t|
+    t.integer  "anuncio_id"
+    t.integer  "rooms"
+    t.float    "m2int"
+    t.float    "m2ext"
+    t.string   "colonia"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "metropolies", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "models", :force => true do |t|
+    t.integer  "brand_id"
+    t.string   "name"
+    t.integer  "tipo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "moto_perks", :force => true do |t|
+    t.integer  "anuncio_id"
+    t.integer  "brand_id"
+    t.integer  "year"
+    t.integer  "cc"
+    t.integer  "km"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -48,6 +129,12 @@ ActiveRecord::Schema.define(:version => 20130126072953) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "states", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

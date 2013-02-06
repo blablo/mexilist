@@ -1,42 +1,24 @@
 %p#notice= notice
 
+%h1=@anuncio.title
 %p
-  %b Title:
-  = @anuncio.title
+  =@anuncio.city.name + ', ' + @anuncio.city.state.name
 %p
-  %b Category:
-  = @anuncio.category_id
-%p
-  %b Tipo:
-  = @anuncio.tipo
-%p
-  %b Price:
-  = @anuncio.price
-%p
-  %b Expiracy:
-  = @anuncio.expiracy
-%p
-  %b Renovation:
-  = @anuncio.renovation
-%p
-  %b Texto:
-  = @anuncio.texto
-%p
-  %b City:
-  = @anuncio.city_id
-%p
-  %b District:
-  = @anuncio.district
-%p
-  %b Street:
-  = @anuncio.street
-%p
-  %b Latitude:
-  = @anuncio.latitude
-%p
-  %b Longitude:
-  = @anuncio.longitude
+  %b Colonia:
+  =@anuncio.district
 
+%p
+  %b Precio:
+  =number_to_currency @anuncio.price, :precision => 0
+%p
+  =@anuncio.texto
+
+-@anuncio.assets.each do |asset|
+  =image_tag(asset.file.url(:medium))
+
+
+
+%br
 = link_to 'Edit', edit_anuncio_path(@anuncio)
 \|
 = link_to 'Back', anuncios_path

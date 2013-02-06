@@ -1,0 +1,12 @@
+=simple_fields_for @anuncio do |f|
+  =f.input :district, :label => 'Colonia'
+
+  %fieldset.perk.controls-row 
+    %legend Caracteristicas de la Moto
+    =f.simple_fields_for :moto_perk do |asset_form|
+      =asset_form.input :brand_id, :collection => Brand.all
+      =asset_form.input :km
+      =asset_form.input :cc
+      =asset_form.input :year, :collection => 1950..(Time.now.year + 1)
+
+  =render 'anuncio_basic', :f => f

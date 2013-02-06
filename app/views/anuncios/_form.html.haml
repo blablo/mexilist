@@ -1,17 +1,39 @@
-= simple_form_for(@anuncio) do |f|
-  = f.error_notification
+=simple_form_for(@anuncio, :html => { :multipart => true }) do |f|
+  =f.error_notification
 
   .form-inputs
-    = f.input :title, :label => 'Título'
-    = f.input :category_id, :label => 'Categoría', :collection => Category.all
-    = f.input :tipo, :label => 'Tipo', :collection => [['Compra',1], ['Venta',2]]
-    = f.input :price, :label => 'Precio'
-    = f.input :texto
-    = f.input :city_id, :label => 'Ciudad'
-    = f.input :district, :label => 'Colonia'
-    = f.input :street, :label => 'Calle y número'
-    = f.input :latitude, :as => :hidden
-    = f.input :longitude, :as => :hidden
+    %fieldset
+      =f.input :category_id, :label => 'Categoría', :collection => Category.all, :disabled => lambda{|size| size.parent_id.nil?}
+      =collection_select(:state, :id, State.all, :id, :name)
+      =f.input :city_id, :label => 'Ciudad', :collection => @cities
+
+    #anuncio_form
+      -if @anuncio.category
+        =render @anuncio.render_name
 
   .form-actions
-    = f.button :submit, 'Crear Anuncio'
+    =f.button :submit, 'Crear Anuncio'
+
+:javascript
+  $(document).ready(function() {
+    $('#state_id').change(function() {
+      $.ajax({
+        url: "#{update_cities_path}",
+        data: {
+          state_id : $('#state_id').val()
+        },
+        dataType: "script"
+      });
+    });
+
+    $('#anuncio_category_id').change(function() {
+      $.ajax({
+        url: "#{update_category_path}",
+        data: {
+          category_id : $('#anuncio_category_id').val()
+        },
+        dataType: "script"
+      });
+    });
+
+  });

@@ -20,3 +20,11 @@ body {
 .navbar-inner{
   height: 104px;
 }
+
+legend + .control-group {
+    margin-top: 0px;
+}
+
+fieldset{
+    margin-top: 1em;
+}
