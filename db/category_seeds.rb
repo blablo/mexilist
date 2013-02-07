@@ -37,6 +37,6 @@ Category.create_or_update([
 
                            { :id => 24, :name => 'Bla', :main => true},
                            { :id => 25, :name => 'Bicicletas', :parent_id => 24},
-                           { :id => 26, :name => 'Boletos', :parent_id => 24},
+                           { :id => 26, :name => 'Boletos', :parent_id => 24}
 
                           ])
