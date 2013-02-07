@@ -1,2 +1,5 @@
-%h3 Anuncios
+%h3 Anuncios Destacados
 
+%ul.thumbnails
+  -@anuncios.each do |anuncio|
+    =render anuncio

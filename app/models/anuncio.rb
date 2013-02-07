@@ -21,6 +21,15 @@ class Anuncio < ActiveRecord::Base
   validates :texto, :presence => true
   
 
+  def main_image
+    if !self.assets.empty?
+      self.assets.first.file.url(:thumb)
+    else
+      "http://placehold.it/160x120"
+    end
+  end
+
+
   def build_perk
     if self.category.car?
       self.build_car_perk
@@ -30,6 +39,8 @@ class Anuncio < ActiveRecord::Base
       self.build_house_perk
     end
   end
+
+
 
   def render_name    
     if self.category.car?
