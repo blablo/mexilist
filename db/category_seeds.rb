@@ -10,17 +10,19 @@ Category.create_or_update([
                            { :id => 70, :name => 'Camiones e Industriales', :parent_id => 10},
                            { :id => 80, :name => 'Náutica y Aeronáutica', :parent_id => 10},
 
-                           { :id => 100, :name => 'Electrónica e Informática', :main => true},
+                           { :id => 100, :name => 'Tecnología', :main => true},
                            { :id => 110, :name => 'Celulares y Tabletas', :parent_id => 100},
-                           
-                           { :id => 120, :name => 'Laptops', :parent_id => 100},
+                           { :id => 120, :name => 'Consolas y Videojuegos', :parent_id => 100},
                            { :id => 130, :name => 'Audio', :parent_id => 100},
-                           { :id => 140, :name => 'Consolas y Videojuegos', :parent_id => 100},
+                           { :id => 140, :name => 'Computadoras', :parent_id => 100},
+                           { :id => 150, :name => 'Laptops', :parent_id => 100},
+                           { :id => 160, :name => 'Accesorios Computadora', :parent_id => 100},
+                           { :id => 170, :name => 'TV y Video', :parent_id => 100},
+                           { :id => 180, :name => 'Cámaras y Videocámaras', :parent_id => 100},
+                           { :id => 185, :name => 'Software y Juegos PC', :parent_id => 100},
+                           { :id => 190, :name => 'DVDs y CDs', :parent_id => 100},
+                           { :id => 195, :name => 'Más Tecnología', :parent_id => 100},
                            
-                           { :id => 150, :name => 'Discos', :parent_id => 100},
-                           { :id => 160, :name => 'TV y Video', :parent_id => 100},
-                           { :id => 170, :name => 'Computadoras', :parent_id => 100},
-
                            { :id => 12, :name => 'Inmuebles', :main => true, :tipo => 4},
                            { :id => 13, :name => 'Casas', :parent_id => 12},
                            { :id => 14, :name => 'Departamentos', :parent_id => 12},
