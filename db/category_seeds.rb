@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# last edit: feb 8, 2013
 # tipos. 1 = normal, 2 = car, 3 = moto, 4 = house, 5 = jobs
 Category.create_or_update([
                            { :id => 10, :name => 'Vehículos', :main => true, :tipo => 2},
