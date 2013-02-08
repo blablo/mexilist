@@ -23,22 +23,47 @@ Category.create_or_update([
                            { :id => 190, :name => 'DVDs y CDs', :parent_id => 100},
                            { :id => 195, :name => 'Más Tecnología', :parent_id => 100},
                            
-                           { :id => 12, :name => 'Inmuebles', :main => true, :tipo => 4},
-                           { :id => 13, :name => 'Casas', :parent_id => 12},
-                           { :id => 14, :name => 'Departamentos', :parent_id => 12},
-                           { :id => 15, :name => 'Oficinas y Locales', :parent_id => 12},
-                           { :id => 16, :name => 'Traspasos', :parent_id => 12},
-                           { :id => 17, :name => 'Rentas Vacacionales', :parent_id => 12},
-
-                           { :id => 18, :name => 'Tiempo Libre', :main => true},
-                           { :id => 19, :name => 'Bicicletas', :parent_id => 18},
-                           { :id => 20, :name => 'Boletos', :parent_id => 18},
-                           { :id => 21, :name => 'Coleccionables', :parent_id => 18},
-                           { :id => 22, :name => 'Deportes', :parent_id => 18},
-                           { :id => 23, :name => 'Libros', :parent_id => 18},
-
-                           { :id => 24, :name => 'Bla', :main => true},
-                           { :id => 25, :name => 'Bicicletas', :parent_id => 24},
-                           { :id => 26, :name => 'Boletos', :parent_id => 24}
-
+                           { :id => 200, :name => 'Recreación', :main => true},
+                           { :id => 210, :name => 'Animales y Mascotas', :parent_id => 200},
+                           { :id => 220, :name => 'Instrumentos Musicales', :parent_id => 200},
+                           { :id => 230, :name => 'Juegos y Juguetes', :parent_id => 200},
+                           { :id => 240, :name => 'Bicicletas', :parent_id => 200},
+                           { :id => 250, :name => 'Deportes', :parent_id => 200},
+                           { :id => 260, :name => 'Libros y Revistas', :parent_id => 200},
+                           { :id => 265, :name => 'De Colección', :parent_id => 200},
+                           { :id => 270, :name => 'Caza, Pesca y Camping', :parent_id => 200},
+                           { :id => 280, :name => 'Boletos', :parent_id => 200},
+                           { :id => 290, :name => 'Modelismo', :parent_id => 200},
+                           
+                           { :id => 300, :name => 'Inmuebles', :main => true, :tipo => 4},
+                           { :id => 310, :name => 'Casas', :parent_id => 300},
+                           { :id => 315, :name => 'Casas de Campo', :parent_id => 300},
+                           { :id => 320, :name => 'Departamentos', :parent_id => 300},
+                           { :id => 325, :name => 'Cuartos y Asistencia', :parent_id => 300},
+                           { :id => 330, :name => 'Oficinas y Locales', :parent_id => 300},
+                           { :id => 340, :name => 'Terrenos y Lotes', :parent_id => 300},
+                           { :id => 350, :name => 'Traspasos', :parent_id => 300},
+                           { :id => 360, :name => 'Rentas Vacacionales', :parent_id => 300},
+  
+                           { :id => 400, :name => 'Personal', :main => true},
+                           { :id => 410, :name => 'Ropa y Accesorios', :parent_id => 400},
+                           { :id => 420, :name => 'Artículos para Bebés', :parent_id => 400}
+                           { :id => 430, :name => 'Salud y Belleza', :parent_id => 400}
+                           { :id => 440, :name => 'Empleo', :parent_id => 400}
+                           { :id => 450, :name => 'Clases', :parent_id => 400}
+                           { :id => 460, :name => 'Eventos', :parent_id => 400}
+                           { :id => 470, :name => 'Servicios', :parent_id => 400}
+                           
+                           { :id => 500, :name => 'Hogar', :main => true}
+                           { :id => 510, :name => 'Muebles y Decoración', :parent_id => 500}
+                           { :id => 520, :name => 'Arte y Antigüedades', :parent_id => 500}
+                           { :id => 530, :name => 'Electrodomésticos', :parent_id => 500}
+                           { :id => 540, :name => 'Jardín y Exterior', :parent_id => 500}
+                           
+                           { :id => 600, :name => 'Demás', :main => true}
+                           { :id => 610, :name => 'Maquinaria y Construcción', :parent_id => 600}
+                           { :id => 620, :name => 'Restaurantes y Comida', :parent_id => 600}
+                           { :id => 630, :name => 'Artículos de Oficina', :parent_id => 600}
+                           { :id => 640, :name => 'Más de todo', :parent_id => 600}
+                           
                           ])
