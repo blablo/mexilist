@@ -65,5 +65,4 @@ Category.create_or_update([
                            { :id => 620, :name => 'Restaurantes y Comida', :parent_id => 600}
                            { :id => 630, :name => 'Artículos de Oficina', :parent_id => 600}
                            { :id => 640, :name => 'Más de todo', :parent_id => 600}
-                           
                           ])
