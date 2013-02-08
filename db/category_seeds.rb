@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # tipos. 1 = normal, 2 = car, 3 = moto, 4 = house, 5 = jobs
 Category.create_or_update([
-                           { :id => 10, :name => 'Vehículos', :main => true, :tipo => 2 },
+                           { :id => 10, :name => 'Vehículos', :main => true, :tipo => 2},
                            { :id => 20, :name => 'Autos', :parent_id => 10 :tipo => 2},
                            { :id => 30, :name => 'Pickups', :parent_id => 10 :tipo => 2},
                            { :id => 40, :name => 'Jeeps, SUVs y Vans', :parent_id => 10},
