@@ -29,6 +29,13 @@ class Anuncio < ActiveRecord::Base
     end
   end
 
+  def tipo_name
+    if tipo == 1 
+      'venta'
+    elsif tipo == 2
+      'compra'
+    end
+  end
 
   def build_perk
     if self.category.car?
@@ -40,7 +47,18 @@ class Anuncio < ActiveRecord::Base
     end
   end
 
+  def main_category
+    self.category.parent
+  end
 
+  def main_category_name
+    self.category.parent.name
+  end
+
+
+  def category_name
+    self.category.name
+  end
 
   def render_name    
     if self.category.car?

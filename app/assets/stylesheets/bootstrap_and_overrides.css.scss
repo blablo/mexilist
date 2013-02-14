@@ -28,3 +28,11 @@ legend + .control-group {
 fieldset{
     margin-top: 1em;
 }
+
+a{
+    color: #005580;
+    &:hover{
+	color: lighten(#005580,10);
+    }
+}
+

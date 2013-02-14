@@ -66,6 +66,8 @@ load_and_authorize_resource
   # GET /anuncios/1/edit
   def edit
     @anuncio = current_user.anuncios.find(params[:id])
+    (5-@anuncio.assets.count).times { @anuncio.assets.build }
+
   end
 
   # POST /anuncios

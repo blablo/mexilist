@@ -9,7 +9,7 @@ end
 gem 'jquery-rails'
 gem "thin", ">= 1.5.0", :group => :development
 gem "unicorn", ">= 4.3.1", :group => :production
-gem "haml", ">= 3.1.7"
+gem "haml", "3.1.7"
 gem "haml-rails", ">= 0.3.5", :group => :development
 gem "hpricot", ">= 0.8.6", :group => :development
 gem "ruby_parser", ">= 3.1.1", :group => :development

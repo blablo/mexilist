@@ -1,5 +1,5 @@
 %li.span2.anuncio
   .thumbnail
     %img{:src => anuncio.main_image }
-    %h3=link_to(anuncio.title, anuncio)
-    %p=number_to_currency(anuncio.price, :precision => 0)
+    %h3=link_to(truncate(anuncio.title, :length => 40, :separator => ' '), anuncio)
+    %span.price=number_to_currency(anuncio.price, :precision => 0)

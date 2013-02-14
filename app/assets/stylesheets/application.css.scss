@@ -8,6 +8,7 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require gallery
  *= require_self
  *= require_tree .
 */
@@ -47,14 +48,13 @@
 #search_bar{
   margin-left: 140px;
   float: left;
-  margin-top: 2px;
+  margin-top: 8px;
   input[type='text']{
     height: 25px;
   }
   button{
     padding-top: 7px;
     padding-bottom: 6px;
-    margin-left: -10px;
   }
 }
 

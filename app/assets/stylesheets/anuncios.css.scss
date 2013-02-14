@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+@import 'tools';
 
 .perk .control-group{
     float: left;
@@ -11,12 +11,59 @@
 
 .anuncio{
     h3{
-	font-size: 1.1em;
-	line-height: 1.2;
+        font-size: 1.1em;
+        line-height: 1.2;
     }
     img{
-	width: 160px;
-	height: 120px;
+        width: 160px;
+        height: 120px;
     }
+
+    a{
+	font-weight: normal;
+    }
+    
+    .price{
+        color: $brand;
+    }
+
 }
 
+#anuncio_gallery{
+    width: 600px;
+    text-align: center;
+    .item{
+        background: #333;
+        img{
+            margin: 0 auto;
+        }
+    }
+    .carousel-control{
+        margin-top: 65px;
+    }
+    .carousel-indicators {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        z-index: 5;
+        margin: 0;
+        list-style: none;
+    }
+
+    .carousel-indicators li {
+        display: block;
+        float: left;
+        width: 10px;
+        height: 10px;
+        margin-left: 5px;
+        text-indent: -999px;
+        background-color: #ccc;
+        background-color: rgba(255, 255, 255, 0.25);
+        border-radius: 5px;
+    }
+
+    .carousel-indicators .active {
+        background-color: #fff;
+    }
+
+}
