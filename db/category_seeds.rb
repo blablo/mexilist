@@ -3,13 +3,13 @@
 # tipos. 1 = normal, 2 = car, 3 = moto, 4 = house, 5 = jobs
 Category.create_or_update([
                            { :id => 10, :name => 'Vehículos', :main => true, :tipo => 2, :keywords => "seminuevos, vehiculos, usados"},
-                           { :id => 20, :name => 'Autos', :parent_id => 10 :keywords => ""},
-                           { :id => 30, :name => 'Pickups', :parent_id => 10 :keywords => ""},
-                           { :id => 40, :name => 'Jeeps, SUVs y Vans', :parent_id => 10 :keywords => ""},
-                           { :id => 50, :name => 'Motocicletas', :parent_id => 10, :tipo => 3 :keywords => ""},
-                           { :id => 60, :name => 'Auto accesorios', :parent_id => 10 :keywords => ""},
-                           { :id => 70, :name => 'Camiones e Industriales', :parent_id => 10 :keywords => ""},
-                           { :id => 80, :name => 'Náutica y Aeronáutica', :parent_id => 10, :tipo => 1 :keywords => ""},
+                           { :id => 20, :name => 'Autos', :parent_id => 10 :keywords => "autos, usados"},
+                           { :id => 30, :name => 'Pickups', :parent_id => 10 :keywords => "pickups"},
+                           { :id => 40, :name => 'Jeeps, SUVs y Vans', :parent_id => 10 :keywords => "camionetas, usadas"},
+                           { :id => 50, :name => 'Motocicletas', :parent_id => 10, :tipo => 3 :keywords => "motocicletas"},
+                           { :id => 60, :name => 'Auto accesorios', :parent_id => 10 :keywords => "autopartes, stereo"},
+                           { :id => 70, :name => 'Camiones e Industriales', :parent_id => 10 :keywords => "camiones"},
+                           { :id => 80, :name => 'Náutica y Aeronáutica', :parent_id => 10, :tipo => 1 :keywords => "lanchas"},
 
                            { :id => 100, :name => 'Tecnología', :main => true :keywords => ""},
                            { :id => 110, :name => 'Celulares y Tabletas', :parent_id => 100 :keywords => ""},
