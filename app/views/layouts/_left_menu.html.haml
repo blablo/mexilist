@@ -1,15 +1,16 @@
+-city = params[:city].blank? ? '' : params[:city] + "/"
 #category_menu
   .dropdown.clearfix
     %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu", :role => "menu"}
       -Category.main_categories.each do |mcat|
         -if mcat.has_children?
           %li.dropdown-submenu
-            %a{:href => "#", :tabindex => "-1"}=mcat.name
+            %a{:href => root_url + city + mcat.url_name, :tabindex => "-1"}=mcat.name
             %ul.dropdown-menu
               -mcat.subcategories.each do |sub|
                 %li
-                  %a{:href => "#", :tabindex => "-1"}=sub.name
+                  %a{:href => root_url + city + sub.url_name, :tabindex => "-1"}=sub.name
         -else
           %li
-            %a{:href => "#", :tabindex => "-1"}=mcat.name
+            %a{:href => root_url + city +  mcat.url_name, :tabindex => "-1"}=mcat.name
 

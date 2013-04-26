@@ -1,41 +1,26 @@
-%h1 Listing anuncios
+-content_for :breadcrumb do
+  .breadcrumb
+    %li
+      =link_to('Inicio', root_url)
+      %span.divider /
+    -if @city
+      %li
+        =link_to(@city.name, '/' + @city.url_name)
+        %span.divider /
+    -if @category and @category.parent
+      %li
+        =link_to(@category.parent.name, @category.parent.name.parameterize )
+        %span.divider /
 
-%table
-  %tr
-    %th Title
-    %th Category
-    %th Tipo
-    %th Price
-    %th Expiracy
-    %th Renovation
-    %th Texto
-    %th City
-    %th District
-    %th Street
-    %th Latitude
-    %th Longitude
-    %th
-    %th
-    %th
+    -if @category
+      %li.active
+        =@category.name
 
-  - @anuncios.each do |anuncio|
-    %tr
-      %td= anuncio.title
-      %td= anuncio.category_id
-      %td= anuncio.tipo
-      %td= anuncio.price
-      %td= anuncio.expiracy
-      %td= anuncio.renovation
-      %td= anuncio.texto
-      %td= anuncio.city_id
-      %td= anuncio.district
-      %td= anuncio.street
-      %td= anuncio.latitude
-      %td= anuncio.longitude
-      %td= link_to 'Show', anuncio
-      %td= link_to 'Edit', edit_anuncio_path(anuncio)
-      %td= link_to 'Destroy', anuncio, method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
 
-= link_to 'New Anuncio', new_anuncio_path
+
+%h1 Anuncios
+- @anuncios.each do |anuncio|
+  =render anuncio
+
+

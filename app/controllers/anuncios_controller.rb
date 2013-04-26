@@ -1,6 +1,15 @@
 class AnunciosController < ApplicationController
 load_and_authorize_resource
 
+ def update_model
+
+   brand = Brand.find(params[:brand_id])
+   # map to name and id for use in our options_for_select
+   @models = brand.models.map{|a| [a.name, a.id]}
+   respond_to do |format|
+      format.js
+    end
+ end
  def update_cities
    # updates artists and songs based on genre selected
    state = State.find(params[:state_id])
@@ -30,8 +39,22 @@ load_and_authorize_resource
   # GET /anuncios
   # GET /anuncios.json
   def index
-    @anuncios = Anuncio.all
 
+    if params[:city] and params[:category]
+      @anuncios = Anuncio.all
+      @city = nil
+      City.all.each{|city| @city = city if city.url_name == params[:city]}
+      @category = nil
+      Category.all.each{|cat| @category = cat if cat.url_name == params[:category]}
+      @anuncios = @category.anuncios_all
+      
+    elsif params[:category]
+      @category = nil
+      Category.all.each{|cat| @category = cat if cat.url_name == params[:category]}
+      @anuncios = @category.anuncios_all
+    else
+      @anuncios = Anuncio.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @anuncios }

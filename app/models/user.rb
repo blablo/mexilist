@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   has_many :authentications, :dependent => :delete_all
   has_many :anuncios, :dependent => :delete_all
+  has_many :votes
 
   def apply_omniauth(auth)
     # In previous omniauth, 'user_info' was used in place of 'raw_info'

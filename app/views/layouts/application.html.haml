@@ -37,7 +37,11 @@
             Busca por
             %strong categoría
             =render 'layouts/left_menu'
-          #search_bar.span7
+
+          #city_list.pull-left
+            =form_for '' do |f|
+              =f.select 'a', Metropoly.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'Todo México'}
+          #search_bar.span5
 
             .input-append
 
@@ -51,7 +55,11 @@
       .container
         .content
           .row
-            .span2
+            #left_banner.span2
+              %h4 Ciudades
+              %ul
+                -Metropoly.all.each do |metro|
+                  %li=link_to(metro.name, metro.url_name)
             .span8
               =yield(:breadcrumb)
               = render 'layouts/messages'
@@ -68,6 +76,7 @@
 
               %script{:type => "text/javascript", :src => "http://pagead2.googlesyndication.com/pagead/show_ads.js"}
 
-          %footer
+        %footer
+          asdjflasdj
       / ! end of .container
     / ! end of #main

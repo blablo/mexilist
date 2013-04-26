@@ -5,10 +5,21 @@
   %fieldset.perk.controls-row 
     %legend Caracteristicas del Vehículo
     =f.simple_fields_for :car_perk do |asset_form|
-      =asset_form.input :model_id, :collection => Model.all, input_html: { class: 'span2'}
       =asset_form.input :brand_id, :collection => Brand.all, input_html: { class: 'span2'}
+      =asset_form.input :model_id, :collection => Model.all, input_html: { class: 'span2'}
       =asset_form.input :km, input_html: { class: 'span2'}
       =asset_form.input :year, :collection => 1950..(Time.now.year + 1), input_html: { class: 'span1'}
     =f.input :price, :label => 'Precio', input_html: { class: 'span2'}
 
   =render 'anuncio_basic', :f => f
+
+:javascript
+  $('#anuncio_car_perk_attributes_brand_id').change(function() {
+    $.ajax({
+      url: "#{update_model_path}",
+      data: {
+        brand_id : $('#anuncio_car_perk_attributes_brand_id').val()
+      },
+      dataType: "script"
+    });
+  });

@@ -4,6 +4,9 @@
       =link_to('Inicio', root_url)
       %span.divider /
     %li
+      =link_to(@anuncio.city.metropoly.name, @anuncio.city.metropoly.url_name)
+      %span.divider /
+    %li
       =link_to(@anuncio.main_category_name, '/')
       %span.divider /
     %li
@@ -27,14 +30,37 @@
         %a{:href => "#"}
           =image_tag(asset.file.url(:medium))
 
-%p
-  %b Precio:
-  =number_to_currency @anuncio.price, :precision => 0
 
--#@anuncio.assets.each do |asset|
-  =#image_tag(asset.file.url(:medium))
+
+%hr
+#perks
+  -if @anuncio.car_perk
+    =render 'show_car'
+  -else
+    %p
+      %b Precio:
+      =number_to_currency @anuncio.price, :precision => 0
+%hr
 
 %p
   =@anuncio.texto
 
+#contactar.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3 Contacta al Anunciante
+  .modal-body
+    %p One fine body…
+  .modal-footer
+    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+    %button.btn.btn-primary Save changes
 
+#compartir.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3 Comparte este Anuncio
+  .modal-body
+    %p One fine body…
+  .modal-footer
+    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+    %button.btn.btn-primary Save changes

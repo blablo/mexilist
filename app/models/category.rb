@@ -1,11 +1,26 @@
 class Category < ActiveRecord::Base
-  attr_accessible :main, :name, :parent_id, :tipo
-
+  attr_accessible :main, :name, :parent_id, :tipo, :keywords
+  has_many :anuncios
+  
   belongs_to :parent, :class_name => 'Category', :foreign_key => 'parent_id'
 
   scope :main_categories, where('parent_id is null')
 
   TIPO = ['normal', 'car', 'moto', 'house']
+
+  
+
+  def anuncios_all
+    if !self.subcategories.empty?
+      self.subcategories.inject([]){|a,sc| a +  sc.anuncios }
+    else
+      self.anuncios
+    end
+  end
+
+  def url_name
+    self.name.parameterize
+  end
 
   def has_children?
     return true

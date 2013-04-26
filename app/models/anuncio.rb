@@ -73,5 +73,13 @@ class Anuncio < ActiveRecord::Base
 
   end
 
+  def tipo
+    if self.category.tipo
+      self.category.tipo
+    else
+      self.category.parent.tipo
+    end
+  end
+
   
 end
