@@ -78,5 +78,7 @@ module Mexilist
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    Paperclip.options[:command_path] = "/usr/local/bin"
   end
 end
