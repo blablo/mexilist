@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery.pikachoose
+//= require tinymce
+//= require jquery.remotipart
 //= require_tree .
 
 

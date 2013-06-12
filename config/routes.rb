@@ -14,6 +14,7 @@ Mexilist::Application.routes.draw do
   match '/auth/:provider/callback' => 'authentications#create'
 
   resources :anuncios
+  resources :pictures
 
   get '/:city/:category' => 'anuncios#index', :constraints => CityCategoryConstraint
   get '/:city/:titulo/:id' => 'anuncios#show', :constraints => CityConstraint

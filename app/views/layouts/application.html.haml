@@ -52,31 +52,30 @@
             %button.publicar_btn.btn.btn-danger{:type=>'button'}Publicar Anuncio
 
     #main{:role => "main"}
-      .container
-        .content
-          .row
-            #left_banner.span2
-              %h4 Ciudades
-              %ul
-                -Metropoly.all.each do |metro|
-                  %li=link_to(metro.name, metro.url_name)
-            .span8
-              =yield(:breadcrumb)
-              = render 'layouts/messages'
-              = yield
-            #right_banner.span2
-              :javascript
-                <!--
-                google_ad_client = "ca-pub-9284427016001944";
-                /* mexilist */
-                google_ad_slot = "5065937288";
-                google_ad_width = 120;
-                google_ad_height = 600;
-                //-->
+      .container.content
+        .row
+          #left_banner.span2
+            %h4 Ciudades
+            %ul
+              -Metropoly.all.each do |metro|
+                %li=link_to(metro.name, metro.url_name)
+          .span8
+            =yield(:breadcrumb)
+            = render 'layouts/messages'
+            = yield
+          #right_banner.span2
+            :javascript
+              <!--
+              google_ad_client = "ca-pub-9284427016001944";
+              /* mexilist */
+              google_ad_slot = "5065937288";
+              google_ad_width = 120;
+              google_ad_height = 600;
+              //-->
 
-              %script{:type => "text/javascript", :src => "http://pagead2.googlesyndication.com/pagead/show_ads.js"}
+            %script{:type => "text/javascript", :src => "http://pagead2.googlesyndication.com/pagead/show_ads.js"}
 
-        %footer
-          asdjflasdj
-      / ! end of .container
+    %footer
+      asdjflasdj
+    / ! end of .container
     / ! end of #main

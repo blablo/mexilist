@@ -75,7 +75,21 @@ load_and_authorize_resource
   # GET /anuncios/new
   # GET /anuncios/new.json
   def new
+
+    @sub = params[:sub]
     @anuncio = current_user.anuncios.build
+    @picture = Picture.new
+    if params[:token]
+      @token = params[:token]
+    else
+      @token = (DateTime.now.to_i + current_user.id).to_s
+    end
+
+    if @sub
+      @anuncio.category = Category.find(@sub) rescue nil
+      @images = Picture.find_all_by_token(@token)
+    end
+
     @states = State.all
     @cities = City.all
     5.times { @anuncio.assets.build }
@@ -97,9 +111,15 @@ load_and_authorize_resource
   # POST /anuncios.json
   def create
     @anuncio = current_user.anuncios.build(params[:anuncio])
+    
+    @pictures = Picture.find_all_by_token(@anuncio.token)
+
 
     respond_to do |format|
       if @anuncio.save
+        @pictures.each do |pic|
+          pic.update_attribute(:anuncio_id, @anuncio.id)
+        end
         format.html { redirect_to @anuncio, notice: 'Anuncio was successfully created.' }
         format.json { render json: @anuncio, status: :created, location: @anuncio }
       else

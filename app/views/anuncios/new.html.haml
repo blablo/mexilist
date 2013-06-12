@@ -1,5 +1,35 @@
-%h1 Crea tu anuncio
+-if @sub.nil?
+  .row
+    .span8
+      %h1 Crea tu anuncio
 
-= render 'form'
+
+  .row
+    .select_cat.span8
+      %h3 1. Selecciona una categoría
+
+      .row
+
+        .span2
+          =category_list(10)
+          =category_list(300)
+
+        .span2
+          =category_list(500)
+          =category_list(400)
+
+        .span2
+          =category_list(200)
+          =category_list(600)
+
+        .span2
+          =category_list(100)
+
+
+
+  .clearfix
+
+-else
+  =render 'form'
 
 

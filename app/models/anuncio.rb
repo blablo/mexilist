@@ -1,11 +1,13 @@
 class Anuncio < ActiveRecord::Base
-  attr_accessible :category_id, :city_id, :district, :expiracy, :latitude, :longitude, :price, :renovation, :street, :texto, :tipo, :title, :assets_attributes, :tel, :car_perk_attributes, :moto_perk_attributes, :house_perk_attributes
+  attr_accessible :category_id, :city_id, :district, :expiracy, :latitude, :longitude, :price, :renovation, :street, :texto, :tipo, :title, :assets_attributes, :tel, :car_perk_attributes, :moto_perk_attributes, :house_perk_attributes, :token
   has_many :assets
   belongs_to :city
   belongs_to :category
   has_one :car_perk
   has_one :moto_perk
   has_one :house_perk
+  has_many :pictures,  :dependent => :destroy
+
 
   accepts_nested_attributes_for :assets, :reject_if => lambda { |a| a[:file].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :car_perk, :allow_destroy => true
@@ -22,8 +24,8 @@ class Anuncio < ActiveRecord::Base
   
 
   def main_image
-    if !self.assets.empty?
-      self.assets.first.file.url(:thumb)
+    if !self.pictures.empty?
+      self.pictures.first.image.thumb.url
     else
       "http://placehold.it/160x120"
     end
@@ -73,7 +75,7 @@ class Anuncio < ActiveRecord::Base
 
   end
 
-  def tipo
+  def tipo_asdf
     if self.category.tipo
       self.category.tipo
     else

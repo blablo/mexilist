@@ -37,3 +37,9 @@ gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 gem "debugger", :group => [:development]
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk', '~> 1.3.4'
+gem 'tinymce-rails'
+gem 'carrierwave'
+gem 'rmagick'
+gem 'jquery-rails'
+gem 'remotipart'
+gem "fog", "~> 1.3.1"

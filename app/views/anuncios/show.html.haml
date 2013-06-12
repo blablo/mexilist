@@ -25,10 +25,10 @@
 
 .pikachoose
   %ul#pikame
-    -@anuncio.assets.each do |asset|
+    -@anuncio.pictures.each do |asset|
       %li
         %a{:href => "#"}
-          =image_tag(asset.file.url(:medium))
+          =image_tag(asset.image.medium.url)
 
 
 
@@ -43,7 +43,7 @@
 %hr
 
 %p
-  =@anuncio.texto
+  =raw @anuncio.texto
 
 #contactar.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   .modal-header

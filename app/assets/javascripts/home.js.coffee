@@ -9,3 +9,4 @@ $ ->
       window.location = redirect_url  if response.authResponse
     ),
       scope: "email, read_stream, read_friendlists, friends_likes, friends_status, offline_access"
+

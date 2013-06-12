@@ -1,10 +1,37 @@
+:javascript
+  tinyMCE.init({
+  mode: 'textareas',
+  mode : "textareas",
+  theme : "advanced",
+  theme_advanced_toolbar_location : "top",
+  theme_advanced_buttons1 : "bold,italic,underline,strikethrough,link,unlink,forecolor,backcolor,bullist,numlist,hr,blockquote,charmap",
+  theme_advanced_buttons2 : "",
+  theme_advanced_buttons3 : ""
+  });
+
 %fieldset
   %legend Caracteristicas del Anuncio
   =f.input :tipo, :label => 'Tipo', :collection => Anuncio::TIPOS
   =f.input :tel, :label => 'Teléfonos de Contacto',  hint: "Separa tus teléfonos con comas ','"
   =f.input :title, :label => 'Título', input_html: { class: 'span8'}
-  =f.input :texto, input_html: { class: 'span8'}
+  =f.input :texto, input_html: { class: 'span8 tinymce'}
+  =f.input :token, :as => :hidden, input_html: { value: @token } 
 
-  =f.simple_fields_for :assets do |asset_form|
-    =asset_form.input :file
+%fieldset
+  %legend Agrega Imagenes
+  #pictures_list
+    .thumbnails
+      -if @images.empty?
+        .span2.placeholder
+          .thumbnail.polaroid
+            %img{ :src => "http://placehold.it/160x120"}
+      -@images.each do |picture|
+        .span2{:class => "pic" + picture.id.to_s}
+          .thumbnail.polaroid
+            =image_tag(picture.image.thumb.url)
+            =link_to(raw("<i class='icon-remove'></i>"), picture, :method => "delete", :remote => true)
+
+    %a.btn{:href => "#upload", :role => "button", :onclick => "$('#upload').modal('show')"}
+      <i class="icon-camera"></i>
+      Agregar Imagen
 
