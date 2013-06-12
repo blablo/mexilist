@@ -50,26 +50,26 @@ Category.create_or_update([
                            { :id => 350, :name => 'Traspasos', :parent_id => 300, :keywords => "traspasos"},
                            { :id => 360, :name => 'Rentas Vacacionales', :parent_id => 300, :keywords => "vacaciones"},
   
-                           { :id => 400, :name => 'Personal', :main => true, :keywords => ""},
-                           { :id => 410, :name => 'Ropa y Accesorios', :parent_id => 400, :keywords => ""},
-                           { :id => 420, :name => 'Artículos para Bebés', :parent_id => 400, :keywords => ""},
-                           { :id => 430, :name => 'Salud y Belleza', :parent_id => 400, :keywords => ""},
-                           { :id => 440, :name => 'Empleo', :parent_id => 400, :tipo => 5, :keywords => ""},
-                           { :id => 450, :name => 'Clases', :parent_id => 400, :keywords => ""},
-                           { :id => 460, :name => 'Eventos', :parent_id => 400, :keywords => ""},
-                           { :id => 470, :name => 'Servicios', :parent_id => 400, :keywords => ""},
+                           { :id => 400, :name => 'Personal', :main => true, :keywords => "personal"},
+                           { :id => 410, :name => 'Ropa y Accesorios', :parent_id => 400, :keywords => "ropa"},
+                           { :id => 420, :name => 'Artículos para Bebés', :parent_id => 400, :keywords => "bebes"},
+                           { :id => 430, :name => 'Salud y Belleza', :parent_id => 400, :keywords => "salud belleza"},
+                           { :id => 440, :name => 'Empleo', :parent_id => 400, :tipo => 5, :keywords => "empleo"},
+                           { :id => 450, :name => 'Clases', :parent_id => 400, :keywords => "clases"},
+                           { :id => 460, :name => 'Eventos', :parent_id => 400, :keywords => "eventos"},
+                           { :id => 470, :name => 'Servicios', :parent_id => 400, :keywords => "servicios"},
                            
-                           { :id => 500, :name => 'Hogar', :main => true, :keywords => ""},
-                           { :id => 510, :name => 'Muebles y Decoración', :parent_id => 500, :keywords => ""},
-                           { :id => 520, :name => 'Arte y Antigüedades', :parent_id => 500, :keywords => ""},
-                           { :id => 530, :name => 'Electrodomésticos', :parent_id => 500, :keywords => ""},
-                           { :id => 540, :name => 'Jardín y Exterior', :parent_id => 500, :keywords => ""},
+                           { :id => 500, :name => 'Hogar', :main => true, :keywords => "hogar"},
+                           { :id => 510, :name => 'Muebles y Decoración', :parent_id => 500, :keywords => "muebles"},
+                           { :id => 520, :name => 'Arte y Antigüedades', :parent_id => 500, :keywords => "arte antiguedades"},
+                           { :id => 530, :name => 'Electrodomésticos', :parent_id => 500, :keywords => "electrodomesticos"},
+                           { :id => 540, :name => 'Jardín y Exterior', :parent_id => 500, :keywords => "jardin"},
                            
-                           { :id => 600, :name => 'Demás', :main => true, :keywords => ""},
-                           { :id => 610, :name => 'Maquinaria y Construcción', :parent_id => 600, :keywords => ""},
-                           { :id => 620, :name => 'Restaurantes y Comida', :parent_id => 600, :keywords => ""},
-                           { :id => 630, :name => 'Artículos de Oficina', :parent_id => 600, :keywords => ""},
-                           { :id => 640, :name => 'Más de todo', :parent_id => 600, :keywords => ""}
+                           { :id => 600, :name => 'Demás', :main => true, :keywords => "otros"},
+                           { :id => 610, :name => 'Maquinaria y Construcción', :parent_id => 600, :keywords => "herramientas maquinaria construccion"},
+                           { :id => 620, :name => 'Restaurantes y Comida', :parent_id => 600, :keywords => "restaurant"},
+                           { :id => 630, :name => 'Artículos de Oficina', :parent_id => 600, :keywords => "oficina"},
+                           { :id => 640, :name => 'Más de todo', :parent_id => 600, :keywords => "más de todo"}
                           ])
 
 
