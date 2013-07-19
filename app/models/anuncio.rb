@@ -22,12 +22,22 @@ class Anuncio < ActiveRecord::Base
   validates :title, :presence => true
   validates :texto, :presence => true
   
+  
 
-  def main_image
+  def main_image(size=nil)
+    if size == :original
+    if !self.pictures.empty?
+      self.pictures.first.image.url
+    else
+      "http://placehold.it/246x180"
+    end
+
+    else
     if !self.pictures.empty?
       self.pictures.first.image.thumb.url
     else
       "http://placehold.it/160x120"
+    end
     end
   end
 

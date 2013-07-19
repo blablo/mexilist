@@ -24,7 +24,7 @@
 
 
 .pikachoose
-  %ul#pikame
+  %ul#pikame.jcarousel-skin-pika
     -@anuncio.pictures.each do |asset|
       %li
         %a{:href => "#"}
@@ -37,9 +37,21 @@
   -if @anuncio.car_perk
     =render 'show_car'
   -else
-    %p
-      %b Precio:
-      =number_to_currency @anuncio.price, :precision => 0
+    %ul
+      %li.btn.active
+        %h3 precio
+        =number_to_currency(@anuncio.price)
+
+
+
+
+
+
+    %ul
+      %li.btn.btn-danger{:href => "#contactar", :role => "button", 'data-toggle' => "modal"} Contactar Anunciante
+      %li.btn{:href => "#compartir", :role => "button", 'data-toggle' => "modal"} Compartir Anuncio
+
+
 %hr
 
 %p

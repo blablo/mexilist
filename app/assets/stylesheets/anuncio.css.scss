@@ -32,7 +32,13 @@
     ul{
 	margin-left: 0;
     }
-
+    img{
+	float: right;
+	position: relative;
+	margin-top: -10px;
+ 	margin-right: -10px;
+	@include alpha(60);
+    }
 }
 
 .select_cat{

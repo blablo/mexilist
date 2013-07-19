@@ -43,3 +43,9 @@ $brand: red;
   border-top-right-radius: $radius;
   -webkit-border-top-right-radius: $radius;
 }
+
+@mixin alpha($alpha: 40){
+
+	opacity:$alpha/100;	      
+	filter:alpha(opacity=$alpha); 
+}

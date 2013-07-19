@@ -85,6 +85,11 @@ button.publicar_btn{
   position: relative;
   top: 0px;
   left: -12px;
+  i img{
+      width: 15px;
+      margin-right: 3px;
+      margin-left: -10px;
+  }
 }
 
 #all_categories{
@@ -103,7 +108,7 @@ button.publicar_btn{
 }
 
 #left_banner{
-    padding-top: 270px;
+    padding-top: 180px;
 }
 
 #right_banner{

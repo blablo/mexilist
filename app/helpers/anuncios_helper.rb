@@ -10,6 +10,7 @@ module AnunciosHelper
     capture_haml do
       haml_tag(:div, :class => 'category_list well') do
         haml_tag(:strong, parent.name)
+        haml_concat image_tag('icons/'+parent.name.parameterize+'.png')
         haml_tag(:ul) do 
           parent.subcategories.each do |sub|
             haml_tag(:li) do 

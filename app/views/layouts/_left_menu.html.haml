@@ -5,7 +5,9 @@
       -Category.main_categories.each do |mcat|
         -if mcat.has_children?
           %li.dropdown-submenu
-            %a{:href => root_url + city + mcat.url_name, :tabindex => "-1"}=mcat.name
+            %a{:href => root_url + city + mcat.url_name, :tabindex => "-1"}
+              %i=image_tag('icons/' + mcat.name.parameterize + '.png')
+              =mcat.name
             %ul.dropdown-menu
               -mcat.subcategories.each do |sub|
                 %li

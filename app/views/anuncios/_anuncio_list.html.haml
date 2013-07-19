@@ -1,0 +1,11 @@
+%li.row.anuncio_list
+  .span8
+    .row
+      .span2=link_to(image_tag(anuncio.main_image, :class => 'img-polaroid'), city_anuncio_url(anuncio))
+      .span4
+        %h3=link_to(truncate(anuncio.title, :length => 40, :separator => ' '), city_anuncio_url(anuncio))
+      .span2.price
+        -if anuncio.price.blank?
+          Sin Precio
+        -else
+          =number_to_currency(anuncio.price, :precision => 0)

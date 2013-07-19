@@ -9,14 +9,27 @@
     margin-right: 15px;
 }
 
+#anuncios_container{
+    margin-left: 0px;
+}
+
 li.anuncio{
+    width: 246px;
+    margin-bottom: 15px;
+    .thumbnail{
+	padding: 0px;
+	padding-bottom: 4px;
+    }
+    
     h3{
-        font-size: 1.1em;
+        font-size: 0.8em;
         line-height: 1.2;
+	padding: 4px;
+	margin: 0;
     }
     img{
-        width: 160px;
-        height: 120px;
+        width: 246px;
+
     }
 
     a{
@@ -24,10 +37,14 @@ li.anuncio{
     }
     
     .price{
-        color: $brand;
+        color: $gray;
+	padding: 4px;
+	text-align: right;
+	font-weight: bold;
     }
-    margin-left: 0;
-    margin-right: 15px;
+    
+
+
 }
 
 #anuncio_gallery{
@@ -68,3 +85,26 @@ li.anuncio{
     }
 
 }
+
+.anuncio_list{
+    margin-bottom: 10px;
+    padding: 10px 0;
+    border: 1px solid white;
+    .price{
+        color: $brand;
+	text-align: right;
+	font-weight: bold;
+	padding-right: 1px;
+	margin-left: 10px;
+    }
+    h3{
+	margin: 0;
+	line-height: 26px;
+    }
+    &:hover{
+	background: darken(#FAFAFA, 5);
+	@include rounded;
+	border: 1px solid lighten($gray, 5);
+    }
+}
+

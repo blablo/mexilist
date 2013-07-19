@@ -14,11 +14,24 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery.pikachoose
-//= require tinymce
+//= require tinymce-jquery
 //= require jquery.remotipart
+//= require masonry.pkgd.min
 //= require_tree .
 
 
 $(document).ready(function (){
-		    $("#pikame").PikaChoose();
-		      });
+		    $("#pikame").PikaChoose({carousel:true, carouselVertical:true});
+
+
+		    var $container = $('#anuncios_container');
+// initialize
+
+//188
+$container.masonry({
+  columnWidth: 246,
+		     gutter: 15,
+  itemSelector: 'li'
+});
+  });
+

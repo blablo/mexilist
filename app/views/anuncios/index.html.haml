@@ -20,7 +20,12 @@
 
 
 %h1 Anuncios
-- @anuncios.each do |anuncio|
-  =render anuncio
+#anuncios_container
+  -if @category.blank?
+    -@anuncios.each do |anuncio|
+      =render anuncio
+  -else
+    -@anuncios.each do |anuncio|
+      =render 'anuncio_list', :anuncio => anuncio
 
 
