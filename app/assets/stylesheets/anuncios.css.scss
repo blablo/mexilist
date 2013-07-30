@@ -19,6 +19,10 @@ li.anuncio{
     .thumbnail{
 	padding: 0px;
 	padding-bottom: 4px;
+	@include rounded(5px);
+	.imgrounded{
+	    @include rounded_top(5px);
+	}
     }
     
     h3{

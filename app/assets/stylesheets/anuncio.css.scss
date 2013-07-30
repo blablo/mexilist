@@ -4,40 +4,44 @@
 #perks{
     margin-top: 15px;
     h3{
-	font-size: 0.5em;
-	margin: 0;
-	line-height: 1em;
-	text-align: left;
-	margin-bottom: 8px;
+        font-size: 0.5em;
+        margin: 0;
+        line-height: 1em;
+        text-align: left;
+        margin-bottom: 8px;
     }
     overflow: auto;
     ul{
-	float: left;
+        float: left;
     }
     li{
-	display: block;
-	text-align: center;
-	font-size: 1.7em;
-	padding: 0.3em 0.5em;
-	margin-bottom: 10px;
-	@include rounded;
-	width: 200px;
-	height: 50px;
+        display: block;
+        text-align: center;
+        font-size: 1.7em;
+        padding: 0.3em 0.5em;
+        margin-bottom: 10px;
+        @include rounded;
+        width: 200px;
+        height: 50px;
 
+    }
+    li.precio{
+        line-height: 56px;
+        font-size: 2.2em;
     }
 }
 
 .category_list{
     font-size: 0.8em;
     ul{
-	margin-left: 0;
+        margin-left: 0;
     }
     img{
-	float: right;
-	position: relative;
-	margin-top: -10px;
- 	margin-right: -10px;
-	@include alpha(60);
+        float: right;
+        position: relative;
+        margin-top: -10px;
+        margin-right: -10px;
+        @include alpha(60);
     }
 }
 
@@ -45,10 +49,10 @@
     overflow: auto;
     padding-left: 5px;
     .span2:first-child{
-	margin-left: 47px;
+        margin-left: 47px;
     }
     .span2{
-	width: 160px;
+        width: 160px;
     }
 }
 

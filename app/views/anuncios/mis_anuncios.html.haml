@@ -1,0 +1,8 @@
+%table.table.table-bordered
+  %tr
+    %th Título
+    %th
+  -@anuncios.each do |anuncio|
+    %tr
+      %td=link_to anuncio.title, anuncio
+      %td

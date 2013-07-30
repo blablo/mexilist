@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 $ ->
   redirect_url = "/auth/facebook/callback"
-  $("a.facebook").click (e) ->
+  $(".facebook").click (e) ->
     e.preventDefault()
     FB.login ((response) ->
       window.location = redirect_url  if response.authResponse

@@ -27,30 +27,33 @@
       }(document));
 
 
-    %header.navbar.navbar-fixed-top
-      %nav.navbar-inner
-        .container
-          = render 'layouts/navigation'
-        .linea
-        .container
-          #busca_por_categoria
-            Busca por
-            %strong categoría
-            =render 'layouts/left_menu'
+    %header
+      .navbar.navbar-fixed-top
+        %nav.navbar-inner
+          .container
+            = render 'layouts/navigation'
+          .linea
+          .container
+            #busca_por_categoria
+              Busca por
+              %strong categoría
+              =render 'layouts/left_menu'
 
-          #city_list.pull-left
-            =form_for '' do |f|
-              =f.select 'a', Metropoly.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'Todo México'}
-          #search_bar.span5
+            #city_list.pull-left
+              =form_for '' do |f|
+                =f.select 'a', Metropoly.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'Todo México'}
+            #search_bar.span5
 
-            .input-append
+              .input-append
 
-              %input{:type => "text", :id => "appendedInputButtons", :class => "span5"}/
-              %button.btn{:type => "button"} Buscar
+                %input{:type => "text", :id => "appendedInputButtons", :class => "span5"}/
+                %button.btn{:type => "button"} Buscar
 
-          %a{:href => new_anuncio_url }
-            %button.publicar_btn.btn.btn-danger{:type=>'button'}Publicar Anuncio
-
+            -if user_signed_in?
+              %a{:href => new_anuncio_url }
+                %button.publicar_btn.btn.btn-danger{:type=>'button'}Publicar Anuncio
+            -else
+              %button.publicar_btn.btn.btn-danger{:type=>'button', :onclick => "$('#login_modal').modal('show');"}Publicar Anuncio
     #main{:role => "main"}
       .container.content
         .row
@@ -76,6 +79,15 @@
             %script{:type => "text/javascript", :src => "http://pagead2.googlesyndication.com/pagead/show_ads.js"}
 
     %footer
-      asdjflasdj
+      Mexilist
     / ! end of .container
     / ! end of #main
+
+#login_modal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3 Registrate
+  .modal-body
+    %p Por favor.
+  .modal-footer
+    %button.btn.btn-primary.facebook Conectar con Facebook

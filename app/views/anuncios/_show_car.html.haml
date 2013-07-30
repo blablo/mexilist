@@ -1,7 +1,6 @@
 %ul
-  %li.btn.active
-    %h3 precio
-    =number_to_currency(@anuncio.price)
+  %li.btn.active.precio
+    %span=number_to_currency(@anuncio.price)
   %li.btn.active
     %h3 km
     =@anuncio.car_perk.km

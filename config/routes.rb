@@ -13,7 +13,11 @@ Mexilist::Application.routes.draw do
   match '/auth/:provider' => 'authentications#blank'
   match '/auth/:provider/callback' => 'authentications#create'
 
-  resources :anuncios
+  resources :anuncios do 
+    collection do 
+      get 'mis_anuncios'
+    end
+  end
   resources :pictures
 
   get '/:city/:category' => 'anuncios#index', :constraints => CityCategoryConstraint

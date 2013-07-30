@@ -61,6 +61,10 @@ load_and_authorize_resource
     end
   end
 
+  def mis_anuncios
+    @anuncios = current_user.anuncios
+  end
+
   # GET /anuncios/1
   # GET /anuncios/1.json
   def show
@@ -89,7 +93,8 @@ load_and_authorize_resource
       @anuncio.category = Category.find(@sub) rescue nil
       @images = Picture.find_all_by_token(@token)
     end
-
+    @anuncio.build_car_perk
+    
     @states = State.all
     @cities = City.all
     5.times { @anuncio.assets.build }

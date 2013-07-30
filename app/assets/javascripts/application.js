@@ -21,7 +21,7 @@
 
 
 $(document).ready(function (){
-		    $("#pikame").PikaChoose({carousel:true, carouselVertical:true});
+		    $("#pikame").PikaChoose({carousel:true, carouselVertical:true, transition:[0]});
 
 
 		    var $container = $('#anuncios_container');
