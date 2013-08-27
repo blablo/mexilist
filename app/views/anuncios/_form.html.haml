@@ -1,36 +1,44 @@
-=simple_form_for(@anuncio, :html => { :multipart => true }) do |f|
+=simple_form_for(@anuncio, :html => { :multipart => true, :role => "form" }) do |f|
   =f.error_notification
 
-  .form-inputs
-    %fieldset
-      %legend Ubicación
-      =f.input :category_id, as: :hidden
-      =collection_select(:state, :id, State.all, :id, :name)
-      =f.input :city_id, :label => 'Ciudad', :collection => @cities
+  %fieldset
+    %legend Ubicación
+    =f.input :category_id, as: :hidden
+    .row
+      .col-sm-6
+        .form-group
+          =f.label 'Estado'
+          =collection_select(:state, :id, State.all, :id, :name, {}, {:class => 'form-control'})
+      .col-sm-6
+        =f.input :city_id, :label => 'Ciudad', :collection => @cities
 
-    #anuncio_form
-      -if @anuncio.category
-        =render @anuncio.render_name
+  #anuncio_form
+    -if @anuncio.category
+      =render @anuncio.render_name
+
 
   .form-actions
     =f.button :submit, 'Guardar Anuncio', :class => 'btn btn-warning btn-large'
 
 
 
-#upload.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-  .modal-header
-    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-    %h3 Subir Imagen
-  .modal-body
+#upload.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h3 Subir Imagen
+      .modal-body
 
-    =form_for @picture, :remote => true , :html => {:multipart => true} do |f|
-      =f.file_field :image
-      =f.hidden_field :image_cache
-      =f.hidden_field :token, :value => @token
+        =form_for @picture, :remote => true , :html => {:multipart => true} do |f|
+          =f.file_field :image
+          =f.hidden_field :image_cache
+          =f.hidden_field :token, :value => @token
+          =f.hidden_field :anuncio_id, :value => @anuncio.id 
 
-  .modal-footer
-    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cerrar
-    %button.btn.btn-primary{:onclick => "$('#upload form').submit();"} Guardar
+      .modal-footer
+        %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cerrar
+        %button.btn.btn-primary{:onclick => "$('#upload form').submit();"} Guardar
 
 
 

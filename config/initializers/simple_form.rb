@@ -89,13 +89,14 @@ SimpleForm.setup do |config|
   # config.item_wrapper_tag = :span
 
   # You can define a class to use in all item wrappers. Defaulting to none.
-  # config.item_wrapper_class = nil
+ #  config.item_wrapper_class = 'form-group'
 
   # How the label text should be generated altogether with the required text.
   # config.label_text = lambda { |label, required| "#{required} #{label}" }
 
   # You can define the class to use on all labels. Default is nil.
-  config.label_class = 'control-label'
+
+
 
   # You can define the class to use on all forms. Default is simple_form.
   # config.form_class = :simple_form

@@ -1,55 +1,54 @@
--content_for :breadcrumb do
-  .breadcrumb
-    %li
-      =link_to('Inicio', root_url)
-      %span.divider /
-    %li
-      =link_to(@anuncio.city.metropoly.name, @anuncio.city.metropoly.url_name)
-      %span.divider /
-    %li
-      =link_to(@anuncio.main_category_name, '/')
-      %span.divider /
-    %li
-      =link_to(@anuncio.category_name, '/')
-      %span.divider /
-    %li.active=@anuncio.tipo_name
-
-
-%p#notice= notice
-
-%h1=@anuncio.title
-%p
-  =@anuncio.city.name + ', ' + @anuncio.city.state.name
-  =', ' + @anuncio.district if !@anuncio.district.blank?
-
-
-.pikachoose
-  %ul#pikame.jcarousel-skin-pika
-    -@anuncio.pictures.each do |asset|
+.col-sm-12
+  -content_for :breadcrumb do
+    .breadcrumb
       %li
-        %a{:href => "#"}
-          =image_tag(asset.image.medium.url)
+        =link_to('Inicio', root_url)
+      %li
+        =link_to(@anuncio.city.metropoly.name, @anuncio.city.metropoly.url_name)
+      %li
+        =link_to(@anuncio.main_category_name, '/')
+      %li
+        =link_to(@anuncio.category_name, '/')
+      %li.active=@anuncio.tipo_name
+
+
+  %p#notice= notice
+
+  %h1=@anuncio.title
+  %p
+    =@anuncio.city.name + ', ' + @anuncio.city.state.name
+    =', ' + @anuncio.district if !@anuncio.district.blank?
+
+  -if !@anuncio.pictures.blank?
+    .pikachoose
+      %ul#pikame.jcarousel-skin-pika
+        -@anuncio.pictures.each do |asset|
+          %li
+            %a{:href => "#"}
+              =image_tag(asset.image.medium.url)
 
 
 
-%hr
-#perks
-  -if @anuncio.car_perk
-    =render 'show_car'
-  -else
-    %ul
-      %li.btn.active
-        %h3 precio
-        =number_to_currency(@anuncio.price)
+  %hr
+  #perks
+    -if @anuncio.car_perk
+      =render 'show_car'
+    -elsif @anuncio.moto_perk
+      =render 'show_moto'
+    -elsif @anuncio.house_perk
+      =render 'show_house'
+    -elsif @anuncio.job_perk
+      =render 'show_job'
+    -else
+      %ul.col-md-4
+        %li.well.precio
+          %span=number_to_currency(@anuncio.price)
+      .col-md-4
 
 
-
-
-
-
-    %ul
+    %ul.col-md-4
       %li.btn.btn-danger{:href => "#contactar", :role => "button", 'data-toggle' => "modal"} Contactar Anunciante
-      %li.btn{:href => "#compartir", :role => "button", 'data-toggle' => "modal"} Compartir Anuncio
+      %li.btn.btn-default{:href => "#compartir", :role => "button", 'data-toggle' => "modal"} Compartir Anuncio
 
 
 %hr
@@ -57,22 +56,29 @@
 %p
   =raw @anuncio.texto
 
-#contactar.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-  .modal-header
-    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-    %h3 Contacta al Anunciante
-  .modal-body
-    %p One fine body…
-  .modal-footer
-    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-    %button.btn.btn-primary Save changes
+%hr
 
-#compartir.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-  .modal-header
-    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-    %h3 Comparte este Anuncio
-  .modal-body
-    %p One fine body…
-  .modal-footer
-    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-    %button.btn.btn-primary Save changes
+
+#contactar.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h3 Contacta al Anunciante
+      .modal-body
+        %p One fine body…
+      .modal-footer
+        %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+        %button.btn.btn-primary Save changes
+
+#compartir.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h3 Comparte este Anuncio
+      .modal-body
+        %p One fine body…
+      .modal-footer
+        %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+        %button.btn.btn-primary Save changes

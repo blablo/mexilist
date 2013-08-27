@@ -1,30 +1,26 @@
 =tinymce_assets
 -if @sub.nil?
-  .row
-    .span8
-      %h1 Crea tu anuncio
+  .span12
+    %h1 Crea tu anuncio
+  .select_cat.span12
+    %h3 1. Selecciona una categoría
 
+    .row
 
-  .row
-    .select_cat.span8
-      %h3 1. Selecciona una categoría
+      .col-sm-3
+        =category_list(10)
+        =category_list(300)
 
-      .row
+      .col-sm-3
+        =category_list(500)
+        =category_list(400)
 
-        .span2
-          =category_list(10)
-          =category_list(300)
+      .col-sm-3
+        =category_list(200)
+        =category_list(600)
 
-        .span2
-          =category_list(500)
-          =category_list(400)
-
-        .span2
-          =category_list(200)
-          =category_list(600)
-
-        .span2
-          =category_list(100)
+      .col-sm-3
+        =category_list(100)
 
 
 

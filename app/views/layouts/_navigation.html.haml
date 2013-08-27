@@ -1,21 +1,59 @@
-= link_to image_tag('mexilist.png'), root_path, :class => 'brand'
-%ul.nav.nav-collapse.collapse.navbar-responsive-collapse
-  - if user_signed_in?
-    %li
-      .btn-group
-        %button.btn.btn-default{:type => "button"}=current_user.name
-        %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
-          %span.caret
-        %ul.dropdown-menu
-          %li=link_to "Editar Cuenta", edit_user_registration_path
-          %li.divider
-          %li=link_to 'Salir', destroy_user_session_path, :method=>'delete'
-    %li
-      =button_to('Mis Anuncios', mis_anuncios_anuncios_path, :class => 'btn btn-primary', :method => :get ) 
+.navbar-header
+  %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
+    %span.sr-only Toggle navigation
+    %span.icon-bar
+    %span.icon-bar
+    %span.icon-bar
+  = link_to image_tag('mexilist.png'), root_path, :class => 'navbar-brand'
 
-    - if current_user.has_role? :admin
-      %li
-        = link_to 'Admin', users_path
-  - else
-    %li=link_to 'Registrar', '#', :class => 'facebook'
-    -# %li=link_to 'Sign up', new_user_registration_path
+
+
+-# %li=link_to 'Sign up', new_user_registration_path
+
+.linea
+.navbar-form.col-sm-12{:role => "search"}
+  .row
+    .hidden-xs
+      #busca_por_categoria
+        Busca por
+        %strong categoría
+        =render 'layouts/left_menu'
+
+    .form-group.col-sm-6
+      .row
+        %form.col-sm-12
+          .input-group
+            .input-group-btn
+              %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+                Todo Mexico
+                %span.caret
+              %ul.dropdown-menu
+                -Metropoly.all.each do |m|
+                  %li=m.name
+            %input.form-control{:type => "text"}/
+            %span.input-group-btn
+              %button.btn.btn-default{:type => "button"} Buscar
+
+    %div
+      -if user_signed_in?
+        %ul
+          %li.pull-right.publicar_btn
+            =button_to('Publicar Anuncio', new_anuncio_url, :class => 'btn btn-danger', :method => :get)
+          %li.pull-right
+            .btn-group
+              %button.btn.btn-default{:type => "button"}=current_user.name
+              %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+                %span.caret
+              %ul.dropdown-menu
+                %li=link_to "Mis Anuncios", mis_anuncios_anuncios_path
+                %li=link_to "Editar Cuenta", edit_user_registration_path
+                %li.divider
+                %li=link_to 'Salir', destroy_user_session_path, :method=>'delete'
+
+          -#%li=button_to('Mis Anuncios', mis_anuncios_anuncios_path, :class => 'btn btn-primary', :method => :get )
+
+
+        -else
+          %li.pull-right
+            %button.publicar_btn.btn.btn-danger{:type=>'button', :onclick => "$('#login_modal').modal('show');"}Publicar Anuncio
+          %li.btn.btn-default.pull-right=link_to 'Registrar', '#', :class => 'facebook'

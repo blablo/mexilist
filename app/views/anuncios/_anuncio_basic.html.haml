@@ -9,27 +9,47 @@
 
 %fieldset
   %legend Caracteristicas del Anuncio
-  =f.input :tipo, :label => 'Tipo', :collection => Anuncio::TIPOS
+
+  .well.switch{:class => 'switch-' + @anuncio.category.tipo_anuncio.count.to_s}
+    -@anuncio.category.tipo_anuncio.each_with_index do |tipo, index|
+      -if index == 0
+        %input{:id => tipo[0].parameterize, :checked => "", :value => tipo[1], :name => "anuncio[tipo]", :type => "radio"}/
+      -else
+        %input{:id => tipo[0].parameterize, :value => tipo[1], :name => "anuncio[tipo]", :type => "radio"}/
+      %label{:for => tipo[0].parameterize, :onclick => ""}=tipo[0]
+
+    %span.slide-button.btn.btn-darkgray
+
+  -if(@anuncio and !@anuncio.category.house?)
+    %label.checkbox.toggle.well{:onclick => ""}
+      %input#anuncio_intercambio{:checked => "", :type => "checkbox", :name => "anuncio[intercambio]"}/
+      %span
+        Intercambio
+        %span Si acepto
+        %span No acepto
+      %a.btn.slide-button.btn-darkgray
+
+
   =f.input :tel, :label => 'Teléfonos de Contacto',  hint: "Separa tus teléfonos con comas ','"
   =f.input :title, :label => 'Título', input_html: { class: 'span8'}
   =f.input :texto, input_html: { class: 'span8 tinymce'}
-  =f.input :token, :as => :hidden, input_html: { value: @token } 
+  =f.input :token, :as => :hidden, input_html: { value: @token }
 
 %fieldset
-  %legend Agrega Imagenes
+  %legend Imágenes
   #pictures_list
     .thumbnails
-      -if @images.empty?
-        .span2.placeholder
+      -if @images.blank?
+        .col-sm-2.placeholder
           .thumbnail.polaroid
             %img{ :src => "http://placehold.it/160x120"}
       -@images.each do |picture|
-        .span2{:class => "pic" + picture.id.to_s}
+        .col-sm-2{:class => "pic" + picture.id.to_s}
           .thumbnail.polaroid
             =image_tag(picture.image.thumb.url)
-            =link_to(raw("<i class='icon-remove'></i>"), picture, :method => "delete", :remote => true)
-
-    %a.btn{:href => "#upload", :role => "button", :onclick => "$('#upload').modal('show')"}
+            =link_to(raw("<span class='glyphicon glyphicon-remove'></span>"), picture, :method => "delete", :remote => true)
+      .clearfix
+    %a.btn.btn-default{:href => "#upload", :role => "button", :onclick => "$('#upload').modal('show')"}
       <i class="icon-camera"></i>
       Agregar Imagen
 

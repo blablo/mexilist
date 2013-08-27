@@ -1,0 +1,19 @@
+%ul.col-md-4
+  %li.well.precio
+    %span=number_to_currency(@anuncio.price)
+  %li.well
+    %h3 km
+    %span=number_with_precision(@anuncio.moto_perk.km, precision: 0, delimiter: ',')
+  %li.well
+    %h3 cc
+    %span=@anuncio.moto_perk.cc
+
+%ul.col-md-4
+  %li.well
+    %h3 marca
+    %span=@anuncio.moto_perk.brand.name
+  %li.well
+    %h3 año
+    %span=@anuncio.moto_perk.year
+
+

@@ -1,8 +1,12 @@
 %table.table.table-bordered
   %tr
     %th Título
+    %th Visitas
     %th
   -@anuncios.each do |anuncio|
     %tr
       %td=link_to anuncio.title, anuncio
+      %td 123
       %td
+        =link_to 'editar', edit_anuncio_url(anuncio)
+        =link_to 'borrar', edit_anuncio_url(anuncio)

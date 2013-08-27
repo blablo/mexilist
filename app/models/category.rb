@@ -8,7 +8,16 @@ class Category < ActiveRecord::Base
 
   TIPO = ['normal', 'car', 'moto', 'house']
 
-  
+  def tipo_anuncio
+    if self.house?
+      [["Venta", 1], ["Renta", 3], ["Compra", 2]]
+    elsif self.job?
+      [["Ofresco Trabajo", 5], ["Busco Trabajo", 6]]
+    else
+      [["Venta", 1], ["Compra", 2], ["Servicio", 4]]
+    end
+  end
+
 
   def anuncios_all
     if !self.subcategories.empty?
@@ -53,5 +62,10 @@ class Category < ActiveRecord::Base
       self.tipo == 4
     end
   end
+
+  def job?
+    self.id == 440
+  end
+
 
 end

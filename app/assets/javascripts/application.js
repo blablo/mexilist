@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
 //= require jquery.pikachoose
 //= require tinymce-jquery
 //= require jquery.remotipart
@@ -28,10 +27,23 @@ $(document).ready(function (){
 // initialize
 
 //188
+
+$('img').load(function(){
+
 $container.masonry({
   columnWidth: 246,
-		     gutter: 15,
-  itemSelector: 'li'
-});
+  gutter: 15,
+    itemSelector: 'li'
+      });
+
+	      });
+
+$container.masonry({
+  columnWidth: 246,
+  gutter: 15,
+    itemSelector: 'li'
+      });
+
+
   });
 

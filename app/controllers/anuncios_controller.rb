@@ -93,7 +93,12 @@ load_and_authorize_resource
       @anuncio.category = Category.find(@sub) rescue nil
       @images = Picture.find_all_by_token(@token)
     end
+
+
     @anuncio.build_car_perk
+    @anuncio.build_house_perk
+    @anuncio.build_moto_perk
+    @anuncio.build_job_perk
     
     @states = State.all
     @cities = City.all
@@ -108,7 +113,9 @@ load_and_authorize_resource
   # GET /anuncios/1/edit
   def edit
     @anuncio = current_user.anuncios.find(params[:id])
-    (5-@anuncio.assets.count).times { @anuncio.assets.build }
+
+    @picture = Picture.new
+    @images = @anuncio.pictures
 
   end
 
@@ -117,18 +124,24 @@ load_and_authorize_resource
   def create
     @anuncio = current_user.anuncios.build(params[:anuncio])
     
-    @pictures = Picture.find_all_by_token(@anuncio.token)
+    @images = Picture.find_all_by_token(@anuncio.token)
 
 
     respond_to do |format|
       if @anuncio.save
-        @pictures.each do |pic|
+        @images.each do |pic|
           pic.update_attribute(:anuncio_id, @anuncio.id)
         end
         format.html { redirect_to @anuncio, notice: 'Anuncio was successfully created.' }
         format.json { render json: @anuncio, status: :created, location: @anuncio }
       else
-        format.html { render action: "new" }
+        @sub = @anuncio.category_id
+        @states = State.all
+        @cities = City.all
+        @picture = Picture.new
+
+        format.html {  render :action => 'new', :token => @anuncio.token }
+
         format.json { render json: @anuncio.errors, status: :unprocessable_entity }
       end
     end

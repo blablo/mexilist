@@ -1,24 +1,28 @@
-@import "bootstrap";
-body { 
-  padding-top: 60px;
-  background: #CCC;
-  }
-@import "bootstrap-responsive";
 
-.navbar .brand{
-  width: 155px;
-  padding-bottom: 5px;
+body {
+    padding-top: 60px;
+}
+
+.navbar .navbar-brand {
+    padding-bottom: 0;
+    img{
+        width: 155px;
+        padding-bottom: 5px;
+    }
 }
 
 #category_menu .dropup > .dropdown-menu, #category_menu .dropdown > .dropdown-menu {
-  display: block;
-  position: static;
-  margin-bottom: 5px;
+    display: block;
+    position: static;
+    margin-bottom: 5px;
 }
 
+.navbar-form{
+    margin-bottom: 0;
+}
 
 .navbar-inner{
-  height: 104px;
+    height: 104px;
 }
 
 legend + .control-group {
@@ -32,10 +36,37 @@ fieldset{
 a{
     color: #005580;
     &:hover{
-	color: lighten(#005580,10);
+        color: lighten(#005580,10);
     }
 }
 
+ul{
+    margin: 0;
+    padding: 0;
+}
 li{
     list-style: none;
+}
+
+
+.control-group{
+    @extend .form-control;
+}
+
+.btn-darkgray{
+    background: lighten(#CCC,10);
+    
+}
+.switch, .toggle{
+    background: #FFF;
+    label{
+        color: black;
+    }
+
+    span {
+            color: black;
+        span{
+            color: black;
+        }
+    }
 }

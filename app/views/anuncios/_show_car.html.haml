@@ -1,22 +1,19 @@
-%ul
-  %li.btn.active.precio
+%ul.col-md-4
+  %li.well.precio
     %span=number_to_currency(@anuncio.price)
-  %li.btn.active
+  %li.well
     %h3 km
-    =@anuncio.car_perk.km
+    %span=number_with_precision(@anuncio.car_perk.km, precision: 0, delimiter: ',')
 
-%ul
-  %li.btn.active
+%ul.col-md-4
+  %li.well
     %h3 marca
-    =@anuncio.car_perk.brand.name
-  %li.btn.active
+    %span=@anuncio.car_perk.brand.name
+  %li.well
     %h3 modelo
-    =@anuncio.car_perk.model.name
-  %li.btn.active
+    %span=@anuncio.car_perk.model.name
+  %li.well
     %h3 año
-    =@anuncio.car_perk.year
+    %span=@anuncio.car_perk.year
 
-%ul
-  %li.btn.btn-danger{:href => "#contactar", :role => "button", 'data-toggle' => "modal"} Contactar Anunciante
-  %li.btn{:href => "#compartir", :role => "button", 'data-toggle' => "modal"} Compartir Anuncio
 

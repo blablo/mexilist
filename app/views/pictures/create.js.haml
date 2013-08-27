@@ -1,4 +1,4 @@
 $('#upload').modal('hide');
 $('.placeholder').hide();
-$("#pictures_list .thumbnails").append("<div class='span2'><div class='thumbnail polaroid'>" + 
+$("#pictures_list .thumbnails").append("<div class='col-sm-2'><div class='thumbnail polaroid'>" + 
 "#{escape_javascript(image_tag(@picture.image.thumb.url)) + escape_javascript(link_to(raw('<i class="icon-remove"></i>'), @picture, :method => 'delete', :remote => true))}</div></div>");

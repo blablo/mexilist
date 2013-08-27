@@ -1,0 +1,19 @@
+=simple_fields_for @anuncio do |f|
+  =f.input :district, :label => 'Colonia'
+  =f.input :street, :label => 'Calle y número'
+
+  %fieldset.perk.controls-row
+    %legend Características
+    =f.simple_fields_for :job_perk do |asset_form|
+      .col-sm-4
+        =asset_form.input :area, :label => 'Área', :collection => ["Administración - Oficina", "Arte - Diseño - Medios", "Científico - Investigación", "Informática - Telecom.", "Dirección - Gerencia", "Economía - Contabilidad", "Educación - Universidad", "Hostelería - Turismo", "Ingeniería -Técnico", "Legal - Asesoría", "Márketing - Ventas", "Medicina - Salud", "Recursos Humanos", "Otros"]
+      .col-sm-4
+        =asset_form.input :estudios, :label => 'Estudios', :collection => ["Educación Básica", "Educación Secundaria", "Formación Profesional", "Diploma Universitario", "Licenciatura Universitaria", "Grado Post-universitario", "Maestría o Doctorado"]
+      .col-sm-4
+        =asset_form.input :cv, :label => 'Curriculo (solo si aplica)'
+
+    =f.input :price, :label => 'Sueldo', input_html: { class: 'span2'}
+
+
+
+  =render 'anuncio_basic', :f => f

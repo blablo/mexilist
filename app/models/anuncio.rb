@@ -1,11 +1,12 @@
 class Anuncio < ActiveRecord::Base
-  attr_accessible :category_id, :city_id, :district, :expiracy, :latitude, :longitude, :price, :renovation, :street, :texto, :tipo, :title, :assets_attributes, :tel, :car_perk_attributes, :moto_perk_attributes, :house_perk_attributes, :token
+  attr_accessible :category_id, :city_id, :district, :expiracy, :latitude, :longitude, :price, :renovation, :street, :texto, :tipo, :title, :assets_attributes, :tel, :car_perk_attributes, :moto_perk_attributes, :house_perk_attributes, :token, :intercambio, :job_perk_attributes
   has_many :assets
   belongs_to :city
   belongs_to :category
   has_one :car_perk
   has_one :moto_perk
   has_one :house_perk
+  has_one :job_perk
   has_many :pictures,  :dependent => :destroy
 
 
@@ -13,8 +14,10 @@ class Anuncio < ActiveRecord::Base
   accepts_nested_attributes_for :car_perk, :allow_destroy => true
   accepts_nested_attributes_for :moto_perk, :allow_destroy => true
   accepts_nested_attributes_for :house_perk, :allow_destroy => true
+  accepts_nested_attributes_for :job_perk, :allow_destroy => true
+
   
-  TIPOS = [['Venta', 1], ['Compra', 2]]
+  TIPOS = [['Venta', 1], ['Compra', 2], ['Renta', 3], ['Servicios', 4], ['Ofresco Trabajo', 5], ['Busco Trabajo', 6]]
 
   validates :category_id, :presence => true
   validates :city_id, :presence => true
@@ -22,6 +25,7 @@ class Anuncio < ActiveRecord::Base
   validates :title, :presence => true
   validates :texto, :presence => true
   
+  scope :with_picture, -> { joins(:pictures).uniq }
   
 
   def main_image(size=nil)
@@ -41,11 +45,21 @@ class Anuncio < ActiveRecord::Base
     end
   end
 
+#  TIPOS = [['Venta', 1], ['Compra', 2], ['Renta', 3], ['Servicios', 4], ['Ofresco Trabajo', 5], ['Busco Trabajo', 6]] 
+
   def tipo_name
     if tipo == 1 
-      'venta'
+      'Venta'
     elsif tipo == 2
-      'compra'
+      'Compra'
+    elsif tipo == 3
+      'Renta'
+    elsif tipo == 4
+      'Servicios'
+    elsif tipo == 5
+      'Ofresco Trabajo'
+    elsif tipo == 6
+      'Busco Trabajo'
     end
   end
 
@@ -79,6 +93,8 @@ class Anuncio < ActiveRecord::Base
       'moto'
     elsif self.category.house?
       'house'
+    elsif self.category.job?
+      'job'
     else
       return 'normal'
     end
