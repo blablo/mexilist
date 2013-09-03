@@ -11,10 +11,23 @@
 
 #anuncios_container{
     margin-left: 0px;
+    width: 100%;
 }
 
-li.anuncio{
-    width: 246px;
+.grid-sizer { width: 21%; }
+
+@media screen and (min-width: 720px) {
+  /* 10 columns for larger screens */
+  #anuncios_container .anuncio { width: 23%; }
+}
+
+@media screen and (max-width: 720px) {
+  /* 10 columns for larger screens */
+  #anuncios_container .anuncio { width: 23%; }
+}
+
+.anuncio{
+    margin-right: 15px;
     margin-bottom: 15px;
     .thumbnail{
 	padding: 0px;
@@ -32,7 +45,7 @@ li.anuncio{
 	margin: 0;
     }
     img{
-        width: 246px;
+        width: 100%;
 
     }
 
@@ -51,7 +64,10 @@ li.anuncio{
 
 }
 
+#anuncio_list{}
+
 #anuncio_gallery{
+    margin-left: -15px;
     width: 600px;
     text-align: center;
     .item{
@@ -90,25 +106,42 @@ li.anuncio{
 
 }
 
-.anuncio_list{
+ul#anuncio_list{
     margin-bottom: 10px;
     padding: 10px 0;
-    border: 1px solid white;
-    .price{
-        color: $brand;
+    .list-group-item{
+	padding-right: 0;
+	overflow: hidden;
+	padding-bottom: 0;
+	margin-bottom: 10px;
+	@include shadow;
+    }
+    .info{
+	padding-top: 60px;
+        color: lighten(#333, 5);
+	@include text-shadow(0px 1px 1px #fff);
 	text-align: right;
 	font-weight: bold;
-	padding-right: 1px;
-	margin-left: 10px;
+	background: #FAFAFA;
+	height: 100%;
+
+	margin-top: -10px;
+	right: 0;
+	margin-right: -30px;
+	padding-bottom: 15px;
+
     }
-    h3{
+
+    .precio{
+	margin-bottom: 10px;
+	font-size: 1.2em;
+    }
+
+    h3 a{
 	margin: 0;
 	line-height: 26px;
+	font-size: 0.7em;
     }
-    &:hover{
-	background: darken(#FAFAFA, 5);
-	@include rounded;
-	border: 1px solid lighten($gray, 5);
-    }
+
 }
 

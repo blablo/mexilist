@@ -16,46 +16,46 @@
         text-align: center;
         font-size: 1.7em;
         margin-bottom: 10px;
-	width: 100%;
-	height: 60px;
-	padding-top: 16px;
+        width: 100%;
+        height: 60px;
+        padding-top: 16px;
     }
     li.well.precio{
-	font-size: 2.5em;
-	span{
-	    display: block;
-	    margin-top: 0px;
-	}
+        font-size: 2.5em;
+        span{
+            display: block;
+            margin-top: 0px;
+        }
     }
     li.well.job span{
-	margin-top: 0;
-	font-size: 0.8em;
+        margin-top: 0;
+        font-size: 0.8em;
     }
     li.well{
-	padding: 10px;
-	span{
-	    margin-top: -5px;
-	    display: block;
-	}
+        padding: 10px;
+        span{
+            margin-top: -5px;
+            display: block;
+        }
     }
 
 }
 
 @media (max-width: 1250px) {
     #perks li{
-    font-size: 1.2em;
+        font-size: 1.2em;
     }
     #perks li.well.precio{
-    font-size: 1.2em;
+        font-size: 1.2em;
     }
 }
 
 @media (max-width: 992px) {
     #perks li{
-    font-size: 1.7em;
+        font-size: 1.7em;
     }
     #perks li.well.precio{
-    font-size: 2.5em;
+        font-size: 2.5em;
     }
 }
 
@@ -82,4 +82,17 @@
     }
 }
 
+#anuncios_container.related {
+
+    .anuncio{
+        width: 18%;
+        margin-top: 30px;
+        img{
+
+        }
+    }
+    .thumbnail{
+        height: 180px;
+    }
+}
 

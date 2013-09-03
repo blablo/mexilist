@@ -57,6 +57,13 @@
   =raw @anuncio.texto
 
 %hr
+  
+  
+  #anuncios_container.related
+    %h3 Te puede interesar:
+    -@related.each do |related|
+      =render related, :size => :medium
+
 
 
 #contactar.modal.fade

@@ -20,30 +20,30 @@
 
 
 $(document).ready(function (){
-		    $("#pikame").PikaChoose({carousel:true, carouselVertical:true, transition:[0]});
+    $("#pikame").PikaChoose({carousel:true, carouselVertical:true, transition:[0]});
 
 
-		    var $container = $('#anuncios_container');
-// initialize
+    var $container = $('#anuncios_container');
+    // initialize
 
-//188
+    //188
 
-$('img').load(function(){
+    $('img').load(function(){
 
-$container.masonry({
-  columnWidth: 246,
-  gutter: 15,
-    itemSelector: 'li'
-      });
+        $container.masonry({
+            itemSelector: '.anuncio',
+            columnWidth: '.anuncio'
+        });
 
-	      });
+    });
 
-$container.masonry({
-  columnWidth: 246,
-  gutter: 15,
-    itemSelector: 'li'
-      });
+    $container.masonry({
+        itemSelector: '.anuncio',
+        columnWidth: '.anuncio'
+    });
 
 
-  });
+
+
+});
 

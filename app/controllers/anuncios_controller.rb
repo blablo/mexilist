@@ -69,6 +69,9 @@ load_and_authorize_resource
   # GET /anuncios/1.json
   def show
     @anuncio = Anuncio.find(params[:id])
+    
+    @related = Anuncio.where(:category_id => @anuncio.category_id).last(4)
+    @related = Anuncio.last(5)
 
     respond_to do |format|
       format.html # show.html.erb

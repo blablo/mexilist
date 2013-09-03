@@ -20,12 +20,14 @@
 
 
 %h1 Anuncios
-#anuncios_container
-  -if @category.blank?
+-if @category.blank?
+  #anuncios_container
     -@anuncios.each do |anuncio|
       =render anuncio
-  -else
+-else
+  %ul#anuncio_list.list-group
     -@anuncios.each do |anuncio|
-      =render 'anuncio_list', :anuncio => anuncio
+      %li.list-group-item=render 'anuncio_list', :anuncio => anuncio
+
 
 

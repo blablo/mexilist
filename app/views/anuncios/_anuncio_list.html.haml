@@ -1,11 +1,14 @@
-%li.row.anuncio_list
-  .span8
-    .row
-      .span2=link_to(image_tag(anuncio.main_image, :class => 'img-polaroid'), city_anuncio_url(anuncio))
-      .span4
-        %h3=link_to(truncate(anuncio.title, :length => 40, :separator => ' '), city_anuncio_url(anuncio))
-      .span2.price
+.col-sm-12
+  .row
+    .col-sm-3=link_to(image_tag(anuncio.main_image, :class => 'img-responsive'), city_anuncio_url(anuncio))
+    .col-sm-5.col-lg-7.col-md-6
+      %h3=link_to(truncate(anuncio.title, :length => 40, :separator => ' '), city_anuncio_url(anuncio))
+    .col-sm-4.col-lg-2.info.col-md-3
+      .precio
         -if anuncio.price.blank?
-          Sin Precio
+          &nbsp;
         -else
           =number_to_currency(anuncio.price, :precision => 0)
+
+      %button.btn.btn-primary Ver anuncio
+

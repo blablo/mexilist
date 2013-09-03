@@ -49,3 +49,13 @@ $brand: red;
 	opacity:$alpha/100;	      
 	filter:alpha(opacity=$alpha); 
 }
+
+@mixin shadow($expression: 0 0 2px rgba(0,0,0,0.15)){
+  -webkit-box-shadow: $expression;
+  -moz-box-shadow: $expression;
+  box-shadow: $expression;
+}
+
+@mixin text-shadow($expression: 0px 1px 1px black){
+  text-shadow: $expression;
+}
