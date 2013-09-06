@@ -15,14 +15,16 @@
 @import 'tools';
 
 @media (min-width: 768px) {
-    #main_content.container{
+    #main_content{
 	margin-left: 200px;
 	margin-right: 160px;
+
     }
 
 }
 
-.container{
+
+#main_content{
     padding-top: 50px;
 }
 
@@ -39,6 +41,7 @@
     padding-top: 280px;
     width: 180px;
     float: left;
+    margin-left: 15px;
 }
 
 #right_banner{
@@ -62,6 +65,7 @@
   line-height: 1;
   margin-top: -1px;
   @include rounded_top;
+  margin-left: 15px;
   strong{
     font-size: 1.5em;
     font-weight: normal;

@@ -57,8 +57,8 @@
   =raw @anuncio.texto
 
 %hr
-  
-  
+
+
   #anuncios_container.related
     %h3 Te puede interesar:
     -@related.each do |related|
@@ -73,10 +73,31 @@
         %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
         %h3 Contacta al Anunciante
       .modal-body
-        %p One fine body…
+
+        .telefonos.well
+          %h3 Llama por Teléfono
+          -@anuncio.tel.split(',').each do |tel|
+            %span.label.label-success
+              %span.glyphicon.glyphicon-earphone=tel
+
+
+        .well
+          %h3 Envia un Mensaje
+          =form_for '' do |f|
+            .form-group
+              %label Nombre
+              =text_field_tag 'nombre', '', :class => "form-control"
+            .form-group
+              %label Email
+              =text_field_tag 'email', '', :class => "form-control"
+            .form-group
+              %label Mensaje
+              =text_area_tag 'mensaje', '', :class => "form-control"
+            %button.btn.btn-primary.pull-right Enviar
+          .clearfix
       .modal-footer
-        %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-        %button.btn.btn-primary Save changes
+        %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cerrar
+
 
 #compartir.modal.fade
   .modal-dialog
@@ -87,5 +108,5 @@
       .modal-body
         %p One fine body…
       .modal-footer
-        %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-        %button.btn.btn-primary Save changes
+        %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cerrar
+

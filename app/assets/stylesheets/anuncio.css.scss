@@ -96,3 +96,17 @@
     }
 }
 
+
+.telefonos{
+    font-size: 2em;
+    padding-top: 5px;
+    .glyphicon-earphone:before{
+	padding-right: 5px;
+    }
+    .glyphicon{
+	top: 4px;
+    }
+    .label{	
+	margin-right: 15px;
+    }
+}
