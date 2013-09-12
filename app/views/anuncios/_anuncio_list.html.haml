@@ -10,5 +10,5 @@
         -else
           =number_to_currency(anuncio.price, :precision => 0)
 
-      %button.btn.btn-primary Ver anuncio
+      %button.btn.btn-primary=link_to 'Ver anuncio', city_anuncio_url(anuncio)
 

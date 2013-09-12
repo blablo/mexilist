@@ -30,7 +30,7 @@
               %ul.dropdown-menu
                 -Metropoly.all.each do |m|
                   %li=m.name
-            %input.form-control{:type => "text"}/
+            %input#search.form-control{:type => "text"}/
             %span.input-group-btn
               %button.btn.btn-default{:type => "button"} Buscar
 
@@ -41,7 +41,9 @@
             =button_to('Publicar Anuncio', new_anuncio_url, :class => 'btn btn-danger', :method => :get)
           %li.pull-right
             .btn-group
-              %button.btn.btn-default{:type => "button"}=current_user.name
+              %button.btn.btn-default{:type => "button"}
+                %span.picture=image_tag(current_user.picture)
+                =current_user.name
               %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
                 %span.caret
               %ul.dropdown-menu

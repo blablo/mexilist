@@ -3,6 +3,7 @@ class Anuncio < ActiveRecord::Base
   has_many :assets
   belongs_to :city
   belongs_to :category
+  belongs_to :user
   has_one :car_perk
   has_one :moto_perk
   has_one :house_perk

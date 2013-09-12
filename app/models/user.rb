@@ -21,6 +21,21 @@ class User < ActiveRecord::Base
     authentications.build(:provider => auth['provider'], :uid => auth['uid'], :token => auth['credentials']['token'])
   end
 
+  def facebook
+    if !self.authentications.empty?
+      uid = self.authentications.first.uid
+      FbGraph::User.fetch(uid) rescue nil
+    else
+      nil
+    end
+  end
+
+  def picture
+    if facebook
+      facebook.picture
+    end
+  end
+
 end
 
 

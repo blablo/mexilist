@@ -9,7 +9,7 @@ class AuthenticationsController < ApplicationController
 
     if authentication
       # Authentication found, sign the user in.
-      flash[:notice] = "Signed in successfully."
+      flash[:notice] = I18n.t('devise.sessions.signed_in')
       sign_in_and_redirect(:user, authentication.user)
     else
       # Authentication not found, thus a new user.
@@ -21,10 +21,10 @@ class AuthenticationsController < ApplicationController
 
       if user.save(:validate => false)
         user.add_role :user
-        flash[:notice] = "Account created and signed in successfully."
+        flash[:notice] = "Cuenta creada."
         sign_in_and_redirect(:user, user)
       else
-        flash[:error] = "Error while creating a user account. Please try again."
+        flash[:error] = "Hubo un error al crear tu cuenta. Por favor, intenta nuevamente.."
         redirect_to root_url
       end
     end

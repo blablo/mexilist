@@ -1,0 +1,21 @@
+-size ||= :original
+-clase = '' 
+-if index == 2 or index == 3
+  -clase = 'hidden-xs'
+
+-if index == 3 or index == 4
+  -clase = 'hidden-xs hidden-sm'
+-if index == 4
+  -clase = 'hidden-md hidden-sm hidden-xs'
+
+
+
+.anuncio.col-xs-5.col-sm-4.col-md-3.col-lg-2{:class => clase}
+  .thumbnail
+    =link_to(image_tag(anuncio.main_image(size), :class => 'imgrounded'), city_anuncio_url(anuncio))
+    %h3=link_to(truncate(anuncio.title.capitalize, :length => 40, :separator => ' '), city_anuncio_url(anuncio))
+    .price
+      -if anuncio.price.blank?
+        &nbsp;
+      -else
+        =number_to_currency(anuncio.price, :precision => 0)

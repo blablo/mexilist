@@ -61,7 +61,10 @@ Mexilist::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.action_mailer.default_url_options = { :host => 'example.com' }
+  config.action_mailer.default_url_options = { :host => 'mexilist.com' }
+
+  ENV['facebook_app_id'] = "124337484410517"
+
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
@@ -70,16 +73,18 @@ Mexilist::Application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "example.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    :enable_starttls_auto => true,
+    :address            => 'smtp.zoho.com',
+    :port               => 465,
+    :domain             => 'zoho.com',
+    :authentication     => :login,
+    :enable_starttls_auto => false,
+    :tls                  => false,
+    :openssl_verify_mode  => 'none',
+    :ssl => true,
+    :user_name          => "envio@mexilist.com",
+    :password           => "mac2009"
   }
-
-  ENV['facebook_app_id'] = "124337484410517"
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)

@@ -10,3 +10,10 @@ $ ->
     ),
       scope: "email, read_stream, read_friendlists, friends_likes, friends_status, offline_access"
 
+$ ->
+  flashCallback = ->
+    $(".alert").fadeOut()
+  $(".alert").bind 'click', (ev) =>
+    $(".alert").fadeOut()
+  setTimeout flashCallback, 2000
+

@@ -2,15 +2,12 @@
   .breadcrumb
     %li
       =link_to('Inicio', root_url)
-      %span.divider /
     -if @city
       %li
         =link_to(@city.name, '/' + @city.url_name)
-        %span.divider /
     -if @category and @category.parent
       %li
         =link_to(@category.parent.name, @category.parent.name.parameterize )
-        %span.divider /
 
     -if @category
       %li.active

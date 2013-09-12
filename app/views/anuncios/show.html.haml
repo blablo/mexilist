@@ -53,16 +53,17 @@
 
 %hr
 
-%p
-  =raw @anuncio.texto
+.col-sm-12
+  %p
+    =raw @anuncio.texto
 
 %hr
 
 
-  #anuncios_container.related
+  #related_container.related.col-sm-12
     %h3 Te puede interesar:
-    -@related.each do |related|
-      =render related, :size => :medium
+    -@related.each_with_index do |related, index|
+      =render 'related', :size => :medium, :anuncio => related, :index => index
 
 
 
@@ -71,7 +72,7 @@
     .modal-content
       .modal-header
         %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-        %h3 Contacta al Anunciante
+        %h3 Contacta #{@anuncio.user ? 'a ' + @anuncio.user.name : 'al Anunciante'}
       .modal-body
 
         .telefonos.well
@@ -83,7 +84,8 @@
 
         .well
           %h3 Envia un Mensaje
-          =form_for '' do |f|
+          =form_tag '/anuncios/contactar', :remote => true do |f|
+            =hidden_field_tag 'anuncio_id', @anuncio.id
             .form-group
               %label Nombre
               =text_field_tag 'nombre', '', :class => "form-control"
@@ -93,7 +95,9 @@
             .form-group
               %label Mensaje
               =text_area_tag 'mensaje', '', :class => "form-control"
-            %button.btn.btn-primary.pull-right Enviar
+            %button.btn.btn-primary.pull-right.enviar{:onclick => "$(this).hide(); $('.enviar_dis').show()"} Enviar
+            %button.btn.btn-primary.pull-right.enviar_dis.disabled{:style => 'display: none;'} Enviando
+
           .clearfix
       .modal-footer
         %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cerrar

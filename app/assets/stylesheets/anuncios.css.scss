@@ -9,21 +9,32 @@
     margin-right: 15px;
 }
 
-#anuncios_container{
+#anuncios_container, #related_container{
     margin-left: 0px;
     width: 100%;
+    overflow: hidden;
 }
 
+#related_container{
+    .anuncio{
+	float: left;
+    }
+}
 .grid-sizer { width: 21%; }
 
 @media screen and (min-width: 720px) {
   /* 10 columns for larger screens */
   #anuncios_container .anuncio { width: 23%; }
+
 }
 
 @media screen and (max-width: 720px) {
   /* 10 columns for larger screens */
   #anuncios_container .anuncio { width: 23%; }
+
+}
+#related_container .anuncio{
+    margin-right: 0;
 }
 
 .anuncio{
