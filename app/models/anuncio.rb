@@ -2,6 +2,7 @@ class Anuncio < ActiveRecord::Base
   attr_accessible :category_id, :city_id, :district, :expiracy, :latitude, :longitude, :price, :renovation, :street, :texto, :tipo, :title, :assets_attributes, :tel, :car_perk_attributes, :moto_perk_attributes, :house_perk_attributes, :token, :intercambio, :job_perk_attributes
   has_many :assets
   belongs_to :city
+  belongs_to :state
   belongs_to :category
   belongs_to :user
   has_one :car_perk
@@ -28,6 +29,15 @@ class Anuncio < ActiveRecord::Base
   
   scope :with_picture, -> { joins(:pictures).uniq }
   
+  scope :by_city_category, ->(city, category){ 
+    ids = [category.id]
+    category.subcategories.each{|sub| ids << sub.id}
+    Anuncio.joins(:city, :category).where("cities.id = ? and categories.id in (?)", city, ids) }
+  scope :by_state_category, ->(state, category){ 
+    ids = [category.id]
+    category.subcategories.each{|sub| ids << sub.id}
+    Anuncio.joins(:state, :category).where("states.id = ? and categories.id in (?)", state, ids) }
+
 
   def main_image(size=nil)
     if size == :original

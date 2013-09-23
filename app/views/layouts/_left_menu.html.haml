@@ -1,18 +1,19 @@
 -city = params[:city].blank? ? '' : params[:city] + "/"
+-state = params[:state].blank? ? '' : params[:state] + "/"
 #category_menu
   .dropdown.clearfix
     %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu", :role => "menu"}
       -Category.main_categories.each do |mcat|
         -if mcat.has_children?
           %li.dropdown-submenu
-            %a{:href => root_url + city + mcat.url_name, :tabindex => "-1"}
+            %a{:href => root_url + state + city + mcat.url_name, :tabindex => "-1"}
               %i=image_tag('icons/' + mcat.name.parameterize + '.png')
               =mcat.name
             %ul.dropdown-menu
               -mcat.subcategories.each do |sub|
                 %li
-                  %a{:href => root_url + city + sub.url_name, :tabindex => "-1"}=sub.name
+                  %a{:href => root_url + state + city + sub.url_name, :tabindex => "-1"}=sub.name
         -else
           %li
-            %a{:href => root_url + city +  mcat.url_name, :tabindex => "-1"}=mcat.name
+            %a{:href => root_url + state + city +  mcat.url_name, :tabindex => "-1"}=mcat.name
 

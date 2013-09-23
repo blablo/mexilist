@@ -25,11 +25,20 @@
           .input-group
             .input-group-btn
               %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
-                Todo Mexico
+                -if !params[:city].blank?
+                  =City.find_name(params[:city])
+                -elsif !params[:state].blank?
+                  =State.find_name(params[:state])
+                -else
+                  Todo Mexico
                 %span.caret
-              %ul.dropdown-menu
-                -Metropoly.all.each do |m|
-                  %li=m.name
+              %div.dropdown-menu
+                -State.all.each do |state|
+                  .state
+                    %h4=link_to state.name, state.url_name
+                    %ul
+                      -state.cities.each do |c|
+                        %li=link_to c.name, c.url_name
             %input#search.form-control{:type => "text"}/
             %span.input-group-btn
               %button.btn.btn-default{:type => "button"} Buscar

@@ -41,12 +41,18 @@ load_and_authorize_resource
   def index
 
     if params[:city] and params[:category]
-      @anuncios = Anuncio.all
       @city = nil
-      City.all.each{|city| @city = city if city.url_name == params[:city]}
+      City.all.each{|city| @city = city if city.param_name == params[:city]}
       @category = nil
       Category.all.each{|cat| @category = cat if cat.url_name == params[:category]}
-      @anuncios = @category.anuncios_all
+      @anuncios = Anuncio.by_city_category(@city.id, @category)
+      
+    elsif params[:state] and params[:category]
+      @state = nil
+      State.all.each{|state| @state = state if state.param_name == params[:state]}
+      @category = nil
+      Category.all.each{|cat| @category = cat if cat.url_name == params[:category]}
+      @anuncios = Anuncio.by_state_category(@state.id, @category)
       
     elsif params[:category]
       @category = nil
@@ -130,7 +136,7 @@ load_and_authorize_resource
   # POST /anuncios.json
   def create
     @anuncio = current_user.anuncios.build(params[:anuncio])
-    
+    @anuncio.state_id = City.find(params[:anuncio][:city_id]).state.id
     @images = Picture.find_all_by_token(@anuncio.token)
 
 
@@ -158,7 +164,7 @@ load_and_authorize_resource
   # PUT /anuncios/1.json
   def update
     @anuncio = current_user.anuncios.find(params[:id])
-
+    @anuncio.state_id = City.find(params[:anuncio][:city_id]).state.id
     respond_to do |format|
       if @anuncio.update_attributes(params[:anuncio])
         format.html { redirect_to @anuncio, notice: 'Anuncio was successfully updated.' }

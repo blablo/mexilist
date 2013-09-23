@@ -38,7 +38,7 @@
       #left_banner.hidden-xs
         %h4 Ciudades
         %ul
-          -Metropoly.all.each do |metro|
+          -State.all.each do |metro|
             %li=link_to(metro.name, metro.url_name)
       #right_banner.hidden-xs
         :javascript

@@ -17,3 +17,4 @@ $ ->
     $(".alert").fadeOut()
   setTimeout flashCallback, 2000
 
+  $('.dropdown-toggle').dropdown();

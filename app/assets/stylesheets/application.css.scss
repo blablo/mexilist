@@ -72,6 +72,23 @@
   }
 }
 
+.state{
+	font-size: 9px;
+	overflow: hidden;
+	padding: 1em;
+	a{
+	    color: $dark_gray;
+	}
+    h4{
+	font-size: 10px;
+	margin: 0;
+    }
+    li{
+	float: left;
+	width: 135px;
+    }
+}
+
 #search_bar{
   margin-left: 10px;
   float: left;

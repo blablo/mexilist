@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130826201944) do
+ActiveRecord::Schema.define(:version => 20130923222012) do
 
   create_table "anuncios", :force => true do |t|
     t.string   "title"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20130826201944) do
     t.integer  "user_id"
     t.string   "token"
     t.boolean  "intercambio"
+    t.integer  "state_id"
   end
 
   create_table "assets", :force => true do |t|
@@ -86,6 +87,12 @@ ActiveRecord::Schema.define(:version => 20130826201944) do
     t.integer  "metropoly_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "estados", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "house_perks", :force => true do |t|

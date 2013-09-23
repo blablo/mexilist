@@ -21,6 +21,7 @@
 
 $(document).ready(function (){
     $("#pikame").PikaChoose({carousel:true, carouselVertical:true, transition:[0]});
+      $('.dropdown-toggle').dropdown();
 
 
     var $container = $('#anuncios_container');
@@ -41,7 +42,6 @@ $(document).ready(function (){
         itemSelector: '.anuncio',
         columnWidth: '.anuncio'
     });
-
 
 
 

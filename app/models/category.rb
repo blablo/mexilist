@@ -39,6 +39,7 @@ class Category < ActiveRecord::Base
     Category.where(:parent_id => self.id)
   end
 
+
   def car?
     if self.tipo.nil?
       self.parent.tipo ? self.parent.tipo == 2 : false

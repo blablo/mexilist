@@ -6,4 +6,6 @@ class AnuncioMailer < ActionMailer::Base
     @mensaje = mensaje
     mail(to: 'pepelalo@gmail.com', subject: anuncio.title, reply_to: email)
   end
+  
+
 end

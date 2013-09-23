@@ -4,11 +4,11 @@
       %li
         =link_to('Inicio', root_url)
       %li
-        =link_to(@anuncio.city.metropoly.name, @anuncio.city.metropoly.url_name)
+        =link_to(@anuncio.city.name, @anuncio.city.url_name)
       %li
-        =link_to(@anuncio.main_category_name, '/')
+        =link_to(@anuncio.main_category_name, @anuncio.city.url_name + '/' + @anuncio.main_category_name.parameterize)
       %li
-        =link_to(@anuncio.category_name, '/')
+        =link_to(@anuncio.category_name, @anuncio.city.url_name + '/' + @anuncio.main_category_name.parameterize )
       %li.active=@anuncio.tipo_name
 
 

@@ -21,9 +21,11 @@ Mexilist::Application.routes.draw do
   end
   resources :pictures
 
-  get '/:city/:category' => 'anuncios#index', :constraints => CityCategoryConstraint
-  get '/:city/:titulo/:id' => 'anuncios#show', :constraints => CityConstraint
-  get '/:city' => 'home#index', :constraints => CityConstraint
+  get '/:state/:city/:category' => 'anuncios#index', :constraints => CityCategoryConstraint
+  get '/:state/:category' => 'anuncios#index', :constraints => StateCategoryConstraint
+  get '/:state/:city/:titulo/:id' => 'anuncios#show', :constraints => CityConstraint
+  get '/:state/:city' => 'home#index', :constraints => CityConstraint
+  get '/:state' => 'home#index', :constraints => StateConstraint
   get '/:category' => 'anuncios#index', :constraints => CategoryConstraint
 
   authenticated :user do
