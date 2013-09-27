@@ -18,7 +18,7 @@ es:
       all: "No está autorizado para  %{action} %{subject}."
       user: "No está autorizado para manejar otras cuentas de usuario."
     update:
-      project: "Not allowed to update this project."
+      project: "No está autorizado para actualizar este proyecto."
   number:
     percentage:
       format:
