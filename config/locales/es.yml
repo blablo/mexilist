@@ -15,8 +15,8 @@ es:
 
   unauthorized:
     manage:
-      all: "No esta autorizado para  %{action} %{subject}."
-      user: "Not allowed to manage other user accounts."
+      all: "No está autorizado para  %{action} %{subject}."
+      user: "No está autorizado para manejar otras cuentas de usuario."
     update:
       project: "Not allowed to update this project."
   number:
