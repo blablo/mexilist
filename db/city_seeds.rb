@@ -167,22 +167,22 @@ City.create_or_update([
                         { :id => 820, :name => 'Manzanillo', :state_id => 8},
                         
                         // Distrito Federal
-                        { :id => 905, :name => 'Alvaro Obregón', :state_id => 9},
-                        { :id => 910, :name => 'Azcapotzalco', :state_id => 9},
-                        { :id => 915, :name => 'Benito Juárez', :state_id => 9},
-                        { :id => 920, :name => 'Coyoacán', :state_id => 9},
-                        { :id => 925, :name => 'Cuajimalpa de Morelos', :state_id => 9},
-                        { :id => 930, :name => 'Cuauhtémoc', :state_id => 9},
-                        { :id => 935, :name => 'Gustavo A. Madero', :state_id => 9},
-                        { :id => 940, :name => 'Iztacalco', :state_id => 9},
-                        { :id => 945, :name => 'Iztapalapa', :state_id => 9},
-                        { :id => 950, :name => 'Magdalena Contreras', :state_id => 9},
-                        { :id => 955, :name => 'Miguel Hidalgo', :state_id => 9},
-                        { :id => 960, :name => 'Milpa Alta', :state_id => 9},
-                        { :id => 965, :name => 'Tláhuac', :state_id => 9},
-                        { :id => 970, :name => 'Tlalpan', :state_id => 9},
-                        { :id => 975, :name => 'Venustiano Carranza', :state_id => 9},
-                        { :id => 980, :name => 'Xochimilco', :state_id => 9},
+                        { :id => 905, :name => 'Alvaro Obregón', :state_id => 9  :metropoly_id => 1},
+                        { :id => 910, :name => 'Azcapotzalco', :state_id => 9 :metropoly_id => 1},
+                        { :id => 915, :name => 'Benito Juárez', :state_id => 9 :metropoly_id => 1},
+                        { :id => 920, :name => 'Coyoacán', :state_id => 9 :metropoly_id => 1},
+                        { :id => 925, :name => 'Cuajimalpa de Morelos', :state_id => 9 :metropoly_id => 1},
+                        { :id => 930, :name => 'Cuauhtémoc', :state_id => 9 :metropoly_id => 1},
+                        { :id => 935, :name => 'Gustavo A. Madero', :state_id => 9 :metropoly_id => 1},
+                        { :id => 940, :name => 'Iztacalco', :state_id => 9 :metropoly_id => 1},
+                        { :id => 945, :name => 'Iztapalapa', :state_id => 9 :metropoly_id => 1},
+                        { :id => 950, :name => 'Magdalena Contreras', :state_id => 9 :metropoly_id => 1},
+                        { :id => 955, :name => 'Miguel Hidalgo', :state_id => 9 :metropoly_id => 1},
+                        { :id => 960, :name => 'Milpa Alta', :state_id => 9 :metropoly_id => 1},
+                        { :id => 965, :name => 'Tláhuac', :state_id => 9 :metropoly_id => 1},
+                        { :id => 970, :name => 'Tlalpan', :state_id => 9 :metropoly_id => 1},
+                        { :id => 975, :name => 'Venustiano Carranza', :state_id => 9 :metropoly_id => 1},
+                        { :id => 980, :name => 'Xochimilco', :state_id => 9 :metropoly_id => 1},
                         
                         // Durango
                         { :id => 1010, :name => 'Durango', :state_id => 10},
@@ -217,13 +217,13 @@ City.create_or_update([
                         { :id => 1430, :name => 'Tulancingo', :state_id => 14},
                         
                         // Jalisco
-                        { :id => 1510, :name => 'Guadalajara', :state_id => 15},
-                        { :id => 1540, :name => 'Tlajomulco de Zúñiga', :state_id => 15},
-                        { :id => 1550, :name => 'Tlaquepaque', :state_id => 15},
-                        { :id => 1560, :name => 'Tonalá', :state_id => 15},
-                        { :id => 1570, :name => 'Zapopan', :state_id => 15},
+                        { :id => 1510, :name => 'Guadalajara', :state_id => 15, :metropoly_id => 2},
+                        { :id => 1540, :name => 'Tlajomulco de Zúñiga', :state_id => 15, :metropoly_id => 2},
+                        { :id => 1550, :name => 'Tlaquepaque', :state_id => 15, :metropoly_id => 2},
+                        { :id => 1560, :name => 'Tonalá', :state_id => 15, :metropoly_id => 2},
+                        { :id => 1570, :name => 'Zapopan', :state_id => 15, :metropoly_id => 2},
                         { :id => 1580, :name => 'El Salto', :state_id => 15},
-                        { :id => 1590, :name => 'Puerto Vallarta', :state_id => 15},
+                        { :id => 1590, :name => 'Puerto Vallarta', :state_id => 15, :metropoly_id => 4},
                         
                         // Michoacan
                         { :id => 1610, :name => 'Morelia', :state_id => 16},
@@ -234,22 +234,27 @@ City.create_or_update([
                         { :id => 1710, :name => 'Cuautla', :state_id => 17},
                         { :id => 1720, :name => 'Cuernavaca', :state_id => 17},
                         { :id => 1730, :name => 'Jiutepec', :state_id => 17},
-                        { :id => 2910, :name => 'Apizaco', :state_id => 29},
                         { :id => 1740, :name => 'Temixco', :state_id => 17},
                         { :id => 1750, :name => 'Yautepec', :state_id => 17},
 
                         // Nayarit
                         { :id => 1810, :name => 'Tepic', :state_id => 18},
-                        { :id => 1820, :name => 'Nuevo Vallarta', :state_id => 18},
+                        { :id => 1820, :name => 'Nuevo Vallarta', :state_id => 18 :metropoly_id => 4},
                         
                         // Nuevo León
-                        { :id => 1910, :name => 'Apodaca', :state_id => 19},
-                        { :id => 1920, :name => 'General Escobedo', :state_id => 19},
-                        { :id => 1930, :name => 'Guadalupe', :state_id => 19},
-                        { :id => 1940, :name => 'Monterrey', :state_id => 19},
-                        { :id => 1950, :name => 'San Nicolás de los Garza', :state_id => 19},
-                        { :id => 1960, :name => 'San Pedro Garza García', :state_id => 19},
-                        { :id => 1970, :name => 'Santa Catarina', :state_id => 19},
+                        { :id => 1910, :name => 'Apodaca', :state_id => 19, :metropoly_id => 3},
+                        { :id => 1915, :name => 'General Escobedo', :state_id => 19, :metropoly_id => 3},
+                        { :id => 1920, :name => 'Guadalupe', :state_id => 19, :metropoly_id => 3},
+                        { :id => 1925, :name => 'Monterrey', :state_id => 19, :metropoly_id => 3},
+                        { :id => 1930, :name => 'San Nicolás de los Garza', :state_id => 19, :metropoly_id => 3},
+                        { :id => 1935, :name => 'San Pedro Garza García', :state_id => 19, :metropoly_id => 3},
+                        { :id => 1940, :name => 'Santa Catarina', :state_id => 19, :metropoly_id => 3},
+                        { :id => 1945, :name => 'Juárez', :state_id => 19, :metropoly_id => 3},
+                        { :id => 1950, :name => 'García', :state_id => 19, :metropoly_id => 3},
+                        { :id => 1955, :name => 'Santa Catarina', :state_id => 19, :metropoly_id => 3},
+                        { :id => 1960, :name => 'Cadereyta Jiménez', :state_id => 19, :metropoly_id => 3},
+                        { :id => 1965, :name => 'Santiago', :state_id => 19, :metropoly_id => 3},
+                        { :id => 1970, :name => 'Salinas Victoria', :state_id => 19, :metropoly_id => 3},
                         
                         // Oaxaca
                         { :id => 2010, :name => 'Oaxaca', :state_id => 20},
@@ -259,8 +264,8 @@ City.create_or_update([
                         { :id => 2120, :name => 'Tehuacán', :state_id => 21},
                         
                         // Querétaro
-                        { :id => 2220, :name => 'San Juan del Río', :state_id => 22},
                         { :id => 2210, :name => 'Querétaro', :state_id => 22},
+                        { :id => 2220, :name => 'San Juan del Río', :state_id => 22},
                         { :id => 2230, :name => 'Tequisquiapan', :state_id => 22},
                         
                         // Quintana Roo
@@ -292,23 +297,24 @@ City.create_or_update([
                         { :id => 2730, :name => 'Villahermosa', :state_id => 27},
                         
                         // Tamaulipas
+                        { :id => 2810, :name => 'Ciudad Victoria', :state_id => 28},
                         { :id => 2820, :name => 'Matamoros', :state_id => 28},
                         { :id => 2830, :name => 'Nuevo Laredo', :state_id => 28},
-                        { :id => 2810, :name => 'Ciudad Victoria', :state_id => 28},
                         { :id => 2840, :name => 'Reynosa', :state_id => 28},
                         { :id => 2850, :name => 'Tampico', :state_id => 28},
                         
                         // Tlaxcala
+                        { :id => 2910, :name => 'Apizaco', :state_id => 29},
+                        { :id => 2920, :name => 'Chiautempan', :state_id => 29},
                         { :id => 2930, :name => 'Huamantla', :state_id => 29},
                         { :id => 2940, :name => 'Tlaxcala', :state_id => 29},
-                        { :id => 2920, :name => 'Chiautempan', :state_id => 29},
                         
                         // Veracruz
-                        { :id => 3050, :name => 'Poza Rica', :state_id => 30},
                         { :id => 3010, :name => 'Boca del Río', :state_id => 30},
                         { :id => 3020, :name => 'Coatzacoalcos', :state_id => 30},
                         { :id => 3030, :name => 'Córdoba', :state_id => 30},
                         { :id => 3040, :name => 'Orizaba', :state_id => 30},
+                        { :id => 3050, :name => 'Poza Rica', :state_id => 30},
                         { :id => 3060, :name => 'Veracruz', :state_id => 30},
                         { :id => 3070, :name => 'Xalapa', :state_id => 30},
                         
@@ -330,4 +336,5 @@ Metropoly.create_or_update([
                             { :id => 1, :name => 'Ciudad de México'},
                             { :id => 2, :name => 'Guadalajara'},
                             { :id => 3, :name => 'Monterrey'},
+                            { :id => 4, :name => 'Vallarta'},
                            ])
