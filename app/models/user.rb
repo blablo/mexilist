@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
     if !self.authentications.empty?
       uid = self.authentications.first.uid
       FbGraph::User.fetch(uid) rescue nil
-      me = FbGraph::User.me(user.authentications.first.token) rescue nil
     else
       nil
     end
