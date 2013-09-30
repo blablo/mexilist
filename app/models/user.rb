@@ -16,19 +16,28 @@ class User < ActiveRecord::Base
 
   def apply_omniauth(auth)
     # In previous omniauth, 'user_info' was used in place of 'raw_info'
-    self.email = auth['extra']['raw_info']['email']
+    self.email =  auth['info']['email']
     # Again, saving token is optional. If you haven't created the column in authentications table, this will fail
     authentications.build(:provider => auth['provider'], :uid => auth['uid'], :token => auth['credentials']['token'])
   end
 
   def facebook
+
     if !self.authentications.empty?
       uid = self.authentications.first.uid
       FbGraph::User.fetch(uid) rescue nil
+      me = FbGraph::User.me(user.authentications.first.token) rescue nil
     else
       nil
     end
   end
+
+  def fb_me
+    if !self.authentications.empty?
+      FbGraph::User.me(self.authentications.first.token) rescue nil
+    end
+  end
+
 
   def picture
     if facebook

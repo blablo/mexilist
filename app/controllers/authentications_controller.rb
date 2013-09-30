@@ -13,7 +13,13 @@ class AuthenticationsController < ApplicationController
       sign_in_and_redirect(:user, authentication.user)
     else
       # Authentication not found, thus a new user.
-      user = User.new
+      if User.find_by_email( auth['info']['email'])
+        user = User.find_by_email(auth['info']['email'])
+      else
+        user = User.new
+      end
+      debugger
+
       user.apply_omniauth(auth)
 
       fb_user ||= FbGraph::User.me(user.authentications.first.token)

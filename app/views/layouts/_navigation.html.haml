@@ -32,13 +32,14 @@
                 -else
                   Todo Mexico
                 %span.caret
-              %div.dropdown-menu
-                -State.all.each do |state|
-                  .state
-                    %h4=link_to state.name, state.url_name
-                    %ul
+              #city_states.dropdown-menu
+                .states
+                  -State.all.each do |state|
+                    .state{:onclick => "$('#cities" + state.id.to_s + "').show();$('#city_states').show()"}=state.name
+                    %div.cities{:id => 'cities'+state.id.to_s}
                       -state.cities.each do |c|
-                        %li=link_to c.name, c.url_name
+                        .city=link_to c.name, c.url_name
+
             %input#search.form-control{:type => "text"}/
             %span.input-group-btn
               %button.btn.btn-default{:type => "button"} Buscar

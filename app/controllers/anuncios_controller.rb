@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 class AnunciosController < ApplicationController
-load_and_authorize_resource
+load_and_authorize_resource 
 
  def update_model
 
@@ -145,6 +146,11 @@ load_and_authorize_resource
         @images.each do |pic|
           pic.update_attribute(:anuncio_id, @anuncio.id)
         end
+
+        current_user.fb_me.link!(
+                                 :link => @anuncio.url,
+                                 :message => "¿Algún interesado?... guiño guiño"
+                                 )
         format.html { redirect_to @anuncio, notice: 'Anuncio was successfully created.' }
         format.json { render json: @anuncio, status: :created, location: @anuncio }
       else

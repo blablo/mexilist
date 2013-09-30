@@ -1,3 +1,9 @@
+=content_for :head do
+  %meta{content: @anuncio.title, property: "og:title"}/
+  %meta{content: "article", property: "og:type"}/
+  %meta{content: @anuncio.main_image, property: "og:image"}/
+  %meta{content: @anuncio.url, property: "og:url"}/
+  %meta{content: @anuncio.texto, property: "og:description"}/
 .col-sm-12
   -content_for :breadcrumb do
     .breadcrumb
@@ -91,7 +97,7 @@
               =text_field_tag 'nombre', '', :class => "form-control"
             .form-group
               %label Email
-              =text_field_tag 'email', '', :class => "form-control"
+              =text_field_tag 'email', current_user ? current_user.email : '', :class => "form-control"
             .form-group
               %label Mensaje
               =text_area_tag 'mensaje', '', :class => "form-control"
