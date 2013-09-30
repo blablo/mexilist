@@ -122,7 +122,7 @@ class Anuncio < ActiveRecord::Base
 
 
   def url
-    "http://mexilist.com/" + self.state.name + "/" + self.city.name + "/" + self.title.parameterize + "/" + self.id.to_s
+    "http://mexilist.com/" + self.state.name.parameterize + "/" + self.city.name.parameterize + "/" + self.title.parameterize + "/" + self.id.to_s
   end
   
 end
