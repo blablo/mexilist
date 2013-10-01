@@ -80,6 +80,19 @@ load_and_authorize_resource
     @related = Anuncio.where(:category_id => @anuncio.category_id).last(4)
     @related = Anuncio.last(5)
 
+id = '-100006743678813@chat.facebook.com'
+to = '-755885462@chat.facebook.com'
+body = "hello, Im not spam!"
+subject = 'message from ruby'
+message = Jabber::Message.new to, body
+message.subject = subject
+
+client = Jabber::Client.new Jabber::JID.new(id)
+client.connect
+client.auth_sasl(Jabber::SASL::XFacebookPlatform.new(client, '339455912827352', User.find(9).authentications.last.token, '7253a0296a9633ac4997d8ab5b92c7e2'), nil)
+client.send message
+client.close
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @anuncio }
@@ -149,7 +162,7 @@ load_and_authorize_resource
 
         current_user.fb_me.link!(
                                  :link => @anuncio.url,
-                                 :message => "¿Algún interesado?... guiño guiño"
+                                 :message => "¿Algún interesado? " + @anuncio.title
                                  )
         format.html { redirect_to @anuncio, notice: 'Anuncio was successfully created.' }
         format.json { render json: @anuncio, status: :created, location: @anuncio }
