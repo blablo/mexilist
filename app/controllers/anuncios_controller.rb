@@ -89,7 +89,8 @@ message.subject = subject
 
 client = Jabber::Client.new Jabber::JID.new(id)
 client.connect
-client.auth_sasl(Jabber::SASL::XFacebookPlatform.new(client, '339455912827352', User.find(9).authentications.last.token, '7253a0296a9633ac4997d8ab5b92c7e2'), nil)
+#client.auth_sasl(Jabber::SASL::XFacebookPlatform.new(client, '339455912827352', User.find(9).authentications.last.token, '7253a0296a9633ac4997d8ab5b92c7e2'), nil)
+client.auth_sasl(Jabber::SASL::XFacebookPlatform.new(client, '124337484410517', User.find(9).authentications.last.token, '913dcdbb103f11d9fc6860b3dacdffb8'), nil)
 client.send message
 client.close
 
