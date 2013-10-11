@@ -17,6 +17,7 @@ Mexilist::Application.routes.draw do
     collection do 
       get 'mis_anuncios'
       post 'contactar'
+      get 'search'
     end
   end
   resources :pictures

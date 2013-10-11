@@ -9,7 +9,7 @@
         = javascript_include_tag "application"
         = csrf_meta_tags
         = yield(:head)
-      
+
   %body{:class => "#{controller_name} #{action_name}"}
     #fb-root
     :javascript
@@ -60,10 +60,9 @@
           =yield(:breadcrumb)
           = render 'layouts/messages'
           = yield
-    %footer
-      Mexilist
-    / ! end of .container
-    / ! end of #main
+    #footer
+      %p.text-muted.credit Mexilist
+
 
 #login_modal.modal.fade
   .modal-dialog

@@ -1,8 +1,11 @@
+-content_for :head do 
+  =javascript_include_tag "green_light"
+
 =tinymce_assets
 -if @sub.nil?
-  .span12
+  .col-sm-12
     %h1 Crea tu anuncio
-  .select_cat.span12
+  .select_cat.col-sm-12
     %h3 1. Selecciona una categoría
 
     .row

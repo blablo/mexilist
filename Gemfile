@@ -43,3 +43,7 @@ gem 'jquery-rails'
 gem 'remotipart'
 gem "fog", "~> 1.3.1"
 gem "xmpp4r_facebook"
+gem 'green_light'
+gem 'will_paginate', '~> 3.0'
+
+gem 'thinking-sphinx', '3.0.5'

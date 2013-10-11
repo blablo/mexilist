@@ -16,6 +16,7 @@
 //= require tinymce-jquery
 //= require jquery.remotipart
 //= require masonry.pkgd.min
+//= require jquery.validate2
 //= require_tree .
 
 
@@ -41,6 +42,14 @@ $(document).ready(function (){
     $container.masonry({
         itemSelector: '.anuncio',
         columnWidth: '.anuncio'
+    });
+
+
+    $('#anuncio_list').AutoPagination({
+        nextPageSelector: 'a.next_page',
+	nextPageBufferPx: 200,
+	panelSelector: 'li.list-group-item',
+	loaderText: 'Cargando...'
     });
 
 

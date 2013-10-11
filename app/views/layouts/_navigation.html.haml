@@ -21,7 +21,7 @@
 
     .form-group.col-sm-6
       .row
-        %form.col-sm-12
+        %form.col-sm-12{:action => '/anuncios/search', :method => 'get'}
           .input-group
             .input-group-btn
               %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
@@ -40,7 +40,7 @@
                       -state.cities.each do |c|
                         .city=link_to c.name, c.url_name
 
-            %input#search.form-control{:type => "text"}/
+            %input#search.form-control{:type => "text", :name => 'q'}/
             %span.input-group-btn
               %button.btn.btn-default{:type => "button"} Buscar
 

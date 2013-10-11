@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class AnunciosController < ApplicationController
 load_and_authorize_resource 
-
+require 'will_paginate/array'
  def update_model
 
    brand = Brand.find(params[:brand_id])
@@ -58,10 +58,11 @@ load_and_authorize_resource
     elsif params[:category]
       @category = nil
       Category.all.each{|cat| @category = cat if cat.url_name == params[:category]}
-      @anuncios = @category.anuncios_all
+      @anuncios = @category.anuncios_all.paginate(:page => params[:page], :per_page => 1)
     else
       @anuncios = Anuncio.all
     end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @anuncios }
@@ -79,20 +80,6 @@ load_and_authorize_resource
     
     @related = Anuncio.where(:category_id => @anuncio.category_id).last(4)
     @related = Anuncio.last(5)
-
-id = '-100006743678813@chat.facebook.com'
-to = '-755885462@chat.facebook.com'
-body = "hello, Im not spam!"
-subject = 'message from ruby'
-message = Jabber::Message.new to, body
-message.subject = subject
-
-client = Jabber::Client.new Jabber::JID.new(id)
-client.connect
-#client.auth_sasl(Jabber::SASL::XFacebookPlatform.new(client, '339455912827352', User.find(9).authentications.last.token, '7253a0296a9633ac4997d8ab5b92c7e2'), nil)
-client.auth_sasl(Jabber::SASL::XFacebookPlatform.new(client, '124337484410517', User.find(9).authentications.last.token, '913dcdbb103f11d9fc6860b3dacdffb8'), nil)
-client.send message
-client.close
 
     respond_to do |format|
       format.html # show.html.erb
@@ -218,5 +205,11 @@ client.close
     end
   end
 
+
+  def search
+    @q = params[:q]
+    @anuncios = Anuncio.search(@q).paginate(:page => params[:page], :per_page => 5)
+    render :index
+  end
 
 end
