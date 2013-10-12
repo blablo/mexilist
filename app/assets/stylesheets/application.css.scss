@@ -179,3 +179,8 @@ span.error, .error .control-label{
 .error.form-control{border-color:#b94a48;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);box-shadow:inset 0 1px 1px rgba(0,0,0,0.075)}
 .error.form-control:focus{border-color:#953b39;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 6px #d59392;box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 6px #d59392}
 .error .input-group-addon{color:#b94a48;background-color:#f2dede;border-color:#b94a48}
+
+
+span.previous_page, a.next_page {
+  display: none;
+}

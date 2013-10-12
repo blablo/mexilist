@@ -3,4 +3,8 @@ class JobPerk < ActiveRecord::Base
 
   mount_uploader :cv, CurriculoUploader
 
+  validates :area, :presence => true
+  validates :estudios, :presence => true
+
+
 end

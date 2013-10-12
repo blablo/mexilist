@@ -1,6 +1,6 @@
 class AnuncioMailer < ActionMailer::Base
   add_template_helper(AnunciosHelper)
-  default from: "envio@mexilist.com"
+  default from: "Mexilist.com <envio@mexilist.com>"
 
   def contactar(email, nombre, mensaje, anuncio)
     @nombre = nombre

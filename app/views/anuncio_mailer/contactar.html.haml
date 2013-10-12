@@ -1,12 +1,10 @@
-=link_to(image_tag('http://mexilist.com/assets/mexilist-5fac96ce0c87f8d819b5ef8f43f22cae.png', :style => 'width:80px'), root_path)
-
-%br
-
 %p #{@nombre} te escribió el siguiete mensaje:
 
 %p=@mensaje
 
 %hr
+=link_to(image_tag('http://mexilist.com/assets/mexilist-5fac96ce0c87f8d819b5ef8f43f22cae.png', :style => 'width:80px'), root_path)
+%br
 
 El mensaje fue enviado sobre tu anuncio: 
 =link_to @anuncio.title, 'http://mexilist.com' + city_anuncio_url(@anuncio)

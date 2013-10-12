@@ -9,6 +9,7 @@ class Ability
       can :manage, Anuncio
     else
       can :read, Anuncio
+      can :search, Anuncio
     end
     # Define abilities for the passed in user here. For example:
     #

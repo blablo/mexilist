@@ -19,7 +19,7 @@
 %h1 Anuncios
 -if @category.blank? and action_name != "search"
   #anuncios_container
-    =will_paginate @anuncios
+    =will_paginate @anuncios, :container => 'li'
     -@anuncios.each do |anuncio|
       =render anuncio
 -else

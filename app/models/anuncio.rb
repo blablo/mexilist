@@ -26,7 +26,9 @@ class Anuncio < ActiveRecord::Base
   validates :tipo, :presence => true
   validates :title, :presence => true
   validates :texto, :presence => true
-  
+
+
+
   scope :with_picture, -> { joins(:pictures).uniq }
   
   scope :by_city_category, ->(city, category){ 
