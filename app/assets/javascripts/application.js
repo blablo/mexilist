@@ -17,7 +17,6 @@
 //= require jquery.remotipart
 //= require masonry.pkgd.min
 //= require jquery.validate2
-//= require green_light.js
 //= require_tree .
 
 
