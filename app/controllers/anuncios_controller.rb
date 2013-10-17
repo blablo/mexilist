@@ -46,14 +46,14 @@ require 'will_paginate/array'
       City.all.each{|city| @city = city if city.param_name == params[:city]}
       @category = nil
       Category.all.each{|cat| @category = cat if cat.url_name == params[:category]}
-      @anuncios = Anuncio.by_city_category(@city.id, @category)
+      @anuncios = Anuncio.by_city_category(@city.id, @category).paginate(:page => params[:page], :per_page => 1)
       
     elsif params[:state] and params[:category]
       @state = nil
       State.all.each{|state| @state = state if state.param_name == params[:state]}
       @category = nil
       Category.all.each{|cat| @category = cat if cat.url_name == params[:category]}
-      @anuncios = Anuncio.by_state_category(@state.id, @category)
+      @anuncios = Anuncio.by_state_category(@state.id, @category).paginate(:page => params[:page], :per_page => 1)
       
     elsif params[:category]
       @category = nil
