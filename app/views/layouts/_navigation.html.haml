@@ -24,7 +24,7 @@
         %form.col-sm-12{:action => '/anuncios/search', :method => 'get'}
           .input-group
             .input-group-btn
-              %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+              .btn.btn-default.city_states_btn
                 -if !params[:city].blank?
                   =City.find_name(params[:city])
                 -elsif !params[:state].blank?
@@ -32,13 +32,17 @@
                 -else
                   Todo Mexico
                 %span.caret
-              #city_states.dropdown-menu
+              #city_states
                 .states
                   -State.all.each do |state|
-                    .state{:onclick => "$('#cities" + state.id.to_s + "').show();$('#city_states').show()"}=state.name
-                    %div.cities{:id => 'cities'+state.id.to_s}
-                      -state.cities.each do |c|
-                        .city=link_to c.name, c.url_name
+                    .state{:onclick => "$('#cities" + state.id.to_s + "').show();$('.states').hide()"}=state.name
+                -State.all.each do |state|
+                  %div.cities{:id => 'cities'+state.id.to_s}
+                    %h4
+                      =link_to(state.name, state.url_name)
+                      =link_to('atras', '#', :onclick => "$('#cities" + state.id.to_s + "').hide();$('.states').show()", :class => 'atras' )
+                    -state.cities.each do |c|
+                      =link_to c.name, c.url_name, :class => 'city'
 
             %input#search.form-control{:type => "text", :name => 'q'}/
             %span.input-group-btn

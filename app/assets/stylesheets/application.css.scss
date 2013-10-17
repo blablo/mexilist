@@ -11,13 +11,13 @@
  *= require gallery
  *= require_self
  *= require_tree .
-*/
+ */
 @import 'tools';
 
 @media (min-width: 768px) {
     #main_content{
-	margin-left: 200px;
-	margin-right: 160px;
+        margin-left: 200px;
+        margin-right: 160px;
 
     }
 
@@ -29,10 +29,10 @@
 }
 
 .content {
-  background-color: white;
-  ul{
-      margin: 0 auto;
-  }
+    background-color: white;
+    ul{
+        margin: 0 auto;
+    }
 }
 
 #main{
@@ -65,64 +65,99 @@
 
 
 #busca_por_categoria{
-  float: left;
-  background: $dark_gray;
-  color: white;
-  width: 90px;
-  height: 42px;
-  padding: 1em;
-  font-size: 0.8em;
-  line-height: 1;
-  margin-top: -1px;
-  @include rounded_top;
-  margin-left: 15px;
-  strong{
-    font-size: 1.5em;
-    font-weight: normal;
-  }
+    float: left;
+    background: $dark_gray;
+    color: white;
+    width: 90px;
+    height: 42px;
+    padding: 1em;
+    font-size: 0.8em;
+    line-height: 1;
+    margin-top: -1px;
+    @include rounded_top;
+    margin-left: 15px;
+    strong{
+        font-size: 1.5em;
+        font-weight: normal;
+    }
 }
 
 #city_states{
-	font-size: 10px;
-	padding: 1em;
-	overflow: hidden;
-	width: 430px;
-	.state{
-	    float: left;
-	    padding: 5px;
-	    width: 100px;
-	}
-	.cities{
-	    display: none;
-	}
+    background: #333;
+    display: none;
+    @include rounded;
+    @include shadow(0 0 20px rgba(0,0,0,0.35));
+    position: absolute;
+    font-size: 10px;
+    padding: 1em;
+    overflow: hidden;
+    width: 430px;
+    color: #CCC;
+    @include text-shadow(0px 1px 1px black);
+    .state{
+        float: left;
+        padding: 5px;
+        width: 100px;
+        cursor: pointer;
+        &:hover{
+            color: $brand;
+        }
+    }
+    .atras{
+	float: right;
+	font-size: 12px;
+    }
+    .cities{
+        display: none;
+        a{
+            color: #CCC;
+            text-decoration: none;
+            &:hover{
+                color: $brand;
+            }
+        }
+        .city{
+            display: block;
+            overflow: hidden;
+            color: #CCC;
+            text-decoration: none;
+            float: left;
+            padding: 5px;
+            width: 100px;
+            &:hover{
+                color: $brand;
+            }
+
+        }
+    }
 }
 
 
 #search_bar{
-  margin-left: 10px;
-  float: left;
-  margin-top: 8px;
-  input[type='text']{
-    height: 25px;
-  }
-  button{
-    padding-top: 7px;
-    padding-bottom: 6px;
-  }
+    margin-left: 10px;
+    float: left;
+    margin-top: 8px;
+    input[type='text']{
+        height: 25px;
+    }
+    button{
+        padding-top: 7px;
+        padding-bottom: 6px;
+    }
 }
 
 #city_list{
     margin-top: 8px;
     margin-left: 100px;
     select{
-	padding: 7px; 
-	height: 35px;
+        padding: 7px;
+        height: 35px;
     }
 }
 
 
 .navbar ul.nav{
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 .publicar_btn{
@@ -131,37 +166,37 @@
 }
 
 #category_menu{
-  position: relative;
-  top: 0px;
-  left: -12px;
-  i img{
-      width: 15px;
-      margin-right: 3px;
-      margin-left: -10px;
-  }
+    position: relative;
+    top: 0px;
+    left: -12px;
+    i img{
+        width: 15px;
+        margin-right: 3px;
+        margin-left: -10px;
+    }
 }
 
 #all_categories{
-  float: left;
-  margin-right: -10px;
-  a{
-    padding-top: 7px;
-    padding-bottom: 6px;
-  }
+    float: left;
+    margin-right: -10px;
+    a{
+        padding-top: 7px;
+        padding-bottom: 6px;
+    }
 }
 
 .linea{
-  width: 100%;
-  height: 1px;
-  background: #CCC;
-  clear:both;
+    width: 100%;
+    height: 1px;
+    background: #CCC;
+    clear:both;
 }
 
 
 .breadcrumb{
     margin-top: 10px;
 }
-	
+
 #footer{
     color: white;
     background-color: #333;
@@ -182,5 +217,5 @@ span.error, .error .control-label{
 
 
 span.previous_page, a.next_page {
-  display: none;
+    display: none;
 }

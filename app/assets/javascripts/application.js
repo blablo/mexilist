@@ -52,7 +52,8 @@ $(document).ready(function (){
 	loaderText: 'Cargando...'
     });
 
-
-
+    $( ".city_states_btn" ).click(function() {
+	$( "#city_states" ).toggle();
+    });
 });
 
