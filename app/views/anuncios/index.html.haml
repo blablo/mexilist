@@ -19,14 +19,14 @@
 %h1 Anuncios
 -if @category.blank? and action_name != "search"
   #anuncios_container
-    =will_paginate @anuncios, :container => 'li'
+
     -@anuncios.each do |anuncio|
       =render anuncio
+  =will_paginate @anuncios, :container => 'li'
 -else
   %ul#anuncio_list.list-group
-    =will_paginate @anuncios
+
     -@anuncios.each do |anuncio|
       %li.list-group-item=render 'anuncio_list', :anuncio => anuncio
-
-
+  =will_paginate @anuncios
 
