@@ -1,5 +1,18 @@
 -content_for :head do 
-  =javascript_include_tag "green_light"
+  :javascript
+    $().ready(function() {
+    $(".green_light").validate({"rules":{"anuncio[category_id]":{"required":true},"anuncio[city_id]":{"required":true},"anuncio[tipo]":{"required":true},"anuncio[title]":{"required":true},"anuncio[texto]":{"required":true},"anuncio[Estado]":{},"anuncio[district]":{},"anuncio[price]":{},"anuncio[tel]":{}},"errorElement":"span"});
+    });
+    $.validator.addMethod(
+    "regex",
+    function(value, element, regexp) {
+    var check = false;
+    var re = new RegExp(regexp);
+    return this.optional(element) || re.test(value);
+    },
+    "You have entered an invalid value for this field"
+    );
+
 
 =tinymce_assets
 -if @sub.nil?
