@@ -4,7 +4,12 @@
   %meta{content: @anuncio.main_image, property: "og:image"}/
   %meta{content: @anuncio.url, property: "og:url"}/
   %meta{content: @anuncio.texto, property: "og:description"}/
-.col-sm-12
+  %meta{content: @anuncio.texto, name: "description"}/
+
+=content_for :title do
+  =@anuncio.title.titlecase
+
+.col-sm-12{ :itemscope => true,  :itemtype => "http://schema.org/Product" }
   -content_for :breadcrumb do
     .breadcrumb
       %li
@@ -20,7 +25,7 @@
 
   %p#notice= notice
 
-  %h1=@anuncio.title
+  %h1=@anuncio.title.titlecase
   %p
     =@anuncio.city.name + ', ' + @anuncio.city.state.name
     =', ' + @anuncio.district if !@anuncio.district.blank?
@@ -31,7 +36,7 @@
         -@anuncio.pictures.each do |asset|
           %li
             %a{:href => "#"}
-              =image_tag(asset.image.medium.url)
+              =image_tag(asset.image.medium.url, :itemprop => "image")
 
 
 
@@ -48,7 +53,7 @@
     -else
       %ul.col-md-4
         %li.well.precio
-          %span=number_to_currency(@anuncio.price)
+          %span{ :itemprop => "price"}=number_to_currency(@anuncio.price)
       .col-md-4
 
 
@@ -57,19 +62,19 @@
       %li.btn.btn-default{:href => "#compartir", :role => "button", 'data-toggle' => "modal"} Compartir Anuncio
 
 
-%hr
+  %hr
 
-.col-sm-12
-  %p
-    =raw @anuncio.texto
+  .col-sm-12{ :itemprop => "description"}
+    %p
+      =raw @anuncio.texto
 
-%hr
+  %hr
 
 
-  #related_container.related.col-sm-12
-    %h3 Te puede interesar:
-    -@related.each_with_index do |related, index|
-      =render 'related', :size => :medium, :anuncio => related, :index => index
+    #related_container.related.col-sm-12
+      %h3 Te puede interesar:
+      -@related.each_with_index do |related, index|
+        =render 'related', :size => :medium, :anuncio => related, :index => index
 
 
 

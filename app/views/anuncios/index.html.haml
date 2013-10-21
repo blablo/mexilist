@@ -1,3 +1,6 @@
+=content_for :title do
+  =@title.titlecase
+
 -content_for :breadcrumb do
   .breadcrumb
     %li
@@ -11,7 +14,7 @@
 
     -if @category
       %li.active
-        =@category.name
+        =@category.keywords.titlecase
 
 
 
