@@ -8,7 +8,7 @@ $ ->
     FB.login ((response) ->
       window.location = redirect_url  if response.authResponse
     ),
-      scope: "email, read_stream, xmpp_login, read_friendlists, friends_likes, friends_status, offline_access, publish_actions, publish_stream"
+      scope: "email, read_stream, read_friendlists, friends_likes, friends_status, offline_access, publish_actions, publish_stream"
 
 $ ->
   flashCallback = ->

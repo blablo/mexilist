@@ -211,7 +211,14 @@ require 'will_paginate/array'
 
   def search
     @q = params[:q]
-    @anuncios = Anuncio.search(@q).paginate(:page => params[:page], :per_page => 5)
+    if @q.blank?
+      @anuncios = Anuncio.all.paginate(:page => params[:page], :per_page => 5)
+    else
+      @anuncios = Anuncio.search(@q).paginate(:page => params[:page], :per_page => 5)
+    end
+    @title = "Busqueda"
+
+
     render :index
   end
 

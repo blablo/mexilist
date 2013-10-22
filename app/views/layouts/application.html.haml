@@ -49,7 +49,7 @@
 
     #main{:role => "main"}
       #left_banner.hidden-xs
-        %h4 Ciudades
+        %h4 Estados
         %ul
           -State.all.each do |metro|
             %li=link_to(metro.name, metro.url_name)
@@ -72,7 +72,9 @@
           = render 'layouts/messages'
           = yield
     #footer
-      %p.text-muted.credit Mexilist
+      .col-sm-12
+        %br
+        %p.text-muted.credit Mexilist
 
 
 #login_modal.modal.fade
