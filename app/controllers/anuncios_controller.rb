@@ -154,6 +154,7 @@ require 'will_paginate/array'
         current_user.fb_me.link!(
                                  :link => @anuncio.url,
                                  :message => "¿Algún interesado? " + @anuncio.title + " #mexilist"
+
                                  )
         format.html { redirect_to @anuncio, notice: 'Anuncio was successfully created.' }
         format.json { render json: @anuncio, status: :created, location: @anuncio }

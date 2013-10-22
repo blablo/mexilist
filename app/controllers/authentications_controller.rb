@@ -10,6 +10,9 @@ class AuthenticationsController < ApplicationController
     if authentication
       # Authentication found, sign the user in.
       flash[:notice] = I18n.t('devise.sessions.signed_in')
+
+      authentication.update_attributes(:token => auth["credentials"]["token"])
+
       sign_in_and_redirect(:user, authentication.user)
     else
       # Authentication not found, thus a new user.
@@ -18,8 +21,6 @@ class AuthenticationsController < ApplicationController
       else
         user = User.new
       end
-      debugger
-
       user.apply_omniauth(auth)
 
       fb_user ||= FbGraph::User.me(user.authentications.first.token)

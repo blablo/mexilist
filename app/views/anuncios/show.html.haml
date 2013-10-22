@@ -3,8 +3,8 @@
   %meta{content: "article", property: "og:type"}/
   %meta{content: @anuncio.main_image, property: "og:image"}/
   %meta{content: @anuncio.url, property: "og:url"}/
-  %meta{content: @anuncio.texto, property: "og:description"}/
-  %meta{content: @anuncio.texto, name: "description"}/
+  %meta{content: Sanitize.clean(@anuncio.texto), property: "og:description"}/
+  %meta{content: Sanitize.clean(@anuncio.texto), name: "description"}/
 
 =content_for :title do
   =@anuncio.title.titlecase
@@ -63,7 +63,7 @@
         <div class="fb-like" data-href="#{request.url}" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="box_count" data-action="like" data-show-faces="true" data-send="false"></div>
         <g:plusone size="tall"></g:plusone>
 
-
+    .clearfix
   %hr
 
   .col-sm-12{ :itemprop => "description"}
