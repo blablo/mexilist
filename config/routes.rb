@@ -1,4 +1,6 @@
 Mexilist::Application.routes.draw do
+  get "checkout" => 'checkout#index'
+
 #  include 'lib/category_constraint.rb'
   get 'anuncios/update_cities', :as => 'update_cities', :to => 'anuncios#update_cities'
   get 'anuncios/update_category', :as => 'update_category', :to => 'anuncios#update_category'
