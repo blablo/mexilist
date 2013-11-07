@@ -47,3 +47,4 @@ gem 'green_light'
 gem 'will_paginate', '~> 3.0'
 gem 'sanitize'
 gem 'thinking-sphinx', '3.0.5'
+
