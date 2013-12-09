@@ -1,3 +1,59 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#paquetes{
+    .mexi{
+
+	padding: 10px;
+	margin-bottom: 15px;
+	color:  darken(#666,10);
+	font-size: 1.3em;
+	font-family: Helvetica;
+	font-weight: 100;
+
+	
+    }
+}
+
+.paquetes{
+    h1{
+	margin-bottom: 30px;
+    }
+    .panel-body{
+	height: 130px;
+	line-height: 1.4em;
+	color: darken(#666,10);
+    }
+    h2{
+	margin: 0;
+    }
+    .price{
+	font-size: 1.5em;
+    }
+    .gratis{
+	.panel-heading{
+	    padding: 20px 0;
+	}
+	.price{
+	    font-size: 0.8em;
+	}
+    }
+    div.gratis .panel-body{
+	height: 182px;
+    }
+    .panel{
+	text-align: center;
+	font-size: 1.5em;
+	font-family: Helvetica;
+	font-weight: 100;
+    }
+
+    .comprar-btn{
+	margin-bottom: 20px;
+    }
+    p{
+	margin-bottom: 10px;
+    }
+
+}

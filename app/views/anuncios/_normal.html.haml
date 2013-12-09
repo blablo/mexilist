@@ -1,5 +1,5 @@
 =simple_fields_for @anuncio do |f|
-  =f.input :district, :label => 'Colonia'
+  =f.input :district, :label => 'Colonia', input_html: {:value => @last_anuncio.nil? ? '' : @last_anuncio.district}
 
   =f.input :price, :label => 'Precio', input_html: { class: 'span2'}
 

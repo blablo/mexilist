@@ -17,24 +17,24 @@
         =@category.keywords.titlecase
 
 
+.col-sm-12
+  -if !params[:city].blank?
+    %h1=(@category.blank? ? "Anuncios" : @category.name) + " en " + params[:city].titlecase
+  -elsif !params[:state].blank?
+    %h1=(@category.blank? ? "Anuncios" : @category.name) + " en " + params[:state].titlecase
+  -else
+    %h1= @category.blank? ? "Anuncios" : @category.name
 
--if !params[:city].blank?
-  %h1=(@category.blank? ? "Anuncios" : @category.name) + " en " + params[:city].titlecase 
--elsif !params[:state].blank?
-  %h1=(@category.blank? ? "Anuncios" : @category.name) + " en " + params[:state].titlecase 
--else
-  %h1= @category.blank? ? "Anuncios" : @category.name
+  -if @category.blank? and action_name != "search"
+    #anuncios_container
 
--if @category.blank? and action_name != "search"
-  #anuncios_container
+      -@anuncios.each do |anuncio|
+        =render anuncio
+    =will_paginate @anuncios, :container => 'li'
+  -else
+    %ul#anuncio_list.list-group
 
-    -@anuncios.each do |anuncio|
-      =render anuncio
-  =will_paginate @anuncios, :container => 'li'
--else
-  %ul#anuncio_list.list-group
-
-    -@anuncios.each do |anuncio|
-      %li.list-group-item=render 'anuncio_list', :anuncio => anuncio
-  =will_paginate @anuncios
+      -@anuncios.each do |anuncio|
+        %li.list-group-item{:itemscope => true,  :itemtype => "http://schema.org/Product" }=render 'anuncio_list', :anuncio => anuncio
+    =will_paginate @anuncios
 

@@ -13,10 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.pikachoose
-//= require tinymce-jquery
 //= require jquery.remotipart
 //= require masonry.pkgd.min
 //= require jquery.validate2
+
+
 //= require_tree .
 
 

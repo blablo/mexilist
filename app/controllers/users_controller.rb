@@ -30,4 +30,9 @@ class UsersController < ApplicationController
       redirect_to users_path, :notice => "Can't delete yourself."
     end
   end
+
+  def anuncios
+    @anuncios = current_user.anuncios
+    @anuncio = Anuncio.last
+  end
 end

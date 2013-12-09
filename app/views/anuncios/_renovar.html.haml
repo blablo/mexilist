@@ -1,0 +1,13 @@
+.alert.alert-success !Felicidades por publicar tu anuncio <strong>#{@anuncio.title}</strong> en mexilist!
+%p Auto-renueva tu anuncio para que tenga mayor impacto apareciendo en los primeros lugares de la lista.
+%p Selecciona la frecuencia con la que deseas auto-renovar:
+.row
+  =form_for @anuncio, :remote => true do |f|
+    .col-sm-6
+      .form-group
+        %label Frecuencia:
+        =f.select :frecuencia, options_for_select([['Desactivado', 0],['Cada hora', 1], ['Cada 2 horas',2], ['Cada 3 horas',3], ['Cada 6 horas',6], ['Cada día',24], ['Cada 2 días',48]]), {}, :class => 'form-control'
+    .col-sm-6
+      .form-group
+        %label Deseas auto-renovar por las noches:
+        =f.select :noches, options_for_select([['Si', true], ['No', false]]), {}, :class => 'form-control'

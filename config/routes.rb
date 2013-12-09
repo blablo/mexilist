@@ -1,5 +1,8 @@
 Mexilist::Application.routes.draw do
+
   get "checkout" => 'checkout#index'
+  post "checkout" => 'checkout#create'
+  get "paquetes" => 'home#paquetes'
 
 #  include 'lib/category_constraint.rb'
   get 'anuncios/update_cities', :as => 'update_cities', :to => 'anuncios#update_cities'
@@ -20,7 +23,8 @@ Mexilist::Application.routes.draw do
       get 'mis_anuncios'
       post 'contactar'
       get 'search'
-    end
+      get 'renovar'
+   end
   end
   resources :pictures
 
@@ -33,8 +37,15 @@ Mexilist::Application.routes.draw do
 
   authenticated :user do
     root :to => 'home#index'
+
+    
   end
   root :to => "home#index"
   devise_for :users
-  resources :users
+  resources :users do 
+    member do 
+      get 'anuncios'
+    end
+  end
+
 end

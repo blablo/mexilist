@@ -48,10 +48,12 @@
 
     #main{:role => "main"}
       #left_banner.hidden-xs
-        %h4 Estados
-        %ul
-          -State.all.each do |metro|
-            %li=link_to(metro.name, metro.url_name)
+        #estados
+          %h4 Estados
+          %ul
+            -State.all.each do |metro|
+              %li=link_to(metro.name, metro.url_name)
+
       #right_banner.hidden-xs
         :javascript
           <!--

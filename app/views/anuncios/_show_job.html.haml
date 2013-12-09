@@ -1,17 +1,21 @@
 %ul.col-md-4
-  %li.well
-    %h3 sueldo
-    %span=number_to_currency(@anuncio.price)
-  %li.well
-    %h3 cv
-    %span=link_to("Ver currículo", @anuncio.job_perk.cv_url)
+  -if !@anuncio.price.blank?
+    %li.well.well-sm
+      %h3 sueldo
+      %span=number_to_currency(@anuncio.price)
+  -if !@anuncio.job_perk.cv_url.blank?
+    %li.well.well-sm
+      %h3 cv
+      %span=link_to("Ver currículo", @anuncio.job_perk.cv_url)
 
 %ul.col-md-4
-  %li.well.job
-    %h3 estudios
-    %span=@anuncio.job_perk.estudios
-  %li.well.job
-    %h3 area
-    %span=@anuncio.job_perk.area
+  -if !@anuncio.job_perk.estudios.blank?
+    %li.well.job.well-sm
+      %h3 estudios
+      %span=@anuncio.job_perk.estudios
+  -if !@anuncio.job_perk.area.blank?
+    %li.well.job.well-sm
+      %h3 area
+      %span=@anuncio.job_perk.area
 
 

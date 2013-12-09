@@ -12,9 +12,9 @@ $ ->
 
 $ ->
   flashCallback = ->
-    $(".alert").fadeOut()
-  $(".alert").bind 'click', (ev) =>
-    $(".alert").fadeOut()
+    $(".flash-alert").fadeOut()
+  $(".flash-alert").bind 'click', (ev) =>
+    $(".flash-alert").fadeOut()
   setTimeout flashCallback, 2000
 
   $('.dropdown-toggle').dropdown();

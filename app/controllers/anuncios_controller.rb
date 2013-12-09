@@ -83,6 +83,7 @@ require 'will_paginate/array'
     
     @related = Anuncio.where(:category_id => @anuncio.category_id).last(4)
     @related = Anuncio.last(5)
+    impressionist(@anuncio)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -95,7 +96,9 @@ require 'will_paginate/array'
   def new
 
     @sub = params[:sub]
+    @last_anuncio = current_user.anuncios.last
     @anuncio = current_user.anuncios.build
+
     @picture = Picture.new
     if params[:token]
       @token = params[:token]
@@ -151,11 +154,8 @@ require 'will_paginate/array'
           pic.update_attribute(:anuncio_id, @anuncio.id)
         end
 
-        current_user.fb_me.link!(
-                                 :link => @anuncio.url,
-                                 :message => @anuncio.title + " #mexilist"
-                                 )
-        format.html { redirect_to @anuncio, notice: 'Anuncio was successfully created.' }
+        #current_user.fb_me.link!(:link => @anuncio.url,:message => @anuncio.title + " #mexilist")
+        format.html { redirect_to @anuncio, notice: 'Anuncio creado exitosamente.' }
         format.json { render json: @anuncio, status: :created, location: @anuncio }
       else
         @sub = @anuncio.category_id
@@ -174,11 +174,12 @@ require 'will_paginate/array'
   # PUT /anuncios/1.json
   def update
     @anuncio = current_user.anuncios.find(params[:id])
-    @anuncio.state_id = City.find(params[:anuncio][:city_id]).state.id
+    @anuncio.state_id = City.find(params[:anuncio][:city_id]).state.id if params[:anuncio][:city_id]
     respond_to do |format|
       if @anuncio.update_attributes(params[:anuncio])
-        format.html { redirect_to @anuncio, notice: 'Anuncio was successfully updated.' }
+        format.html { redirect_to @anuncio, notice: 'Anuncio actualizado exitosamente.' }
         format.json { head :no_content }
+        format.js { render :js => "$('#autorenueva').modal('hide');" }
       else
         format.html { render action: "edit" }
         format.json { render json: @anuncio.errors, status: :unprocessable_entity }
@@ -203,7 +204,7 @@ require 'will_paginate/array'
     @anuncio.destroy
 
     respond_to do |format|
-      format.html { redirect_to anuncios_url }
+      format.html { redirect_to mis_anuncios_anuncios_url }
       format.json { head :no_content }
     end
   end
@@ -220,6 +221,12 @@ require 'will_paginate/array'
 
 
     render :index
+  end
+
+
+  def renovar
+    @anuncio = Anuncio.find(params[:id])
+
   end
 
 end

@@ -1,5 +1,5 @@
 class Anuncio < ActiveRecord::Base
-  attr_accessible :category_id, :city_id, :district, :expiracy, :latitude, :longitude, :price, :renovation, :street, :texto, :tipo, :title, :assets_attributes, :tel, :car_perk_attributes, :moto_perk_attributes, :house_perk_attributes, :token, :intercambio, :job_perk_attributes
+  attr_accessible :category_id, :city_id, :district, :expiracy, :latitude, :longitude, :price, :renovation, :street, :texto, :tipo, :title, :assets_attributes, :tel, :car_perk_attributes, :moto_perk_attributes, :house_perk_attributes, :token, :intercambio, :job_perk_attributes, :frecuencia, :noches
   has_many :assets
   belongs_to :city
   belongs_to :state
@@ -10,7 +10,7 @@ class Anuncio < ActiveRecord::Base
   has_one :house_perk
   has_one :job_perk
   has_many :pictures,  :dependent => :destroy
-
+  is_impressionable
 
   accepts_nested_attributes_for :assets, :reject_if => lambda { |a| a[:file].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :car_perk, :allow_destroy => true

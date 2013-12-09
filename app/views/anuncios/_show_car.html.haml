@@ -1,19 +1,24 @@
 %ul.col-md-4
-  %li.well.precio
-    %span=number_to_currency(@anuncio.price)
-  %li.well
-    %h3 km
-    %span=number_with_precision(@anuncio.car_perk.km, precision: 0, delimiter: ',')
+  -if !@anuncio.price.blank?
+    %li.well.precio.well-sm
+      %span=number_to_currency(@anuncio.price)
+  -if !@anuncio.car_perk.km.blank?
+    %li.well.well-sm
+      %h3 km
+      %span=number_with_precision(@anuncio.car_perk.km, precision: 0, delimiter: ',')
 
 %ul.col-md-4
-  %li.well
-    %h3 marca
-    %span=@anuncio.car_perk.brand.name
-  %li.well
-    %h3 modelo
-    %span=@anuncio.car_perk.model.name
-  %li.well
-    %h3 año
-    %span=@anuncio.car_perk.year
+  -if !@anuncio.car_perk.brand.nil?
+    %li.well.well-sm
+      %h3 marca
+      %span=@anuncio.car_perk.brand.name
+  -if !@anuncio.car_perk.model.nil?
+    %li.well.well-sm
+      %h3 modelo
+      %span=@anuncio.car_perk.model.name
+  -if !@anuncio.car_perk.year.blank?
+    %li.well.well-sm
+      %h3 año
+      %span=@anuncio.car_perk.year
 
 

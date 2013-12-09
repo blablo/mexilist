@@ -1,1 +1,30 @@
-%h1 Aqui va lo del pago
+.col-sm-12
+  .col-md-12
+    %h1 Resumen de Compra
+  .col-md-8
+    %table.table
+      %tr
+        %th Paquete
+        %th Mexipuntos
+        %th Precio Total
+      %tr
+        %td Básico
+        %td 250 + 25 gratis = 275
+        %td=number_to_currency(49)
+
+  .well.col-md-4.checkout
+    =simple_form_for :checkout do |f|
+      =f.input :nombre
+      =f.input :apellido
+      =f.input :card_num
+      =f.input :card_type, :collection => ['Visa', 'Mastercard']
+      .form-group
+        =f.label "Fecha de Vencimiento"
+        .vencimiento.clearfix
+          =f.select :month,  options_for_select(1..12),{}, :class => 'form-control'
+          =f.select :year, options_for_select(Time.now.year..Time.now.year+20), {},:class => 'form-control year'
+      .form-group
+        %button.btn.btn-primary.pull-right{:type=>'submit'}
+          Realizar Pago Seguro
+
+

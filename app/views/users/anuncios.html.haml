@@ -1,0 +1,26 @@
+%h1 Anuncios de #{current_user.name}
+
+%ul#anuncio_list.list-group
+
+  -@anuncios.each do |anuncio|
+    %li.list-group-item=render 'anuncios/anuncio_list', :anuncio => anuncio, :renueva => true
+
+
+%button.btn.btn-primary.btn-lg{"data-target" => "#autorenueva", "data-toggle" => "modal"}
+  Launch demo modal
+
+#autorenueva.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel.modal-title Autorenueva
+
+      .modal-body
+
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Cerrar
+        %button.btn.btn-primary{type: "button", :onclick => "$('#autorenueva form').submit();"} Guardar
+      .modal-content
+    .modal-dialog
+  .modal

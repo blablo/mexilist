@@ -3,4 +3,8 @@ class HomeController < ApplicationController
     @anuncios = Anuncio.with_picture
     
   end
+
+  def paquetes
+    
+  end
 end

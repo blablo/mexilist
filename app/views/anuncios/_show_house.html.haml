@@ -1,19 +1,24 @@
 %ul.col-md-4
-  %li.well.precio
-    %span=number_to_currency(@anuncio.price)
-  %li.well
-    %h3 colonia
-    %span=@anuncio.district
+  -if !@anuncio.price.blank?
+    %li.well.precio.well-sm
+      %span=number_to_currency(@anuncio.price)
+  -if !@anuncio.district.blank?
+    %li.well.well-sm
+      %h3 colonia
+      %span=@anuncio.district
 
 %ul.col-md-4
-  %li.well
-    %h3 cuartos
-    %span=@anuncio.house_perk.rooms
-  %li.well
-    %h3 m2 interior
-    %span=number_with_precision(@anuncio.house_perk.m2int, precision: 0, delimiter: ',')
-  %li.well
-    %h3 m2 exterior
-    %span=number_with_precision(@anuncio.house_perk.m2ext, precision: 0, delimiter: ',')
+  -if !@anuncio.house_perk.rooms.blank?
+    %li.well.well-sm
+      %h3 cuartos
+      %span=@anuncio.house_perk.rooms
+  -if !@anuncio.house_perk.m2int.blank?
+    %li.well.well-sm
+      %h3 m2 interior
+      %span=number_with_precision(@anuncio.house_perk.m2int, precision: 0, delimiter: ',')
+  -if !@anuncio.house_perk.m2ext.blank?
+    %li.well.well-sm
+      %h3 m2 exterior
+      %span=number_with_precision(@anuncio.house_perk.m2ext, precision: 0, delimiter: ',')
 
 

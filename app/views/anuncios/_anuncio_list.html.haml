@@ -1,14 +1,14 @@
-.col-sm-12{ :itemscope => true,  :itemtype => "http://schema.org/Product" }
-  .row
-    .col-sm-3=link_to(image_tag(anuncio.main_image, :class => 'img-responsive', :itemprop => "image"), city_anuncio_url(anuncio))
-    .col-sm-5.col-lg-7.col-md-6
-      %h3=link_to(truncate(anuncio.title, :length => 40, :separator => ' '), city_anuncio_url(anuncio), :itemprop => "name")
-    .col-sm-4.col-lg-2.info.col-md-3
-      .precio{ :itemprop => "price"}
-        -if anuncio.price.blank?
-          &nbsp;
-        -else
-          =number_to_currency(anuncio.price, :precision => 0)
-      %a{:href => city_anuncio_url(anuncio), :itemprop => "url" }
-        %button.btn.btn-primary Ver anuncio
+.col-xs-12.col-sm-3=link_to(image_tag(anuncio.main_image, :class => 'img-responsive', :itemprop => "image"), city_anuncio_url(anuncio))
+.col-xs-12.col-sm-5.col-lg-7.col-md-6
+  %h3=link_to(truncate(anuncio.title, :length => 40, :separator => ' '), city_anuncio_url(anuncio), :itemprop => "name")
+.col-xs-12.col-sm-4.col-lg-2.info.col-md-3
+  .autorenueva-btn
+    =link_to 'autorenovar', renovar_anuncios_url(:id => anuncio.id), :remote => true
+  .precio{ :itemprop => "price"}
+    -if anuncio.price.blank?
+      &nbsp;
+    -else
+      =number_to_currency(anuncio.price, :precision => 0)
+  %a{:href => city_anuncio_url(anuncio), :itemprop => "url" }
+    %button.btn.btn-primary Ver anuncio
 

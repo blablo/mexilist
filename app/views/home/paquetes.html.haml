@@ -1,0 +1,53 @@
+#paquetes
+  .col-sm-12
+    %h1 Elije tu Paquete
+    .mexi Los Mexipuntos te permiten auto-renovar tu anuncio para que tenga mayor impacto apareciendo en los primeros lugares de la lista. <strong>Costo por renovada 25 Mexipuntos.</strong>
+  .col-sm-12
+    .row.paquetes
+      .col-sm-6.col-md-4.col-lg-3
+        .panel.panel-warning.gratis
+          .panel-heading
+            %h2 Social
+            .price GRATIS
+          .panel-body
+            %p <strong>25</strong> Mexipuntos: Al registrarte.
+            %p <strong>25</strong> Mexipuntos: En tu primer anuncio.
+
+
+      .col-sm-6.col-md-4.col-lg-3
+        .panel.panel-info
+          .panel-heading
+            %h2 Básico
+            .price $49
+          .panel-body
+            %p <strong>250</strong> Mexipuntos + <strong>25 Gratis</strong>.
+            %p <strong>11</strong> Renovadas
+          .row
+            =link_to('Comprar', '#', :class => 'btn btn-default comprar-btn')
+
+      .col-sm-6.col-md-4.col-lg-3
+        .panel.panel-success
+          .panel-heading
+            %h2 Premium
+            .price $99
+          .panel-body
+            %p <strong>500</strong> Mexipuntos + <strong>100 Gratis</strong>.
+            %p <strong>24</strong> Renovadas
+          .row
+            =link_to('Comprar', '#', :class => 'btn btn-default comprar-btn')
+
+
+      .col-sm-6.col-md-4.col-lg-3
+        .panel.panel-default
+          .panel-heading
+            %h2 VIP
+            .price $199
+          .panel-body
+            %p <strong>1000</strong> Mexipuntos + <strong>250 Gratis</strong>.
+            %p <strong>50</strong> Renovadas
+          .row
+            =link_to('Comprar', '#', :class => 'btn btn-primary comprar-btn')
+
+
+
+

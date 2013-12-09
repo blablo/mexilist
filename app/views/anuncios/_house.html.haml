@@ -1,6 +1,6 @@
 =simple_fields_for @anuncio do |f|
   .perk.controls-row
-    =f.input :district, :label => 'Colonia'
+    =f.input :district, :label => 'Colonia', input_html: {:value => @last_anuncio.nil? ? '' : @last_anuncio.district}
     =f.input :street, :label => 'Calle y número'
     =f.input :latitude, :as => :hidden
     =f.input :longitude, :as => :hidden

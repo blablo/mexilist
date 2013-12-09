@@ -1,3 +1,4 @@
+@import 'tools';
 
 body {
 
@@ -17,16 +18,21 @@ body {
     margin-bottom: 5px;
 }
 
-.navbar-form{
+.btn-group{
     margin-bottom: 0;
     .picture img{
 	position: relative;
 	height: 30px;
-	margin-top: -9px;
-	margin-left: -9px;
+	margin-top: -10px;
+	margin-left: -10px;
 	margin-bottom: -7px;
 	margin-right: 5px;
+	@include rounded_left;
     }
+}
+
+.navbar-nav.navbar-right:last-child{
+    margin-right: 20px;
 }
 
 .navbar-inner{

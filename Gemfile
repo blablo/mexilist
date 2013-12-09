@@ -24,6 +24,7 @@ gem "devise", ">= 2.1.2"
 gem 'omniauth'
 gem 'omniauth-facebook', "1.4.0"
 gem "fb_graph"
+gem 'activemerchant'
 gem 'oauth2'
 gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
@@ -47,4 +48,6 @@ gem 'green_light'
 gem 'will_paginate', '~> 3.0'
 gem 'sanitize'
 gem 'thinking-sphinx', '3.0.5'
+gem 'impressionist'
 
+gem "ckeditor", :git => "https://github.com/galetahub/ckeditor.git"
