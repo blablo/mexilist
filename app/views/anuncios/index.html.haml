@@ -33,7 +33,6 @@
     =will_paginate @anuncios, :container => 'li'
   -else
     %ul#anuncio_list.list-group
-
       -@anuncios.each do |anuncio|
         %li.list-group-item{:itemscope => true,  :itemtype => "http://schema.org/Product" }=render 'anuncio_list', :anuncio => anuncio
     =will_paginate @anuncios

@@ -2,8 +2,7 @@
 @import 'new_anuncio.css.scss';
 
 #perks{
-    margin-top: 15px;
-    overflow: hidden;
+
     h3{
         font-size: 0.7em;
         margin: 0;
@@ -29,6 +28,7 @@
         font-size: 0.8em;
     }
     li.well{
+	background: #FAFAFA;
         span{
             margin-top: -5px;
             display: block;

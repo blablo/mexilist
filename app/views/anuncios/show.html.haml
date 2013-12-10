@@ -32,39 +32,41 @@
       =', ' + @anuncio.district if !@anuncio.district.blank?
 
     -if !@anuncio.pictures.blank?
-      .pikachoose.col-sm-12.col-xs-12
-        %ul#pikame.col-sm-3.jcarousel-skin-pika
-          -@anuncio.pictures.each do |asset|
-            %li
-              %a{:href => "#"}
-                =image_tag(asset.image.medium.url, :itemprop => "image")
+      .row
+        .pikachoose.col-sm-12.col-xs-12
+          %ul#pikame.col-sm-3.jcarousel-skin-pika
+            -@anuncio.pictures.each do |asset|
+              %li
+                %a{:href => "#"}
+                  =image_tag(asset.image.medium.url, :itemprop => "image")
 
 
 
     %hr
-    #perks
-      -if @anuncio.car_perk
-        =render 'show_car'
-      -elsif @anuncio.moto_perk
-        =render 'show_moto'
-      -elsif @anuncio.house_perk
-        =render 'show_house'
-      -elsif @anuncio.job_perk
-        =render 'show_job'
-      -else
+    .row
+      #perks
+        -if @anuncio.car_perk
+          =render 'show_car'
+        -elsif @anuncio.moto_perk
+          =render 'show_moto'
+        -elsif @anuncio.house_perk
+          =render 'show_house'
+        -elsif @anuncio.job_perk
+          =render 'show_job'
+        -else
 
-        %ul.col-md-3
-          -if !@anuncio.price.blank?
-            %li.well.well-sm.precio
-              %span{ :itemprop => "price"}=number_to_currency(@anuncio.price)
-        .col-md-6
+          %ul.col-md-4
+            -if !@anuncio.price.blank?
+              %li.well.well-sm.precio
+                %span{ :itemprop => "price"}=number_to_currency(@anuncio.price)
+          .col-md-6
 
 
-      %ul.col-md-3
-        %li.btn.btn-danger{:href => "#contactar", :role => "button", 'data-toggle' => "modal"} Contactar Anunciante
-        %li
-          <div class="fb-like" data-href="#{request.url}" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="box_count" data-action="like" data-show-faces="true" data-send="false"></div>
-          <g:plusone size="tall"></g:plusone>
+        %ul.col-md-4
+          %li.btn.btn-danger{:href => "#contactar", :role => "button", 'data-toggle' => "modal"} Contactar
+          %li
+            <div class="fb-like" data-href="#{request.url}" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="box_count" data-action="like" data-show-faces="true" data-send="false"></div>
+            <g:plusone size="tall"></g:plusone>
 
 
     %hr

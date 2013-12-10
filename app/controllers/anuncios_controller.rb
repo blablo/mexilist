@@ -83,7 +83,7 @@ require 'will_paginate/array'
     
     @related = Anuncio.where(:category_id => @anuncio.category_id).last(4)
     @related = Anuncio.last(5)
-    impressionist(@anuncio)
+#    impressionist(@anuncio)
 
     respond_to do |format|
       format.html # show.html.erb

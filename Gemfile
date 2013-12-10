@@ -42,7 +42,7 @@ gem 'green_light', :git => "https://github.com/sethbro/green_light.git"
 gem 'will_paginate', '~> 3.0'
 gem 'sanitize'
 gem 'thinking-sphinx', '3.0.5'
-gem 'impressionist'
+gem 'impressionist', :git => "https://github.com/charlotte-ruby/impressionist.git"
 gem 'protected_attributes'
 gem 'awesome_print'
 gem 'sass'

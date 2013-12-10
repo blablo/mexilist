@@ -1,4 +1,4 @@
-%ul.col-md-4
+%ul.col-md-4.col-sm-6
   -if !@anuncio.price.blank?
     %li.well.precio.well-sm
       %span=number_to_currency(@anuncio.price)
@@ -7,7 +7,7 @@
       %h3 km
       %span=number_with_precision(@anuncio.car_perk.km, precision: 0, delimiter: ',')
 
-%ul.col-md-4
+%ul.col-md-4.col-sm-6
   -if !@anuncio.car_perk.brand.nil?
     %li.well.well-sm
       %h3 marca
