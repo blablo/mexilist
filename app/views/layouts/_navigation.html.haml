@@ -7,14 +7,14 @@
   =link_to image_tag('mexilist.png'), root_path, :class => 'navbar-brand'
 
 .linea
-.navbar-form.col-sm-12{:role => "search"}
-  .hidden-xs
+.nav.navbar-nav.col-sm-7{:role => "search"}
+  .hidden-xs.col-sm-3
     #busca_por_categoria
       Busca por
       %strong categoría
       =render 'layouts/left_menu'
 
-  .form-group.col-sm-6
+  .form-group.col-sm-9
     .row
       %form.col-sm-12{:action => '/anuncios/search', :method => 'get'}
         .input-group
@@ -44,7 +44,7 @@
             %button.btn.btn-default{:type => "submit"} Buscar
 
 -if user_signed_in?
-  %ul.nav.navbar-nav.navbar-right
+  %ul.nav.navbar-nav.navbar-right.col-sm-4
     %li.publicar_btn
       =button_to('Publicar Anuncio', new_anuncio_url, :class => 'btn btn-danger', :method => :get)
     %li

@@ -1,11 +1,6 @@
 source 'https://rubygems.org'
-gem 'rails', '3.2'
+gem 'rails', '4.0'
 gem 'mysql2'
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-end
 gem 'jquery-rails'
 gem "thin", ">= 1.5.0", :group => :development
 gem "unicorn", ">= 4.3.1", :group => :production
@@ -44,10 +39,14 @@ gem 'jquery-rails'
 gem 'remotipart'
 gem "fog", "~> 1.3.1"
 gem "xmpp4r_facebook"
-gem 'green_light'
+gem 'green_light', :git => "https://github.com/sethbro/green_light.git"
 gem 'will_paginate', '~> 3.0'
 gem 'sanitize'
 gem 'thinking-sphinx', '3.0.5'
 gem 'impressionist'
 
 gem "ckeditor", :git => "https://github.com/galetahub/ckeditor.git"
+gem 'protected_attributes'
+gem 'awesome_print'
+gem 'sass'
+gem 'coffee-rails', '~> 4.0.0'

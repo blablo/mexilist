@@ -1,5 +1,4 @@
 Mexilist::Application.routes.draw do
-
   get "checkout" => 'checkout#index'
   post "checkout" => 'checkout#create'
   get "paquetes" => 'home#paquetes'
@@ -9,14 +8,14 @@ Mexilist::Application.routes.draw do
   get 'anuncios/update_category', :as => 'update_category', :to => 'anuncios#update_category'
   get 'anuncios/update_model', :as => 'update_model', :to => 'anuncios#update_model'
 
-  match 'facebooks/index'
-  match 'facebooks/login'
-  match 'facebooks/logout'
-  match 'facebooks/callback'
-  match 'facebooks/menu'
+  get 'facebooks/index'
+  get 'facebooks/login'
+  get 'facebooks/logout'
+  get 'facebooks/callback'
+  get 'facebooks/menu'
 
-  match '/auth/:provider' => 'authentications#blank'
-  match '/auth/:provider/callback' => 'authentications#create'
+  get '/auth/:provider' => 'authentications#blank'
+  get '/auth/:provider/callback' => 'authentications#create'
 
   resources :anuncios do 
     collection do 
@@ -35,11 +34,7 @@ Mexilist::Application.routes.draw do
   get '/:state' => 'home#index', :constraints => StateConstraint
   get '/:category' => 'anuncios#index', :constraints => CategoryConstraint
 
-  authenticated :user do
-    root :to => 'home#index'
 
-    
-  end
   root :to => "home#index"
   devise_for :users
   resources :users do 

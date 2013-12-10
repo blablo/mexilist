@@ -1,14 +1,21 @@
-@import 'tools';
+@import 'tools.css.scss';
 
 body {
 
 }
 
-.navbar .navbar-brand {
-    padding-bottom: 0;
-    img{
-        width: 155px;
-        padding-bottom: 5px;
+.navbar{
+    .input-group{
+	margin-top: 10px;
+	margin-left: 15px;
+    }
+    .navbar-brand {
+        padding-bottom: 0;
+        img{
+            width: 155px;
+            padding-bottom: 5px;
+
+        }
     }
 }
 
@@ -21,13 +28,13 @@ body {
 .btn-group{
     margin-bottom: 0;
     .picture img{
-	position: relative;
-	height: 30px;
-	margin-top: -10px;
-	margin-left: -10px;
-	margin-bottom: -7px;
-	margin-right: 5px;
-	@include rounded_left;
+        position: relative;
+        height: 30px;
+        margin-top: -10px;
+        margin-left: -10px;
+        margin-bottom: -7px;
+        margin-right: 5px;
+        @include rounded_left;
     }
 }
 
@@ -63,13 +70,11 @@ li{
 }
 
 
-.control-group{
-    @extend .form-control;
-}
+
 
 .btn-darkgray{
     background: lighten(#CCC,10);
-    
+
 }
 .switch, .toggle{
     background: #FFF;
@@ -78,7 +83,7 @@ li{
     }
 
     span {
-            color: black;
+        color: black;
         span{
             color: black;
         }
