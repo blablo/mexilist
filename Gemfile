@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 gem 'rails', '4.0'
 gem 'mysql2'
 gem 'jquery-rails'
@@ -32,7 +32,6 @@ gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 gem "debugger", :group => [:development]
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk', '~> 1.3.4'
-gem 'tinymce-rails'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'jquery-rails'
@@ -44,8 +43,6 @@ gem 'will_paginate', '~> 3.0'
 gem 'sanitize'
 gem 'thinking-sphinx', '3.0.5'
 gem 'impressionist'
-
-gem "ckeditor", :git => "https://github.com/galetahub/ckeditor.git"
 gem 'protected_attributes'
 gem 'awesome_print'
 gem 'sass'

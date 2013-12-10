@@ -1,19 +1,11 @@
 GIT
-  remote: https://github.com/galetahub/ckeditor.git
-  revision: 05fdfdb66b9953249a57867e08dc331e321d218e
-  specs:
-    ckeditor (4.0.7)
-      mime-types
-      orm_adapter
-
-GIT
   remote: https://github.com/sethbro/green_light.git
   revision: 0af0d9af0673fdf1ecbbcef4dd59942e8d05d586
   specs:
     green_light (0.1.5)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (4.0.0)
       actionpack (= 4.0.0)
@@ -267,8 +259,6 @@ GEM
     thread_safe (0.1.3)
       atomic
     tilt (1.4.1)
-    tinymce-rails (4.0.11)
-      railties (>= 3.1.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -299,7 +289,6 @@ DEPENDENCIES
   cancan (>= 1.6.8)
   capybara (>= 2.0.1)
   carrierwave
-  ckeditor!
   coffee-rails (~> 4.0.0)
   database_cleaner (>= 0.9.1)
   debugger
@@ -333,7 +322,6 @@ DEPENDENCIES
   simple_form
   thin (>= 1.5.0)
   thinking-sphinx (= 3.0.5)
-  tinymce-rails
   unicorn (>= 4.3.1)
   will_paginate (~> 3.0)
   xmpp4r_facebook
