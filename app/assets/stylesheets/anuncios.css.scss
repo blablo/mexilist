@@ -75,7 +75,8 @@
 
 }
 
-#anuncio_list{}
+#anuncio_list{
+}
 
 #anuncio_gallery{
     margin-left: -15px;
@@ -122,6 +123,7 @@ ul#anuncio_list{
     padding: 10px 0;
     .list-group-item{
 	padding-right: 0;
+	padding-left: 0;
 	overflow: hidden;
 	padding-bottom: 0;
 	margin-bottom: 10px;
@@ -142,6 +144,27 @@ ul#anuncio_list{
 	padding-bottom: 15px;
 
     }
+
+    .extra-info{
+	border-top: 1px solid #666;
+	background: -webkit-linear-gradient(#666, #333); /* For Safari */
+	background: -o-linear-gradient(#666, #333); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#666, #333); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#666, #333); /* Standard syntax */
+	background: darken(#666,10);
+	background: #428BCA;
+	padding: 0 15px;
+	color: white;
+	text-align: center;
+	a{
+	    color: white;
+	}
+	span{
+	    padding: 0 10px;
+	}
+
+    }
+
 
     .precio{
 	margin-bottom: 10px;

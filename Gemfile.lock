@@ -268,6 +268,9 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
+    uglifier (2.2.1)
+      execjs (>= 0.3.0)
+      multi_json (~> 1.0, >= 1.0.2)
     unicorn (4.7.0)
       kgio (~> 2.6)
       rack
@@ -327,6 +330,7 @@ DEPENDENCIES
   simple_form
   thin (>= 1.5.0)
   thinking-sphinx (= 3.0.5)
+  uglifier
   unicorn (>= 4.3.1)
   will_paginate (~> 3.0)
   xmpp4r_facebook
