@@ -93,6 +93,7 @@
     overflow: hidden;
     width: 430px;
     color: #CCC;
+    z-index: 99;
     @include text-shadow(0px 1px 1px black);
     .state{
         float: left;

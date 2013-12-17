@@ -137,7 +137,6 @@ ul#anuncio_list{
 	font-weight: bold;
 	background: #FAFAFA;
 	height: 100%;
-
 	margin-top: -10px;
 	right: 0;
 	margin-right: -30px;
@@ -146,18 +145,22 @@ ul#anuncio_list{
     }
 
     .extra-info{
-	border-top: 1px solid #666;
-	background: -webkit-linear-gradient(#666, #333); /* For Safari */
-	background: -o-linear-gradient(#666, #333); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(#666, #333); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(#666, #333); /* Standard syntax */
-	background: darken(#666,10);
-	background: #428BCA;
+	$color1: lighten(#666,45);
+	$color2: lighten(#666,40);
+	border-top: 1px solid darken(#fafafa,10);
+	border-left: none;
+	border-right: none;
+	background: -webkit-linear-gradient($color1, $color2); /* For Safari */
+	background: -o-linear-gradient($color1, $color2); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient($color1, $color2); /* For Firefox 3.6 to 15 */
+	background: linear-gradient($color1, $color2); /* Standard syntax */
+
+	background: #FAFAFA;
 	padding: 0 15px;
-	color: white;
+	color: black;
 	text-align: center;
 	a{
-	    color: white;
+	    color: black;
 	}
 	span{
 	    padding: 0 10px;

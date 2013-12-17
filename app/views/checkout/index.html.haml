@@ -8,20 +8,26 @@
         %th Mexipuntos
         %th Precio Total
       %tr
-        %td Básico
-        %td 250 + 25 gratis = 275
-        %td=number_to_currency(49)
+        %td=@paquete[:nombre]
+        %td=@paquete[:mexipuntos]
+        %td=number_to_currency(@paquete[:precio])
 
   .well.col-md-4.checkout
     =simple_form_for :checkout do |f|
       =f.input :nombre
-      =f.input :apellido
-      =f.input :card_num
+      =f.input :apellidos
+      =f.input :amount, :as => :hidden, :input_html => {:value => @paquete[:precio] }
+      =f.input :paquete, :as => :hidden, :input_html => {:value => @paquete[:nombre]  }
+      .row
+        .col-md-8
+          =f.input :card_num, :label => 'Número de Tarjeta'
+        .col-md-4
+          =f.input :cvv, :label => 'CVV'
       =f.input :card_type, :collection => ['Visa', 'Mastercard']
       .form-group
         =f.label "Fecha de Vencimiento"
         .vencimiento.clearfix
-          =f.select :month,  options_for_select(1..12),{}, :class => 'form-control'
+          =f.select :month,  ['01','02','03','04','05','06','07','08','09','10','11', '12'],{}, :class => 'form-control'
           =f.select :year, options_for_select(Time.now.year..Time.now.year+20), {},:class => 'form-control year'
       .form-group
         %button.btn.btn-primary.pull-right{:type=>'submit'}

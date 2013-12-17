@@ -32,7 +32,10 @@ class UsersController < ApplicationController
   end
 
   def anuncios
-    @anuncios = current_user.anuncios
-    @anuncio = Anuncio.last
+    @anuncios = current_user.anuncios.order('fecha asc')
+    if params[:anuncio_id]
+      @anuncio = current_user.anuncios.find(params[:anuncio_id])
+    end
+
   end
 end

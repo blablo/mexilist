@@ -1,5 +1,4 @@
 %h1 Anuncios de #{current_user.name}
-
 %ul#anuncio_list.list-group
 
   -@anuncios.each do |anuncio|
@@ -10,8 +9,6 @@
         %span=link_to 'editar', edit_anuncio_url(anuncio)
         %span=link_to 'borrar', anuncio, :method => :delete, :confirm => "Estas seguro?"
         %span="visitas: " + anuncio.impressionist_count.to_s
-%button.btn.btn-primary.btn-lg{"data-target" => "#autorenueva", "data-toggle" => "modal"}
-  Launch demo modal
 
 #autorenueva.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
@@ -21,10 +18,13 @@
         %h4#myModalLabel.modal-title Autorenueva
 
       .modal-body
-
+        =render 'anuncios/renovar', :anuncio => @anuncio if @anuncio
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Cerrar
         %button.btn.btn-primary{type: "button", :onclick => "$('#autorenueva form').submit();"} Guardar
       .modal-content
     .modal-dialog
   .modal
+-if @anuncio
+  :javascript
+    $('#autorenueva').modal('show');

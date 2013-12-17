@@ -1,6 +1,9 @@
-.alert.alert-success !Felicidades por publicar tu anuncio <strong>#{@anuncio.title}</strong> en mexilist!
+-if params[:anuncio_id]
+  .alert.alert-success !Felicidades por publicar tu anuncio <strong>#{@anuncio.title}</strong> en mexilist!
+
 %p Auto-renueva tu anuncio para que tenga mayor impacto apareciendo en los primeros lugares de la lista.
 %p Selecciona la frecuencia con la que deseas auto-renovar:
+
 .row
   =form_for @anuncio, :remote => true do |f|
     .col-sm-6
@@ -11,3 +14,7 @@
       .form-group
         %label Deseas auto-renovar por las noches:
         =f.select :noches, options_for_select([['Si', true], ['No', false]]), {}, :class => 'form-control'
+.row
+  .col-sm-12
+    %h4 Mexipuntos disponibles: #{current_user.mexipuntos}
+    =link_to 'Adquiere más mexipuntos.', '/paquetes'

@@ -46,7 +46,7 @@ require 'will_paginate/array'
       City.all.each{|city| @city = city if city.param_name == params[:city]}
       @category = nil
       Category.all.each{|cat| @category = cat if cat.url_name == params[:category]}
-      @anuncios = Anuncio.by_city_category(@city.id, @category).paginate(:page => params[:page], :per_page => 10)
+      @anuncios = Anuncio.by_city_category(@city.id, @category).order('fecha desc').paginate(:page => params[:page], :per_page => 10)
       @title = @category.keywords
 
     elsif params[:state] and params[:category]
@@ -54,16 +54,20 @@ require 'will_paginate/array'
       State.all.each{|state| @state = state if state.param_name == params[:state]}
       @category = nil
       Category.all.each{|cat| @category = cat if cat.url_name == params[:category]}
-      @anuncios = Anuncio.by_state_category(@state.id, @category).paginate(:page => params[:page], :per_page => 10)
+      @anuncios = Anuncio.by_state_category(@state.id, @category).order('fecha desc').paginate(:page => params[:page], :per_page => 10)
       @title = @category.keywords
     elsif params[:category]
       @category = nil
       Category.all.each{|cat| @category = cat if cat.url_name == params[:category]}
-      @anuncios = @category.anuncios_all.paginate(:page => params[:page], :per_page => 10)
+      @anuncios = @category.anuncios_all.order('fecha desc').paginate(:page => params[:page], :per_page => 10)
       @title = @category.keywords
     else
-      @anuncios = Anuncio.all
+      @anuncios = Anuncio.all.order('fecha desc')
       @title = "Mexilist.com"
+    end
+
+    if params[:anuncio_id]
+      @anuncio = Anuncio.find(params[:anuncio_id])
     end
 
     respond_to do |format|
@@ -155,7 +159,7 @@ require 'will_paginate/array'
         end
 
         #current_user.fb_me.link!(:link => @anuncio.url,:message => @anuncio.title + " #mexilist")
-        format.html { redirect_to @anuncio, notice: 'Anuncio creado exitosamente.' }
+        format.html { redirect_to anuncios_user_url(current_user, :anuncio_id => @anuncio.id), notice: 'Anuncio creado exitosamente.' }
         format.json { render json: @anuncio, status: :created, location: @anuncio }
       else
         @sub = @anuncio.category_id

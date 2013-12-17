@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @anuncios = Anuncio.with_picture
+    @anuncios = Anuncio.with_picture.order('fecha desc')
     
   end
 

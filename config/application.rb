@@ -77,7 +77,7 @@ module Mexilist
 
     Paperclip.options[:command_path] = "/usr/local/bin"
     
-    config.force_ssl = true 
+
 
 
   end
