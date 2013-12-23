@@ -18,6 +18,7 @@
       =f.input :apellidos
       =f.input :amount, :as => :hidden, :input_html => {:value => @paquete[:precio] }
       =f.input :paquete, :as => :hidden, :input_html => {:value => @paquete[:nombre]  }
+      =f.input :paquete_id, :as => :hidden, :input_html => {:value => @paquete[:id]  }
       .row
         .col-md-8
           =f.input :card_num, :label => 'Número de Tarjeta'

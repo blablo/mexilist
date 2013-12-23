@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131217025422) do
+ActiveRecord::Schema.define(version: 20131223202529) do
 
   create_table "anuncios", force: true do |t|
     t.string   "title"
@@ -215,6 +215,7 @@ ActiveRecord::Schema.define(version: 20131217025422) do
     t.string   "paquete"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "mexipuntos"
   end
 
   create_table "users", force: true do |t|
