@@ -16,9 +16,9 @@
     -if @anuncio.category
       =render @anuncio.render_name
 
-
-  .form-actions
-    =f.button :submit, 'Guardar Anuncio', :onclick => "CKEDITOR.instances.anuncio_texto.updateElement();",:class => 'btn btn-warning btn-large'
+  %br
+  .form-actions.pull-right
+    =f.button :submit, 'Guardar Anuncio', :onclick => "CKEDITOR.instances.anuncio_texto.updateElement();",:class => 'btn btn-warning btn-lg'
 
 
 

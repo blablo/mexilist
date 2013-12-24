@@ -45,6 +45,9 @@ class CheckoutController < ApplicationController
       puntos = 0
     end
 
+    precio = 1 if Rails.env.development?
+
+
     options1 =                   { :body => {
         :user => 'mexilist',
         'CARD_NUM' => params[:checkout][:card_num],
@@ -55,7 +58,7 @@ class CheckoutController < ApplicationController
         'ORD_ID' => transaction.id,
         'CUST_USER_ID' => current_user.id,
         'CUST_IP' => '12.12.12.12',
-        'ORD_AMT' => '1',
+        'ORD_AMT' => precio,
         'PROD_DEL_CD' => 'REN',
         'ORD_CONCEPT' => 'mexipuntos',
         'CUST_EMAIL' => current_user.email,
@@ -80,11 +83,11 @@ class CheckoutController < ApplicationController
 
 
 
-    #    httparty = HTTParty.post('https://banwire.com/api/1/payment/direct', options1)
+    httparty = HTTParty.post('https://banwire.com/api/1/payment/direct', options1)
 
     respond_to do |format|
 
-      if true or httparty.response.code == '200'
+      if httparty.response.code == '200'
         @card = nil
 
         current_user.cards.each{ |card| @card = card if BCrypt::Password.new(card.number) == params[:checkout][:card_num] }
@@ -105,9 +108,9 @@ class CheckoutController < ApplicationController
 
         transaction.status = 'success'
         transaction.card_id = @card.id
-        # transaction.banwire_id = httparty.parsed_response['ID']
-        # transaction.card_number = httparty.parsed_response['CARD']
-        # transaction.auth_code = httparty.parsed_response['AUTH_CODE']
+        transaction.banwire_id = httparty.parsed_response['ID']
+        transaction.card_number = httparty.parsed_response['CARD']
+        transaction.auth_code = httparty.parsed_response['AUTH_CODE']
         transaction.mexipuntos = puntos
         transaction.save
 

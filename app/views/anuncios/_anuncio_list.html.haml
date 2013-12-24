@@ -2,8 +2,11 @@
 .col-xs-12.col-sm-5.col-lg-7.col-md-6
   %h3=link_to(truncate(anuncio.title, :length => 40, :separator => ' '), city_anuncio_url(anuncio), :itemprop => "name")
 .col-xs-12.col-sm-4.col-lg-2.info.col-md-3
+
   .autorenueva-btn
-    =link_to 'autorenovar', renovar_anuncios_url(:id => anuncio.id), :remote => true
+    -if false
+      =link_to 'autorenueva', renovar_anuncios_url(:id => anuncio.id), :remote => true
+    =I18n.localize(anuncio.fecha, :format => "%e %b", :locale => 'es') if anuncio.fecha
   .precio{ :itemprop => "price"}
     -if anuncio.price.blank?
       &nbsp;

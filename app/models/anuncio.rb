@@ -30,7 +30,12 @@ class Anuncio < ActiveRecord::Base
 
 
   scope :with_picture, -> { joins(:pictures).uniq }
-  
+
+  scope :by_category, ->(category){ 
+    ids = [category.id]
+    category.subcategories.each{|sub| ids << sub.id}
+    Anuncio.joins(:city, :category).where("categories.id in (?)", ids) }
+
   scope :by_city_category, ->(city, category){ 
     ids = [category.id]
     category.subcategories.each{|sub| ids << sub.id}

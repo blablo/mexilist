@@ -59,7 +59,7 @@ require 'will_paginate/array'
     elsif params[:category]
       @category = nil
       Category.all.each{|cat| @category = cat if cat.url_name == params[:category]}
-      @anuncios = @category.anuncios_all.order('fecha desc').paginate(:page => params[:page], :per_page => 10)
+      @anuncios = Anuncio.by_category(@category).order('fecha desc').paginate(:page => params[:page], :per_page => 10)
       @title = @category.keywords
     else
       @anuncios = Anuncio.all.order('fecha desc')
@@ -158,7 +158,7 @@ require 'will_paginate/array'
           pic.update_attribute(:anuncio_id, @anuncio.id)
         end
 
-        #current_user.fb_me.link!(:link => @anuncio.url,:message => @anuncio.title + " #mexilist")
+        current_user.fb_me.link!(:link => @anuncio.url,:message => @anuncio.title + " #mexilist")
         format.html { redirect_to anuncios_user_url(current_user, :anuncio_id => @anuncio.id), notice: 'Anuncio creado exitosamente.' }
         format.json { render json: @anuncio, status: :created, location: @anuncio }
       else
@@ -217,9 +217,9 @@ require 'will_paginate/array'
   def search
     @q = params[:q]
     if @q.blank?
-      @anuncios = Anuncio.all.paginate(:page => params[:page], :per_page => 5)
+      @anuncios = Anuncio.all.order('fecha desc').paginate(:page => params[:page], :per_page => 5)
     else
-      @anuncios = Anuncio.search(@q).paginate(:page => params[:page], :per_page => 5)
+      @anuncios = Anuncio.search(@q).order('fecha desc').paginate(:page => params[:page], :per_page => 5)
     end
     @title = "Busqueda"
 

@@ -21,9 +21,9 @@
       =f.input :paquete_id, :as => :hidden, :input_html => {:value => @paquete[:id]  }
       .row
         .col-md-8
-          =f.input :card_num, :label => 'Número de Tarjeta'
+          =f.input :card_num, :label => 'Número de Tarjeta', :input_html => { :autocomplete => "off"}
         .col-md-4
-          =f.input :cvv, :label => 'CVV'
+          =f.input :cvv, :as => :password, :label => 'CVV', :input_html => { :maxlength => "3" }
       =f.input :card_type, :collection => ['Visa', 'Mastercard']
       .form-group
         =f.label "Fecha de Vencimiento"
