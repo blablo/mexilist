@@ -17,20 +17,20 @@
 
 #related_container{
     .anuncio{
-	float: left;
+        float: left;
     }
 }
 .grid-sizer { width: 21%; }
 
 @media screen and (min-width: 720px) {
-  /* 10 columns for larger screens */
-  #anuncios_container .anuncio { width: 23%; }
+    /* 10 columns for larger screens */
+    #anuncios_container .anuncio { width: 23%; }
 
 }
 
 @media screen and (max-width: 720px) {
-  /* 10 columns for larger screens */
-  #anuncios_container .anuncio { width: 23%; }
+    /* 10 columns for larger screens */
+    #anuncios_container .anuncio { width: 23%; }
 
 }
 #related_container .anuncio{
@@ -41,19 +41,19 @@
     margin-right: 15px;
     margin-bottom: 15px;
     .thumbnail{
-	padding: 0px;
-	padding-bottom: 4px;
-	@include rounded(5px);
-	.imgrounded{
-	    @include rounded_top(5px);
-	}
+        padding: 0px;
+        padding-bottom: 4px;
+        @include rounded(5px);
+        .imgrounded{
+            @include rounded_top(5px);
+        }
     }
-    
+
     h3{
         font-size: 0.8em;
         line-height: 1.2;
-	padding: 4px;
-	margin: 0;
+        padding: 4px;
+        margin: 0;
     }
     img{
         width: 100%;
@@ -61,18 +61,30 @@
     }
 
     a{
-	font-weight: normal;
+        font-weight: normal;
     }
-    
+
     .price{
         color: $gray;
-	padding: 4px;
-	text-align: right;
-	font-weight: bold;
+        padding: 4px;
+        text-align: right;
+        font-weight: bold;
     }
-    
 
 
+
+}
+
+h1{
+    .picture {
+	border-right: 1px solid #CCC;
+	overflow: auto;
+        img{
+            @include rounded(30px);
+	    margin-right: 13px;
+	    margin-top: -10px;
+        }
+    }
 }
 
 #anuncio_list{
@@ -122,68 +134,68 @@ ul#anuncio_list{
     margin-bottom: 10px;
     padding: 10px 0;
     .list-group-item{
-	padding-right: 0;
-	padding-left: 0;
-	overflow: hidden;
-	padding-bottom: 0;
-	margin-bottom: 10px;
-	@include shadow;
+        padding-right: 0;
+        padding-left: 0;
+        overflow: hidden;
+        padding-bottom: 0;
+        margin-bottom: 10px;
+        @include shadow;
     }
     .info{
-	padding-top: 60px;
+        padding-top: 60px;
         color: lighten(#333, 5);
-	@include text-shadow(0px 1px 1px #fff);
-	text-align: right;
-	font-weight: bold;
-	background: #FAFAFA;
-	height: 100%;
-	margin-top: -10px;
-	right: 0;
-	margin-right: -30px;
-	padding-bottom: 15px;
+        @include text-shadow(0px 1px 1px #fff);
+        text-align: right;
+        font-weight: bold;
+        background: #FAFAFA;
+        height: 100%;
+        margin-top: -10px;
+        right: 0;
+        margin-right: -30px;
+        padding-bottom: 15px;
 
     }
 
     .extra-info{
-	$color1: lighten(#666,45);
-	$color2: lighten(#666,40);
-	border-top: 1px solid darken(#fafafa,10);
-	border-left: none;
-	border-right: none;
-	background: -webkit-linear-gradient($color1, $color2); /* For Safari */
-	background: -o-linear-gradient($color1, $color2); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient($color1, $color2); /* For Firefox 3.6 to 15 */
-	background: linear-gradient($color1, $color2); /* Standard syntax */
+        $color1: lighten(#666,45);
+        $color2: lighten(#666,40);
+        border-top: 1px solid darken(#fafafa,10);
+        border-left: none;
+        border-right: none;
+        background: -webkit-linear-gradient($color1, $color2); /* For Safari */
+        background: -o-linear-gradient($color1, $color2); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient($color1, $color2); /* For Firefox 3.6 to 15 */
+        background: linear-gradient($color1, $color2); /* Standard syntax */
 
-	background: #FAFAFA;
-	padding: 0 15px;
-	color: black;
-	text-align: center;
-	a{
-	    color: black;
-	}
-	span{
-	    padding: 0 10px;
-	}
+        background: #FAFAFA;
+        padding: 0 15px;
+        color: black;
+        text-align: center;
+        a{
+            color: black;
+        }
+        span{
+            padding: 0 10px;
+        }
 
     }
 
 
     .precio{
-	margin-bottom: 10px;
-	font-size: 1.2em;
+        margin-bottom: 10px;
+        font-size: 1.2em;
     }
 
     h3 a{
-	margin: 0;
-	line-height: 26px;
-	font-size: 0.7em;
+        margin: 0;
+        line-height: 26px;
+        font-size: 0.7em;
     }
 
     .autorenueva-btn{
-	position: absolute;
-	top: 10px;
-	right: 15px;
+        position: absolute;
+        top: 10px;
+        right: 15px;
     }
 
 }

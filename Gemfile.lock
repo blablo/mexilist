@@ -1,12 +1,4 @@
 GIT
-  remote: https://github.com/charlotte-ruby/impressionist.git
-  revision: a974bd85b34a83556284861c8788f7c41b2d097a
-  specs:
-    impressionist (1.4.13)
-      httpclient (~> 2.2)
-      nokogiri (~> 1.5)
-
-GIT
   remote: https://github.com/sethbro/green_light.git
   revision: 0af0d9af0673fdf1ecbbcef4dd59942e8d05d586
   specs:
@@ -152,6 +144,9 @@ GEM
     httpclient (2.3.4.1)
     hub (1.11.0)
     i18n (0.6.9)
+    impressionist (1.2.0)
+      httpclient (~> 2.2)
+      nokogiri (~> 1.5)
     innertube (1.1.0)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -312,7 +307,7 @@ DEPENDENCIES
   hpricot (>= 0.8.6)
   httparty
   hub (>= 1.10.2)
-  impressionist!
+  impressionist (= 1.2.0)
   jquery-rails
   launchy (>= 2.1.2)
   mysql2

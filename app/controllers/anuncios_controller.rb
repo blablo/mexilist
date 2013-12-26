@@ -87,7 +87,7 @@ require 'will_paginate/array'
     
     @related = Anuncio.where(:category_id => @anuncio.category_id).last(4)
     @related = Anuncio.last(5)
-#    impressionist(@anuncio)
+   impressionist(@anuncio)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -192,10 +192,12 @@ require 'will_paginate/array'
   end
 
   def contactar
+
     @anuncio = Anuncio.find params[:anuncio_id]
     if @anuncio
       AnuncioMailer.contactar(params[:email], params[:nombre], params[:mensaje], @anuncio).deliver
     end
+
     respond_to do |format|
       format.js { render :js => "$('.enviar').show(); $('.enviar_dis').hide(); $('.modal').modal('hide'); alert('Tu mensaje fue enviado con exito.');"}
     end

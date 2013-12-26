@@ -82,7 +82,6 @@ class CheckoutController < ApplicationController
     }
 
 
-
     httparty = HTTParty.post('https://banwire.com/api/1/payment/direct', options1)
 
     respond_to do |format|
@@ -117,6 +116,30 @@ class CheckoutController < ApplicationController
         current_user.update_attribute(:mexipuntos, current_user.mexipuntos + puntos)
         format.html { redirect_to anuncios_user_url(current_user), notice: 'Compra exitosa.' }
 
+      else
+        @paquete = { }
+        if params[:checkout][:paquete_id] == '1'
+          @paquete[:nombre] = 'Básico'
+          @paquete[:precio] = 49
+          @paquete[:mexipuntos] = '250 + 25 gratis = 275'
+        end
+        if params[:checkout][:paquete_id] == '2'
+          @paquete[:nombre] = 'Premium'
+          @paquete[:precio] = 99
+          @paquete[:mexipuntos] = '500 + 100 gratis = 600'
+        end
+        if params[:checkout][:paquete_id] == '3'
+          @paquete[:nombre] = 'VIP'
+          @paquete[:precio] = 199
+          @paquete[:mexipuntos] = '1000 + 250 gratis = 1250'
+
+        end
+
+        @paquete[:id] =  params[:checkout][:paquete_id]
+
+
+        @error = 'Los datos de tu tarjeta están incorrectos. Por favor intenta nuevamente o utiliza otra tarjeta. <strong>No se ha hecho ningún cargo.</strong>'
+        format.html { render :index,  :params => {  :paquete => params[:checkout][:paquete_id] }}
       end
     end
 

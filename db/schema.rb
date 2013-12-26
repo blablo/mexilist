@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131223202529) do
+ActiveRecord::Schema.define(version: 20131226212133) do
 
   create_table "anuncios", force: true do |t|
     t.string   "title"
@@ -132,8 +132,8 @@ ActiveRecord::Schema.define(version: 20131223202529) do
     t.string   "session_hash"
     t.text     "message"
     t.text     "referrer"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "impressions", ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index", using: :btree

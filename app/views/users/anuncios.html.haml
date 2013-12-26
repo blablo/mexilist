@@ -1,4 +1,6 @@
-%h1 Anuncios de #{current_user.name}
+%h1
+  %span.picture=image_tag(@user.picture)
+  Anuncios de #{@user.name}
 %ul#anuncio_list.list-group
 
   -@anuncios.each do |anuncio|
