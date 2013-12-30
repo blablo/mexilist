@@ -28,12 +28,12 @@
   -if @category.blank? and action_name != "search"
     #anuncios_container
 
-      -@anuncios.each do |anuncio|
+      -@todos.each do |anuncio|
         =render anuncio
-    =will_paginate @anuncios, :container => 'li'
+    =will_paginate @todos, :container => 'li'
   -else
     %ul#anuncio_list.list-group
-      -@anuncios.each do |anuncio|
+      -@todos.each do |anuncio|
         %li.list-group-item{:itemscope => true,  :itemtype => "http://schema.org/Product" }=render 'anuncio_list', :anuncio => anuncio
-    =will_paginate @anuncios
+    =will_paginate @todos
 

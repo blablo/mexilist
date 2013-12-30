@@ -1,6 +1,11 @@
 %h1
   %span.picture=image_tag(@user.picture)
   Anuncios de #{@user.name}
+-if current_user == @user
+  %h4
+    Mexipuntos disponibles: #{current_user.mexipuntos}
+    %small=link_to 'Adquiere más mexipuntos.', '/paquetes'
+
 %ul#anuncio_list.list-group
 
   -@anuncios.each do |anuncio|

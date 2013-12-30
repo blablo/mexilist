@@ -17,7 +17,12 @@ class PicturesController < ApplicationController
   end
 
   def destroy
-    @picture = Picture.find(params[:id])
+    if current_user.has_role? :admin
+      @picture = Picture.find(params[:id])
+    else
+      @picture = current_user.pictures.find(params[:id])
+    end
+
     @borrado_id = params[:id]
     respond_to do |format|
       if @picture.destroy

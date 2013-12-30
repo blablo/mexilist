@@ -46,7 +46,7 @@ require 'will_paginate/array'
       City.all.each{|city| @city = city if city.param_name == params[:city]}
       @category = nil
       Category.all.each{|cat| @category = cat if cat.url_name == params[:category]}
-      @anuncios = Anuncio.by_city_category(@city.id, @category).order('fecha desc').paginate(:page => params[:page], :per_page => 10)
+      @anuncios = Anuncio.by_city_category(@city.id, @category).order('fecha desc')
       @title = @category.keywords
 
     elsif params[:state] and params[:category]
@@ -54,12 +54,12 @@ require 'will_paginate/array'
       State.all.each{|state| @state = state if state.param_name == params[:state]}
       @category = nil
       Category.all.each{|cat| @category = cat if cat.url_name == params[:category]}
-      @anuncios = Anuncio.by_state_category(@state.id, @category).order('fecha desc').paginate(:page => params[:page], :per_page => 10)
+      @anuncios = Anuncio.by_state_category(@state.id, @category).order('fecha desc')
       @title = @category.keywords
     elsif params[:category]
       @category = nil
       Category.all.each{|cat| @category = cat if cat.url_name == params[:category]}
-      @anuncios = Anuncio.by_category(@category).order('fecha desc').paginate(:page => params[:page], :per_page => 10)
+      @anuncios = Anuncio.by_category(@category).order('fecha desc')
       @title = @category.keywords
     else
       @anuncios = Anuncio.all.order('fecha desc')
@@ -69,6 +69,9 @@ require 'will_paginate/array'
     if params[:anuncio_id]
       @anuncio = Anuncio.find(params[:anuncio_id])
     end
+
+    @anuncios_auto = @anuncios.where('frecuencia IS NOT NULL')
+    @todos = (@anuncios_auto + @anuncios).uniq.paginate(:page => params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -133,8 +136,11 @@ require 'will_paginate/array'
 
   # GET /anuncios/1/edit
   def edit
-    @anuncio = current_user.anuncios.find(params[:id])
-
+    if current_user.has_role? :admin
+      @anuncio = Anuncio.find(params[:id])
+    else
+      @anuncio = current_user.anuncios.find(params[:id])
+    end
     @picture = Picture.new
     @images = @anuncio.pictures
 
@@ -148,6 +154,7 @@ require 'will_paginate/array'
   # POST /anuncios.json
   def create
     @anuncio = current_user.anuncios.build(params[:anuncio])
+
     @anuncio.state_id = City.find(params[:anuncio][:city_id]).state.id
     @images = Picture.find_all_by_token(@anuncio.token)
 
@@ -157,7 +164,10 @@ require 'will_paginate/array'
         @images.each do |pic|
           pic.update_attribute(:anuncio_id, @anuncio.id)
         end
-
+        @anuncio.update_attribute(:fecha, @anuncio.created_at)
+        if current_user.anuncios.count == 1
+          current_user.update_attribute(:mexipuntos, current_user.mexipuntos + 25)
+        end
         current_user.fb_me.link!(:link => @anuncio.url,:message => @anuncio.title + " #mexilist")
         format.html { redirect_to anuncios_user_url(current_user, :anuncio_id => @anuncio.id), notice: 'Anuncio creado exitosamente.' }
         format.json { render json: @anuncio, status: :created, location: @anuncio }
@@ -177,7 +187,11 @@ require 'will_paginate/array'
   # PUT /anuncios/1
   # PUT /anuncios/1.json
   def update
-    @anuncio = current_user.anuncios.find(params[:id])
+    if current_user.has_role? :admin
+      @anuncio = Anuncio.find(params[:id])
+    else
+      @anuncio = current_user.anuncios.find(params[:id])
+    end
     @anuncio.state_id = City.find(params[:anuncio][:city_id]).state.id if params[:anuncio][:city_id]
     respond_to do |format|
       if @anuncio.update_attributes(params[:anuncio])
@@ -206,7 +220,11 @@ require 'will_paginate/array'
   # DELETE /anuncios/1
   # DELETE /anuncios/1.json
   def destroy
-    @anuncio = current_user.anuncios.find(params[:id])
+    if current_user.has_role? :admin
+      @anuncio = Anuncio.find(params[:id])
+    else
+      @anuncio = current_user.anuncios.find(params[:id])
+    end
     @anuncio.destroy
 
     respond_to do |format|
@@ -219,9 +237,9 @@ require 'will_paginate/array'
   def search
     @q = params[:q]
     if @q.blank?
-      @anuncios = Anuncio.all.order('fecha desc').paginate(:page => params[:page], :per_page => 5)
+      @todos = Anuncio.all.order('fecha desc').paginate(:page => params[:page], :per_page => 5)
     else
-      @anuncios = Anuncio.search(@q).order('fecha desc').paginate(:page => params[:page], :per_page => 5)
+      @todos = Anuncio.search(@q).order('fecha desc').paginate(:page => params[:page], :per_page => 5)
     end
     @title = "Busqueda"
 

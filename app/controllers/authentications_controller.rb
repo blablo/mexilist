@@ -20,6 +20,7 @@ class AuthenticationsController < ApplicationController
         user = User.find_by_email(auth['info']['email'])
       else
         user = User.new
+        user.mexipuntos = 25
       end
       user.apply_omniauth(auth)
 

@@ -8,9 +8,9 @@
       .col-sm-6
         .form-group
           =f.label 'Estado'
-          =collection_select(:state, :id, State.all, :id, :name, {:selected => @last_anuncio.nil? ? '' : @last_anuncio.state_id}, {:class => 'form-control'})
+          =collection_select(:state, :id, State.all, :id, :name, {:selected => @last_anuncio.nil? ? '' : @last_anuncio.state_id,  :include_blank => true}, {:class => 'form-control'})
       .col-sm-6
-        =f.input :city_id, :label => 'Ciudad', :collection => @cities, :selected =>  @last_anuncio.nil? ? '' : @last_anuncio.city_id
+        =f.input :city_id, :label => 'Ciudad', :collection => @cities, :selected =>  @last_anuncio.nil? ? '' : @last_anuncio.city_id,  :include_blank => true
 
   #anuncio_form
     -if @anuncio.category
