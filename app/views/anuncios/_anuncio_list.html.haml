@@ -4,7 +4,7 @@
 .col-xs-12.col-sm-4.col-lg-2.info.col-md-3
 
   .autorenueva-btn
-    -if current_user.has_role? :admin
+    -if current_user and current_user.has_role? :admin
       =link_to 'editar | ', edit_anuncio_url(anuncio)
       =link_to 'borrar', anuncio, :method => :delete, :confirm => "Estas seguro?"
     -if false
