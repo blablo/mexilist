@@ -2,7 +2,72 @@
 # last edit: feb 8, 2013
 # tipos. 1 = normal, 2 = car, 3 = moto, 4 = house, 5 = jobs
 
-Category.delete_all
+#Category.delete_all
+
+CategoryMapper.create_or_update([
+                       { :id => 1, :category_id => 10, :anumex_id => 10},
+                       { :id => 2, :category_id => 20, :anumex_id => 20},
+                       { :id => 3, :category_id => 30, :anumex_id => 30},
+                       { :id => 4, :category_id => 40, :anumex_id => 40},
+                       { :id => 5, :category_id => 50, :anumex_id => 50},
+                       { :id => 6, :category_id => 60, :anumex_id => 60},
+                       { :id => 7, :category_id => 60, :anumex_id => 70},
+                       { :id => 8, :category_id => 70, :anumex_id => 80},
+                       { :id => 9, :category_id => 80, :anumex_id => 100},
+                       { :id => 10, :category_id => 100, :anumex_id => 120},
+                       { :id => 11, :category_id => 100, :anumex_id => 170},
+                       { :id => 12, :category_id => 110, :anumex_id => 220},
+                       { :id => 13, :category_id => 120, :anumex_id => 190},
+                       { :id => 14, :category_id => 130, :anumex_id => 180},
+                       { :id => 15, :category_id => 140, :anumex_id => 140},
+                       { :id => 16, :category_id => 150, :anumex_id => 150},
+                       { :id => 17, :category_id => 160, :anumex_id => 130},
+                       { :id => 18, :category_id => 170, :anumex_id => 240},
+                       { :id => 19, :category_id => 180, :anumex_id => 210},
+                       { :id => 20, :category_id => 185, :anumex_id => 160},
+                       { :id => 21, :category_id => 190, :anumex_id => 200},
+                       { :id => 22, :category_id => 195, :anumex_id => 255},
+                       { :id => 23, :category_id => 200, :anumex_id => 390},
+                       { :id => 24, :category_id => 210, :anumex_id => 410},
+                       { :id => 25, :category_id => 220, :anumex_id => 450},
+                       { :id => 26, :category_id => 230, :anumex_id => 460},
+                       { :id => 27, :category_id => 240, :anumex_id => 412},
+                       { :id => 28, :category_id => 250, :anumex_id => 440},
+                       { :id => 29, :category_id => 260, :anumex_id => 470},
+                       { :id => 30, :category_id => 265, :anumex_id => 430},
+                       { :id => 31, :category_id => 270, :anumex_id => 420},
+                       { :id => 32, :category_id => 280, :anumex_id => 415},
+                       { :id => 33, :category_id => 290, :anumex_id => 480},
+                       { :id => 34, :category_id => 300, :anumex_id => 320},
+                       { :id => 35, :category_id => 310, :anumex_id => 330},
+                       { :id => 36, :category_id => 315, :anumex_id => 340},
+                       { :id => 37, :category_id => 320, :anumex_id => 350},
+                       { :id => 38, :category_id => 325, :anumex_id => 325},
+                       { :id => 39, :category_id => 330, :anumex_id => 360},
+                       { :id => 40, :category_id => 340, :anumex_id => 370},
+                       { :id => 41, :category_id => 350, :anumex_id => 380},
+                       { :id => 42, :category_id => 360, :anumex_id => 385},
+                       { :id => 43, :category_id => 400, :anumex_id => 500},
+                       { :id => 44, :category_id => 410, :anumex_id => 530},
+                       { :id => 45, :category_id => 420, :anumex_id => 510},
+                       { :id => 46, :category_id => 430, :anumex_id => 532},
+                       { :id => 47, :category_id => 440, :anumex_id => 515},
+                       { :id => 48, :category_id => 450, :anumex_id => 512},
+                       { :id => 49, :category_id => 460, :anumex_id => nil},
+                       { :id => 50, :category_id => 470, :anumex_id => 535},
+                       { :id => 51, :category_id => 500, :anumex_id => 260},
+                       { :id => 52, :category_id => 510, :anumex_id => 310},
+                       { :id => 53, :category_id => 520, :anumex_id => 270},
+                       { :id => 54, :category_id => 530, :anumex_id => 280},
+                       { :id => 55, :category_id => 540, :anumex_id => 300},
+                       { :id => 56, :category_id => 600, :anumex_id => 540},
+                       { :id => 57, :category_id => 610, :anumex_id => 560},
+                       { :id => 58, :category_id => 620, :anumex_id => 565},
+                       { :id => 59, :category_id => 630, :anumex_id => 550},
+                       { :id => 60, :category_id => 640, :anumex_id => 570}
+
+                       
+                      ])
 
 
 Category.create_or_update([

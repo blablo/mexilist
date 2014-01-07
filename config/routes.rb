@@ -21,6 +21,7 @@ Mexilist::Application.routes.draw do
     collection do 
       get 'mis_anuncios'
       post 'contactar'
+      post 'create_bot'
       get 'search'
       get 'renovar'
    end

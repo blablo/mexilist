@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131226212133) do
+ActiveRecord::Schema.define(version: 20140107220109) do
 
   create_table "anuncios", force: true do |t|
     t.string   "title"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20131226212133) do
     t.integer  "frecuencia"
     t.boolean  "noches"
     t.datetime "fecha"
+    t.string   "bot_id"
   end
 
   create_table "assets", force: true do |t|
@@ -94,6 +95,13 @@ ActiveRecord::Schema.define(version: 20131226212133) do
     t.datetime "updated_at", null: false
     t.integer  "tipo"
     t.string   "keywords"
+  end
+
+  create_table "category_mappers", force: true do |t|
+    t.integer  "category_id"
+    t.integer  "anumex_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "cities", force: true do |t|

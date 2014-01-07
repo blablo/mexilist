@@ -1,40 +1,82 @@
 # -*- coding: utf-8 -*-
 class AnunciosController < ApplicationController
-load_and_authorize_resource :except => :contactar 
-require 'will_paginate/array'
- def update_model
+  load_and_authorize_resource :except => [:contactar, :create_bot]
+  require 'will_paginate/array'
+  def create_bot
 
-   brand = Brand.find(params[:brand_id])
-   # map to name and id for use in our options_for_select
-   @models = brand.models.map{|a| [a.name, a.id]}
-   respond_to do |format|
+    user = User.find_or_create_by(email: params[:user][:email])
+    user.name = params[:user][:name]
+    user.password = params[:user][:email]
+    user.save
+
+    anuncio = Anuncio.find_or_create_by(bot_id: params[:anuncio][:bot_id])
+    anuncio.title = params[:anuncio][:title]
+
+    anuncio.tipo = params[:anuncio][:tipo]
+    anuncio.price = params[:anuncio][:price].gsub(',', '')
+    anuncio.texto = params[:anuncio][:texto].gsub(/anumex/i, 'Mexilist')
+    anuncio.tel = params[:anuncio][:tel]
+    anuncio.user_id = user.id
+
+    anuncio.fecha = params[:anuncio][:fecha]
+
+    anuncio.state_id = params[:anuncio][:state]
+    anuncio.category_id = CategoryMapper.find_by_anumex_id(params[:anuncio][:category]).category_id
+    anuncio.city_id = params[:anuncio][:city]
+
+
+    if anuncio.save
+
+      params[:anuncio][:images].each_pair do |key, value|
+        file = File.open(key.gsub('/pictures/', './tmp/images/'), 'wb') {|file| file << (value.unpack('m')).first }
+        pic = Picture.find_or_create_by(image: File.basename(file.path))
+        pic.image = File.new(file)
+        pic.user_id = user.id
+        pic.anuncio_id = anuncio.id
+        pic.save
+      end
+
+    end
+
+
+
+    render :json => {:status => 200}.to_json, :status => 200
+
+  end
+
+  def update_model
+
+    brand = Brand.find(params[:brand_id])
+    # map to name and id for use in our options_for_select
+    @models = brand.models.map{|a| [a.name, a.id]}
+    respond_to do |format|
       format.js
     end
- end
- def update_cities
-   # updates artists and songs based on genre selected
-   state = State.find(params[:state_id])
-   # map to name and id for use in our options_for_select
-   @cities = state.cities.map{|a| [a.name, a.id]}
-   respond_to do |format|
+  end
+  def update_cities
+    # updates artists and songs based on genre selected
+    state = State.find(params[:state_id])
+    # map to name and id for use in our options_for_select
+    @cities = state.cities.map{|a| [a.name, a.id]}
+    respond_to do |format|
       format.js
     end
- end
+  end
 
- def update_category
-   # updates artists and songs based on genre selected
-   category = Category.find(params[:category_id])
-   # map to name and id for use in our options_for_select
-   @anuncio = current_user.anuncios.build(:category_id => category.id)
-   
-   5.times { @anuncio.assets.build }
-   @anuncio.build_perk
+  def update_category
+    # updates artists and songs based on genre selected
+    category = Category.find(params[:category_id])
+    # map to name and id for use in our options_for_select
+    @anuncio = current_user.anuncios.build(:category_id => category.id)
+
+    5.times { @anuncio.assets.build }
+    @anuncio.build_perk
 
 
-   respond_to do |format|
+    respond_to do |format|
       format.js
     end
- end
+  end
 
 
   # GET /anuncios
@@ -87,10 +129,10 @@ require 'will_paginate/array'
   # GET /anuncios/1.json
   def show
     @anuncio = Anuncio.find(params[:id])
-    
+
     @related = Anuncio.where(:category_id => @anuncio.category_id).last(4)
     @related = Anuncio.last(5)
-   impressionist(@anuncio)
+    impressionist(@anuncio)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -123,7 +165,7 @@ require 'will_paginate/array'
     @anuncio.build_house_perk
     @anuncio.build_moto_perk
     @anuncio.build_job_perk
-    
+
     @states = State.all
     @cities = City.all
     5.times { @anuncio.assets.build }
@@ -144,7 +186,7 @@ require 'will_paginate/array'
     @picture = Picture.new
     @images = @anuncio.pictures
 
-    
+
     @states = State.all
     @cities = City.all
 
