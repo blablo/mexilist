@@ -13,9 +13,10 @@
       =render 'anuncios/anuncio_list', :anuncio => anuncio, :renueva => true
       .extra-info
         %span=link_to 'autorenovar', renovar_anuncios_url(:id => anuncio.id), :remote => true
-        %span=link_to 'editar', edit_anuncio_url(anuncio)
-        %span=link_to 'borrar', anuncio, :method => :delete, :confirm => "Estas seguro?"
-        %span="visitas: " + anuncio.impressionist_count.to_s
+        -if current_user == @user or (current_user and current_user.has_role? :admin)
+          %span=link_to 'editar', edit_anuncio_url(anuncio)
+          %span=link_to 'borrar', anuncio, :method => :delete, :confirm => "Estas seguro?"
+          %span="visitas: " + anuncio.impressionist_count.to_s
 
 #autorenueva.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog

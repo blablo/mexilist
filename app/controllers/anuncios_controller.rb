@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class AnunciosController < ApplicationController
-load_and_authorize_resource 
+load_and_authorize_resource :except => :contactar 
 require 'will_paginate/array'
  def update_model
 
