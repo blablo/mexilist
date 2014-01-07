@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'httparty'
 class CheckoutController < ApplicationController
+  force_ssl
   def index
     @paquete = { }
     if params[:paquete] == '1'
