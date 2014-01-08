@@ -1,0 +1,17 @@
+{
+  "name": "jsdom-jquery-example",
+  "description": "Code samples from the 'jsdom and jquery' article on the Nodejitsu blog",
+  "version": "0.2.0",
+  "author": "Charlie Robbins <charlie.robbins@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://gist.github.com/1009644.git" 
+  },
+  "keywords": ["jsdom", "jquery", "samples"],
+  "dependencies": {
+    "jsdom": "0.2.x",
+    "http-agent": "0.1.x",
+    "request": "1.9.x"
+  },
+  "engines": { "node": ">= 0.4.4" }
+}
