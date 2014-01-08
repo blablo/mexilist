@@ -8,40 +8,41 @@
 
 .linea
 .nav.navbar-nav.col-sm-7{:role => "search"}
-  .hidden-xs.col-sm-3
-    #busca_por_categoria
-      Busca por
-      %strong categoría
-      =render 'layouts/left_menu'
-
-  .form-group.col-sm-9
-    .row
-      %form.col-sm-12{:action => '/anuncios/search', :method => 'get'}
-        .input-group
-          .input-group-btn
-            .btn.btn-default.city_states_btn
-              -if !params[:city].blank?
-                =City.find_name(params[:city])
-              -elsif !params[:state].blank?
-                =State.find_name(params[:state])
-              -else
-                Todo Mexico
-              %span.caret
-            #city_states
-              .states
+  -cache('categorias-'+ params[:city].to_s + '-' + params[:state].to_s) do
+    .hidden-xs.col-sm-3
+      #busca_por_categoria
+        Busca por
+        %strong categoría
+        =render 'layouts/left_menu'
+  -cache('ciudades') do
+    .form-group.col-sm-9
+      .row
+        %form.col-sm-12{:action => '/anuncios/search', :method => 'get'}
+          .input-group
+            .input-group-btn
+              .btn.btn-default.city_states_btn
+                -if !params[:city].blank?
+                  =City.find_name(params[:city])
+                -elsif !params[:state].blank?
+                  =State.find_name(params[:state])
+                -else
+                  Todo Mexico
+                %span.caret
+              #city_states
+                .states
+                  -State.all.each do |state|
+                    .state{:onclick => "$('#cities" + state.id.to_s + "').show();$('.states').hide()"}=state.name
                 -State.all.each do |state|
-                  .state{:onclick => "$('#cities" + state.id.to_s + "').show();$('.states').hide()"}=state.name
-              -State.all.each do |state|
-                %div.cities{:id => 'cities'+state.id.to_s}
-                  %h4
-                    =link_to(state.name, state.url_name)
-                    =link_to('atras', '#', :onclick => "$('#cities" + state.id.to_s + "').hide();$('.states').show()", :class => 'atras' )
-                  -state.cities.each do |c|
-                    =link_to c.name, c.url_name, :class => 'city'
+                  %div.cities{:id => 'cities'+state.id.to_s}
+                    %h4
+                      =link_to(state.name, state.url_name)
+                      =link_to('atras', '#', :onclick => "$('#cities" + state.id.to_s + "').hide();$('.states').show()", :class => 'atras' )
+                    -state.cities.each do |c|
+                      =link_to c.name, c.url_name, :class => 'city'
 
-          %input#search.form-control{:type => "text", :name => 'q'}/
-          %span.input-group-btn
-            %button.btn.btn-default{:type => "submit"} Buscar
+            %input#search.form-control{:type => "text", :name => 'q'}/
+            %span.input-group-btn
+              %button.btn.btn-default{:type => "submit"} Buscar
 
 -if user_signed_in?
   %ul.navbar-nav.navbar-right.col-sm-4

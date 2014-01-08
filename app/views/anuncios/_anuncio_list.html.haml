@@ -1,20 +1,21 @@
-.col-xs-12.col-sm-3=link_to(image_tag(anuncio.main_image, :class => 'img-responsive', :itemprop => "image"), city_anuncio_url(anuncio))
-.col-xs-12.col-sm-5.col-lg-7.col-md-6
-  %h3=link_to(truncate(anuncio.title, :length => 40, :separator => ' '), city_anuncio_url(anuncio), :itemprop => "name")
-.col-xs-12.col-sm-4.col-lg-2.info.col-md-3
+-cache(anuncio) do
+  .col-xs-12.col-sm-3=link_to(image_tag(anuncio.main_image, :class => 'img-responsive', :itemprop => "image"), city_anuncio_url(anuncio))
+  .col-xs-12.col-sm-5.col-lg-7.col-md-6
+    %h3=link_to(truncate(anuncio.title, :length => 40, :separator => ' '), city_anuncio_url(anuncio), :itemprop => "name")
+  .col-xs-12.col-sm-4.col-lg-2.info.col-md-3
 
-  .autorenueva-btn
-    -if current_user and current_user.has_role? :admin
-      =link_to 'editar | ', edit_anuncio_url(anuncio)
-      =link_to 'borrar', anuncio, :method => :delete, :confirm => "Estas seguro?"
-    -if false
-      =link_to 'autorenueva', renovar_anuncios_url(:id => anuncio.id), :remote => true
-    =I18n.localize(anuncio.fecha, :format => "%e %b", :locale => 'es') if anuncio.fecha
-  .precio{ :itemprop => "price"}
-    -if anuncio.price.blank?
-      &nbsp;
-    -else
-      =number_to_currency(anuncio.price, :precision => 0)
-  %a{:href => city_anuncio_url(anuncio), :itemprop => "url" }
-    %button.btn.btn-primary Ver anuncio
-.clearfix
+    .autorenueva-btn
+      -if current_user and current_user.has_role? :admin
+        =link_to 'editar | ', edit_anuncio_url(anuncio)
+        =link_to 'borrar', anuncio, :method => :delete, :confirm => "Estas seguro?"
+      -if false
+        =link_to 'autorenueva', renovar_anuncios_url(:id => anuncio.id), :remote => true
+      =I18n.localize(anuncio.fecha, :format => "%e %b", :locale => 'es') if anuncio.fecha
+    .precio{ :itemprop => "price"}
+      -if anuncio.price.blank?
+        &nbsp;
+      -else
+        =number_to_currency(anuncio.price, :precision => 0)
+    %a{:href => city_anuncio_url(anuncio), :itemprop => "url" }
+      %button.btn.btn-primary Ver anuncio
+  .clearfix

@@ -56,6 +56,7 @@ Mexilist::Application.configure do
 
   ENV['facebook_app_id'] = "339455912827352"
 
-
+  config.cache_store = :mem_cache_store
+  config.action_controller.perform_caching = true
   
 end

@@ -1,138 +1,139 @@
-=content_for :head do
-  %meta{content: @anuncio.title, property: "og:title"}/
-  %meta{content: "article", property: "og:type"}/
-  %meta{content: @anuncio.main_image, property: "og:image"}/
-  %meta{content: @anuncio.url, property: "og:url"}/
-  %meta{content: Sanitize.clean(@anuncio.texto), property: "og:description"}/
-  %meta{content: Sanitize.clean(@anuncio.texto), name: "description"}/
+-cache(@anuncio) do
+  =content_for :head do
+    %meta{content: @anuncio.title, property: "og:title"}/
+    %meta{content: "article", property: "og:type"}/
+    %meta{content: @anuncio.main_image, property: "og:image"}/
+    %meta{content: @anuncio.url, property: "og:url"}/
+    %meta{content: Sanitize.clean(@anuncio.texto), property: "og:description"}/
+    %meta{content: Sanitize.clean(@anuncio.texto), name: "description"}/
 
-=content_for :title do
-  =@anuncio.title.titlecase
+  =content_for :title do
+    =@anuncio.title.titlecase
 
-.col-sm-12{ :itemscope => true,  :itemtype => "http://schema.org/Product" }
-  -content_for :breadcrumb do
-    .breadcrumb
-      %li
-        =link_to('Inicio', root_url)
-      %li
-        =link_to(@anuncio.city.name, @anuncio.city.url_name)
-      %li
-        =link_to(@anuncio.main_category_name, @anuncio.city.url_name + '/' + @anuncio.main_category_name.parameterize)
-      %li
-        =link_to(@anuncio.category_name, @anuncio.city.url_name + '/' + @anuncio.main_category_name.parameterize )
-      %li.active=@anuncio.tipo_name
+  .col-sm-12{ :itemscope => true,  :itemtype => "http://schema.org/Product" }
+    -content_for :breadcrumb do
+      .breadcrumb
+        %li
+          =link_to('Inicio', root_url)
+        %li
+          =link_to(@anuncio.city.name, @anuncio.city.url_name)
+        %li
+          =link_to(@anuncio.main_category_name, @anuncio.city.url_name + '/' + @anuncio.main_category_name.parameterize)
+        %li
+          =link_to(@anuncio.category_name, @anuncio.city.url_name + '/' + @anuncio.main_category_name.parameterize )
+        %li.active=@anuncio.tipo_name
 
 
-  %p#notice= notice
+    %p#notice= notice
 
-  .row.well.well-sm
-    %h1=@anuncio.title.titlecase
-    %p
-      =@anuncio.city.name + ', ' + @anuncio.city.state.name
-      =', ' + @anuncio.district if !@anuncio.district.blank?
+    .row.well.well-sm
+      %h1=@anuncio.title.titlecase
+      %p
+        =@anuncio.city.name + ', ' + @anuncio.city.state.name
+        =', ' + @anuncio.district if !@anuncio.district.blank?
 
-    -if !@anuncio.pictures.blank?
+      -if !@anuncio.pictures.blank?
+        .row
+          .pikachoose.col-sm-12.col-xs-12
+            %ul#pikame.col-sm-3.jcarousel-skin-pika
+              -@anuncio.pictures.each do |asset|
+                %li
+                  %a{:href => "#"}
+                    =image_tag(asset.image.medium.url, :itemprop => "image")
+
+
+
+      %hr
       .row
-        .pikachoose.col-sm-12.col-xs-12
-          %ul#pikame.col-sm-3.jcarousel-skin-pika
-            -@anuncio.pictures.each do |asset|
-              %li
-                %a{:href => "#"}
-                  =image_tag(asset.image.medium.url, :itemprop => "image")
+        #perks
+          -if @anuncio.car_perk
+            =render 'show_car'
+          -elsif @anuncio.moto_perk
+            =render 'show_moto'
+          -elsif @anuncio.house_perk
+            =render 'show_house'
+          -elsif @anuncio.job_perk
+            =render 'show_job'
+          -else
 
+            %ul.col-md-4
+              -if !@anuncio.price.blank?
+                %li.well.well-sm.precio
+                  %span{ :itemprop => "price"}=number_to_currency(@anuncio.price)
+            .col-md-6
 
-
-    %hr
-    .row
-      #perks
-        -if @anuncio.car_perk
-          =render 'show_car'
-        -elsif @anuncio.moto_perk
-          =render 'show_moto'
-        -elsif @anuncio.house_perk
-          =render 'show_house'
-        -elsif @anuncio.job_perk
-          =render 'show_job'
-        -else
 
           %ul.col-md-4
-            -if !@anuncio.price.blank?
-              %li.well.well-sm.precio
-                %span{ :itemprop => "price"}=number_to_currency(@anuncio.price)
-          .col-md-6
+            %li.btn.btn-danger{:href => "#contactar", :role => "button", 'data-toggle' => "modal"} Contactar
+            %li.well.well-sm.mas_anuncios
+              %h3 Más anuncios de
+              %span=link_to(@anuncio.user.name, anuncios_user_url(@anuncio.user))
+            %li
+              <div class="fb-like" data-href="#{request.url}" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="box_count" data-action="like" data-show-faces="true" data-send="false"></div>
+              <g:plusone size="tall"></g:plusone>
 
 
-        %ul.col-md-4
-          %li.btn.btn-danger{:href => "#contactar", :role => "button", 'data-toggle' => "modal"} Contactar
-          %li.well.well-sm.mas_anuncios
-            %h3 Más anuncios de
-            %span=link_to(@anuncio.user.name, anuncios_user_url(@anuncio.user)) 
-          %li
-            <div class="fb-like" data-href="#{request.url}" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="box_count" data-action="like" data-show-faces="true" data-send="false"></div>
-            <g:plusone size="tall"></g:plusone>
+      %hr
+
+      .col-sm-12{ :itemprop => "description"}
+        %p
+          =raw @anuncio.texto
+
+      %hr
 
 
-    %hr
-
-    .col-sm-12{ :itemprop => "description"}
-      %p
-        =raw @anuncio.texto
-
-    %hr
-
-
-  #related_container.related.col-sm-12
-    %h3 Te puede interesar:
-    -@related.each_with_index do |related, index|
-      =render 'related', :size => :medium, :anuncio => related, :index => index
+    #related_container.related.col-sm-12
+      %h3 Te puede interesar:
+      -@related.each_with_index do |related, index|
+        =render 'related', :size => :medium, :anuncio => related, :index => index
 
 
 
-#contactar.modal.fade
-  .modal-dialog
-    .modal-content
-      .modal-header
-        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-        %h3 Contacta #{@anuncio.user ? 'a ' + @anuncio.user.name : 'al Anunciante'}
-      .modal-body
+  #contactar.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+          %h3 Contacta #{@anuncio.user ? 'a ' + @anuncio.user.name : 'al Anunciante'}
+        .modal-body
 
-        .telefonos.well
-          %h3 Llama por Teléfono
-          -@anuncio.tel.split(',').each do |tel|
-            %span.label.label-success
-              %span.glyphicon.glyphicon-earphone=tel
-
-
-        .well
-          %h3 Envia un Mensaje
-          =form_tag '/anuncios/contactar', :remote => true do |f|
-            =hidden_field_tag 'anuncio_id', @anuncio.id
-            .form-group
-              %label Nombre
-              =text_field_tag 'nombre', '', :class => "form-control"
-            .form-group
-              %label Email
-              =text_field_tag 'email', current_user ? current_user.email : '', :class => "form-control"
-            .form-group
-              %label Mensaje
-              =text_area_tag 'mensaje', '', :class => "form-control"
-            %button.btn.btn-primary.pull-right.enviar{:onclick => "$(this).hide(); $('.enviar_dis').show()"} Enviar
-            %button.btn.btn-primary.pull-right.enviar_dis.disabled{:style => 'display: none;'} Enviando
-
-          .clearfix
-      .modal-footer
-        %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cerrar
+          .telefonos.well
+            %h3 Llama por Teléfono
+            -@anuncio.tel.split(',').each do |tel|
+              %span.label.label-success
+                %span.glyphicon.glyphicon-earphone=tel
 
 
-#compartir.modal.fade
-  .modal-dialog
-    .modal-content
-      .modal-header
-        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-        %h3 Comparte este Anuncio
+          .well
+            %h3 Envia un Mensaje
+            =form_tag '/anuncios/contactar', :remote => true do |f|
+              =hidden_field_tag 'anuncio_id', @anuncio.id
+              .form-group
+                %label Nombre
+                =text_field_tag 'nombre', '', :class => "form-control"
+              .form-group
+                %label Email
+                =text_field_tag 'email', current_user ? current_user.email : '', :class => "form-control"
+              .form-group
+                %label Mensaje
+                =text_area_tag 'mensaje', '', :class => "form-control"
+              %button.btn.btn-primary.pull-right.enviar{:onclick => "$(this).hide(); $('.enviar_dis').show()"} Enviar
+              %button.btn.btn-primary.pull-right.enviar_dis.disabled{:style => 'display: none;'} Enviando
 
-      .modal-body
-        %p One fine body…
-      .modal-footer
-        %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cerrar
+            .clearfix
+        .modal-footer
+          %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cerrar
+
+
+  #compartir.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+          %h3 Comparte este Anuncio
+
+        .modal-body
+          %p One fine body…
+        .modal-footer
+          %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cerrar
 

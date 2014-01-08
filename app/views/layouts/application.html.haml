@@ -49,12 +49,13 @@
 
 
     #main{:role => "main"}
-      #left_banner.hidden-xs
-        #estados
-          %h4 Estados
-          %ul
-            -State.all.each do |metro|
-              %li=link_to(metro.name, metro.url_name)
+      -cache('estados') do
+        #left_banner.hidden-xs
+          #estados
+            %h4 Estados
+            %ul
+              -State.all.each do |metro|
+                %li=link_to(metro.name, metro.url_name)
 
       #right_banner.hidden-xs
         :javascript
