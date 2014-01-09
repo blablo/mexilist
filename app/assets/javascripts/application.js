@@ -40,11 +40,6 @@ $(document).ready(function (){
 
     });
 
-    $container.masonry({
-        itemSelector: '.anuncio',
-        columnWidth: '.anuncio'
-    });
-
 
     $('#anuncio_list').AutoPagination({
         nextPageSelector: 'a.next_page',
@@ -52,6 +47,7 @@ $(document).ready(function (){
 	panelSelector: 'li.list-group-item',
 	loaderText: 'Cargando...'
     });
+
 
     $( ".city_states_btn" ).click(function() {
 	$( "#city_states" ).toggle();

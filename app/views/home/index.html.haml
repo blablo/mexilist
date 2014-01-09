@@ -1,6 +1,8 @@
 %h3 Anuncios Destacados
 
 #anuncios_container
-  .grid-sizer 
-  -@anuncios.each do |anuncio|
-    =render anuncio
+  .grid-sizer
+  #anuncios_home
+    -@anuncios.each do |anuncio|
+      =render anuncio
+    =will_paginate @anuncios

@@ -6,16 +6,27 @@ var easyimg = require('easyimage');
 
 var client = request.newClient('http://www.anumex.com/');
 var mexi = request.newClient('http://mexilist.com/');
+//var mexi = request.newClient('http://localhost:3000/');
 
 
+var region = process.argv[2];
+var cat = process.argv[3];
+//1510
+//190
+console.log(cat);
 
 
+client.get('app?choice=result&region='+ region +'&category=' + cat, function(err, res, body) {
+    //    getNextAnuncio('7302805');
+    getNextAnuncio(body.ad);
+    //getNextAnuncio([{id: '7229625'}]);
+});
 
 function getNextAnuncio(anuncios){
     if(anuncios[0] != undefined){
         anuncio = anuncios.pop();
         client.get('http://www.anumex.com/app?choice=showAd&id='+anuncio.id, function(err2, res2, body2) {
-            var data = {};
+
             var data = {
                 user: {
                     email: body2.ad[0].email,
@@ -40,9 +51,9 @@ function getNextAnuncio(anuncios){
 
 
             saveImagen(body2.ad[0].pictures, data, function(alldata) {
-                console.log(alldata);
+                //console.log(alldata);
                 mexi.post('anuncios/create_bot', alldata, function(err, res, body) {
-		    console.log(err);
+		    console.log(body);
                 });
 
                 getNextAnuncio(anuncios);
@@ -57,14 +68,6 @@ function getNextAnuncio(anuncios){
     }
 }
 
-client.get('app?choice=result&region=1510&category=190', function(err, res, body) {
-
-    //    getNextAnuncio('7302805');
-
-      getNextAnuncio(body.ad);
-    //getNextAnuncio([{id: '7308220'}]);
-
-});
 
 function saveImagen(pictures, data, callback){
     if (pictures[0] != undefined) {
@@ -88,10 +91,12 @@ function saveImagen(pictures, data, callback){
 
 function convertImage(pic, pictures, data, callback){
     easyimg.exec('convert .'+ pic +' -shave 35x35 .' + pic, function(err, stdout, stderr) {
-        if (err) throw err;
-        console.log('convert');
-
-        getBase64Image(pic, pictures, data, callback);
+        if (err){
+	  console.log(err);
+	}else{
+	  console.log('convert');
+          getBase64Image(pic, pictures, data, callback);
+	}
 
 
 
