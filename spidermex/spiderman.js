@@ -13,13 +13,14 @@ var region = process.argv[2];
 var cat = process.argv[3];
 //1510
 //190
-console.log(cat);
+
 
 
 client.get('app?choice=result&region='+ region +'&category=' + cat, function(err, res, body) {
     //    getNextAnuncio('7302805');
-    getNextAnuncio(body.ad);
-    //getNextAnuncio([{id: '7229625'}]);
+   getNextAnuncio(body.ad);
+  //  getNextAnuncio([{id: '5736518'}]);
+
 });
 
 function getNextAnuncio(anuncios){
@@ -48,18 +49,25 @@ function getNextAnuncio(anuncios){
                 }
             };
 
-
+	      if(body2.ad[0].pictures[0] != undefined){
 
             saveImagen(body2.ad[0].pictures, data, function(alldata) {
                 //console.log(alldata);
-                mexi.post('anuncios/create_bot', alldata, function(err, res, body) {
-		    console.log(body);
-                });
 
-                getNextAnuncio(anuncios);
+                mexi.post('anuncios/create_bot', alldata, function(err, res, body) {
+	    	    console.log(body);
+                });
+		setTimeout(function() {
+		    getNextAnuncio(anuncios);
+		}, 5000);
+
 
             });
-
+		}else{
+		    setTimeout(function() {
+			getNextAnuncio(anuncios);
+		    }, 5000);
+		}
 
 
         });
@@ -94,7 +102,6 @@ function convertImage(pic, pictures, data, callback){
         if (err){
 	  console.log(err);
 	}else{
-	  console.log('convert');
           getBase64Image(pic, pictures, data, callback);
 	}
 

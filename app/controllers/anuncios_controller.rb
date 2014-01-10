@@ -20,9 +20,17 @@ class AnunciosController < ApplicationController
 
     anuncio.fecha = params[:anuncio][:fecha]
 
-    anuncio.state_id = params[:anuncio][:state]
+
+
     anuncio.category_id = CategoryMapper.find_by_anumex_id(params[:anuncio][:category]).category_id
-    anuncio.city_id = params[:anuncio][:city]
+
+
+    city = CityMapper.find_by_anumex_id(params[:anuncio][:city]).city rescue city = nil
+    if city
+      anuncio.city_id = city.id
+      anuncio.state_id = city.state_id
+    end
+
 
 
     if anuncio.save

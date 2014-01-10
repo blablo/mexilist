@@ -359,3 +359,325 @@ Metropoly.create_or_update([
                             { :id => 3, :name => 'Monterrey'},
                             { :id => 4, :name => 'Vallarta'}
                            ])
+
+
+
+
+###########################################
+
+
+CityMapper.create_or_update([
+                        # Aguascalientes
+                             { :id => 110, :city_id => 110, :anumex_id => 110},
+                             { :id => 120, :city_id => 120, :anumex_id => nil},
+                             { :id => 130, :city_id => 130, :anumex_id => nil},
+                             { :id => 140, :city_id => 140, :anumex_id => nil},
+                        
+                        #Baja California Norte
+                             { :id => 210, :city_id => 210, :anumex_id => 210},
+                             { :id => 220, :city_id => 220, :anumex_id => 220},
+                             { :id => 230, :city_id => 230, :anumex_id => 230},
+                             { :id => 240, :city_id => 240, :anumex_id => nil},
+                             { :id => 250, :city_id => 250, :anumex_id => nil},
+                        
+                        #Baja California Sur
+                             { :id => 310, :city_id => 310, :anumex_id => 310},
+                             { :id => 320, :city_id => 320, :anumex_id => 320},
+                             { :id => 330, :city_id => 330, :anumex_id => nil},
+                             { :id => 340, :city_id => 340, :anumex_id => nil},
+                        
+                        #Campeche
+                             { :id => 410, :city_id => 410, :anumex_id => 410},
+                             { :id => 420, :city_id => 420, :anumex_id => 420},
+                             { :id => 430, :city_id => 430, :anumex_id => nil},
+                             { :id => 440, :city_id => 440, :anumex_id => nil},
+                        
+                        #Chiapas
+                             { :id => 510, :city_id => 510, :anumex_id => 510},
+                             { :id => 520, :city_id => 520, :anumex_id => 520},
+                             { :id => 530, :city_id => 530, :anumex_id => 530},
+                             { :id => 540, :city_id => 540, :anumex_id => nil},
+                             { :id => 550, :city_id => 550, :anumex_id => nil},
+                             { :id => 560, :city_id => 560, :anumex_id => nil},
+                        
+                        #Chihuahua
+                             { :id => 610, :city_id => 610, :anumex_id => 610},
+                             { :id => 620, :city_id => 620, :anumex_id => 620},
+                             { :id => 630, :city_id => 630, :anumex_id => nil},
+                             { :id => 640, :city_id => 640, :anumex_id => nil},
+                             { :id => 650, :city_id => 650, :anumex_id => nil},
+                        
+                        # Coahuila
+                             { :id => 710, :city_id => 710, :anumex_id => 710},
+                             { :id => 720, :city_id => 720, :anumex_id => 720},
+                             { :id => 730, :city_id => 730, :anumex_id => 730},
+                             { :id => 740, :city_id => 740, :anumex_id => 740},
+                             { :id => 750, :city_id => 750, :anumex_id => 750},
+                             { :id => 760, :city_id => 760, :anumex_id => 760},
+                        
+                        #Colima
+                             { :id => 810, :city_id => 810, :anumex_id => 810},
+                             { :id => 820, :city_id => 820, :anumex_id => 820},
+                             { :id => 830, :city_id => 830, :anumex_id => nil},
+                             { :id => 840, :city_id => 840, :anumex_id => nil},
+                        
+                        #Distrito Federal
+                             { :id => 905, :city_id => 905, :anumex_id => 905},
+                             { :id => 910, :city_id => 910, :anumex_id => 910},
+                             { :id => 915, :city_id => 915, :anumex_id => 915},
+                             { :id => 920, :city_id => 920, :anumex_id => 920},
+                             { :id => 925, :city_id => 925, :anumex_id => 925},
+                             { :id => 930, :city_id => 930, :anumex_id => 930},
+                             { :id => 935, :city_id => 935, :anumex_id => 935},
+                             { :id => 940, :city_id => 940, :anumex_id => 940},
+                             { :id => 945, :city_id => 945, :anumex_id => 945},
+                             { :id => 950, :city_id => 950, :anumex_id => 950},
+                             { :id => 955, :city_id => 955, :anumex_id => 955},
+                             { :id => 960, :city_id => 960, :anumex_id => 960},
+                             { :id => 965, :city_id => 965, :anumex_id => 965},
+                             { :id => 970, :city_id => 970, :anumex_id => 970},
+                             { :id => 975, :city_id => 975, :anumex_id => 975},
+                             { :id => 980, :city_id => 980, :anumex_id => 980},
+                        
+                        #Durango
+                             { :id => 1010, :city_id => 1010, :anumex_id => 1010},
+                             { :id => 1020, :city_id => 1020, :anumex_id => 120},
+                             { :id => 1030, :city_id => 1030, :anumex_id => 130},
+                             { :id => 1040, :city_id => 1040, :anumex_id => nil},
+                             { :id => 1040, :city_id => 1040, :anumex_id => nil},
+                        
+                        # Estado de México
+                             { :id => 1110, :city_id => 1110, :anumex_id => 1180},
+                             { :id => 1121, :city_id => 1121, :anumex_id => nil},
+                             { :id => 1122, :city_id => 1122, :anumex_id => nil},
+                             { :id => 1123, :city_id => 1123, :anumex_id => nil},
+                             { :id => 1124, :city_id => 1124, :anumex_id => nil},
+                             { :id => 1125, :city_id => 1125, :anumex_id => 1110},
+                             { :id => 1126, :city_id => 1126, :anumex_id => nil },
+                             { :id => 1127, :city_id => 1127, :anumex_id => nil },
+                             { :id => 1128, :city_id => 1128, :anumex_id => nil },
+                             { :id => 1129, :city_id => 1129, :anumex_id => nil },
+                             { :id => 1130, :city_id => 1130, :anumex_id => nil },
+                             { :id => 1131, :city_id => 1131, :anumex_id => nil },
+                             { :id => 1132, :city_id => 1132, :anumex_id => nil },
+                             { :id => 1133, :city_id => 1133, :anumex_id => nil },
+                             { :id => 1134, :city_id => 1134, :anumex_id => nil },
+                             { :id => 1135, :city_id => 1135, :anumex_id => nil },
+                             { :id => 1136, :city_id => 1136, :anumex_id => nil },
+                             { :id => 1137, :city_id => 1137, :anumex_id => nil },
+                             { :id => 1138, :city_id => 1138, :anumex_id => 1120},
+                             { :id => 1139, :city_id => 1139, :anumex_id => nil },
+                             { :id => 1140, :city_id => 1140, :anumex_id => nil },
+                             { :id => 1141, :city_id => 1141, :anumex_id => nil },
+                             { :id => 1142, :city_id => 1142, :anumex_id => nil },
+                             { :id => 1143, :city_id => 1143, :anumex_id => nil },
+                             { :id => 1144, :city_id => 1144, :anumex_id => 1130},
+                             { :id => 1145, :city_id => 1145, :anumex_id => nil },
+                             { :id => 1146, :city_id => 1146, :anumex_id => nil },
+                             { :id => 1147, :city_id => 1147, :anumex_id => nil },
+                             { :id => 1148, :city_id => 1148, :anumex_id => nil },
+                             { :id => 1149, :city_id => 1149, :anumex_id => 1150},
+                             { :id => 1150, :city_id => 1150, :anumex_id => 1160},
+                             { :id => 1151, :city_id => 1151, :anumex_id => nil },
+                             { :id => 1152, :city_id => 1152, :anumex_id => nil },
+                             { :id => 1153, :city_id => 1153, :anumex_id => nil },
+                             { :id => 1154, :city_id => 1154, :anumex_id => nil },
+                             { :id => 1155, :city_id => 1155, :anumex_id => nil },
+                             { :id => 1156, :city_id => 1156, :anumex_id => nil },
+                             { :id => 1157, :city_id => 1157, :anumex_id => 1140},
+                             { :id => 1158, :city_id => 1158, :anumex_id => nil },
+                             { :id => 1159, :city_id => 1159, :anumex_id => nil },
+                             { :id => 1160, :city_id => 1160, :anumex_id => nil },
+                             { :id => 1161, :city_id => 1161, :anumex_id => nil },
+                             { :id => 1162, :city_id => 1162, :anumex_id => nil },
+                             { :id => 1163, :city_id => 1163, :anumex_id => nil },
+                             { :id => 1164, :city_id => 1164, :anumex_id => nil },
+                             { :id => 1165, :city_id => 1165, :anumex_id => nil },
+                             { :id => 1166, :city_id => 1166, :anumex_id => nil },
+                             { :id => 1167, :city_id => 1167, :anumex_id => nil },
+                             { :id => 1168, :city_id => 1168, :anumex_id => nil },
+                             { :id => 1169, :city_id => 1169, :anumex_id => nil },
+                             { :id => 1170, :city_id => 1170, :anumex_id => nil },
+                             { :id => 1171, :city_id => 1171, :anumex_id => nil },
+                             { :id => 1172, :city_id => 1172, :anumex_id => 1170},
+                             { :id => 1173, :city_id => 1173, :anumex_id => nil },
+                             { :id => 1174, :city_id => 1174, :anumex_id => nil },
+                             { :id => 1175, :city_id => 1175, :anumex_id => nil },
+                             { :id => 1176, :city_id => 1176, :anumex_id => nil },
+                             { :id => 1177, :city_id => 1177, :anumex_id => nil },
+                             { :id => 1178, :city_id => 1178, :anumex_id => nil },
+                             { :id => 1179, :city_id => 1179, :anumex_id => nil },
+
+                        
+                        #Guanajuato
+                             { :id => 1210, :city_id => 1210, :anumex_id => 1210},
+                             { :id => 1220, :city_id => 1220, :anumex_id => 1220},
+                             { :id => 1230, :city_id => 1230, :anumex_id => 1230},
+                             { :id => 1240, :city_id => 1240, :anumex_id => 1240},
+                             { :id => 1250, :city_id => 1250, :anumex_id => 1250},
+                             { :id => 1260, :city_id => 1260, :anumex_id => 1260},
+                                                                                
+                        #Guerrero                                               
+                             { :id => 1310, :city_id => 1310, :anumex_id => 1310},
+                             { :id => 1320, :city_id => 1320, :anumex_id => 1320},
+                             { :id => 1330, :city_id => 1330, :anumex_id => nil },
+                             { :id => 1340, :city_id => 1340, :anumex_id => nil },
+                             { :id => 1350, :city_id => 1350, :anumex_id => nil },
+                                                                                
+                        #Hidalgo                                                
+                             { :id => 1410, :city_id => 1410, :anumex_id => 1410},
+                             { :id => 1420, :city_id => 1420, :anumex_id => 1420},
+                             { :id => 1430, :city_id => 1430, :anumex_id => 1430},
+                             { :id => 1440, :city_id => 1440, :anumex_id => nil },
+                             { :id => 1450, :city_id => 1450, :anumex_id => nil },
+                                                                                
+                        #Jalisco                                                
+                             { :id => 1510, :city_id => 1510, :anumex_id => 1510},
+                             { :id => 1515, :city_id => 1515, :anumex_id => 1540},
+                             { :id => 1520, :city_id => 1520, :anumex_id => 1550},
+                             { :id => 1525, :city_id => 1525, :anumex_id => 1560},
+                             { :id => 1530, :city_id => 1530, :anumex_id => 1570},
+                             { :id => 1535, :city_id => 1535, :anumex_id => nil },
+                             { :id => 1540, :city_id => 1540, :anumex_id => nil },
+                             { :id => 1545, :city_id => 1545, :anumex_id => nil },
+                             { :id => 1550, :city_id => 1550, :anumex_id => nil },
+                             { :id => 1555, :city_id => 1555, :anumex_id => 1580},
+                             { :id => 1560, :city_id => 1560, :anumex_id => nil },
+                             { :id => 1565, :city_id => 1565, :anumex_id => nil },
+                             { :id => 1570, :city_id => 1570, :anumex_id => 1590},
+                             { :id => 1575, :city_id => 1575, :anumex_id => nil },
+                             { :id => 1580, :city_id => 1580, :anumex_id => nil },
+
+                        # Michoacan
+
+                             { :id => 1610, :city_id => 1610, :anumex_id => 1610},
+                             { :id => 1620, :city_id => 1620, :anumex_id => nil },
+                             { :id => 1630, :city_id => 1630, :anumex_id => nil },
+                             { :id => 1640, :city_id => 1640, :anumex_id => 1620},
+                             { :id => 1650, :city_id => 1650, :anumex_id => 1630},
+                                                                                
+                        #Morelos                                                
+                             { :id => 1710, :city_id => 1710, :anumex_id => 1710},
+                             { :id => 1720, :city_id => 1720, :anumex_id => 1720},
+                             { :id => 1730, :city_id => 1730, :anumex_id => 1730},
+                             { :id => 1740, :city_id => 1740, :anumex_id => 1740},
+                             { :id => 1750, :city_id => 1750, :anumex_id => 1750},
+                                                                                
+                        #Nayarit                                                
+                             { :id => 1810, :city_id => 1810, :anumex_id => 1810},
+                             { :id => 1820, :city_id => 1820, :anumex_id => 1820},
+                             { :id => 1830, :city_id => 1830, :anumex_id => nil },
+                             { :id => 1840, :city_id => 1840, :anumex_id => nil },
+                             { :id => 1850, :city_id => 1850, :anumex_id => nil },
+                                                                                
+                        # Nuevo León                                            
+                             { :id => 1910, :city_id => 1910, :anumex_id => 1940},
+                             { :id => 1915, :city_id => 1915, :anumex_id => 1910},
+                             { :id => 1920, :city_id => 1920, :anumex_id => nil },
+                             { :id => 1925, :city_id => 1925, :anumex_id => 1920},
+                             { :id => 1930, :city_id => 1930, :anumex_id => 1930},
+                             { :id => 1935, :city_id => 1935, :anumex_id => nil },
+                             { :id => 1940, :city_id => 1940, :anumex_id => nil },
+                             { :id => 1945, :city_id => 1945, :anumex_id => nil },
+                             { :id => 1950, :city_id => 1950, :anumex_id => 1950},
+                             { :id => 1955, :city_id => 1955, :anumex_id => 1960},
+                             { :id => 1960, :city_id => 1960, :anumex_id => 1970},
+                             { :id => 1965, :city_id => 1965, :anumex_id => nil },
+                             { :id => 1970, :city_id => 1970, :anumex_id => nil },
+                             { :id => 1975, :city_id => 1975, :anumex_id => nil },
+                                                                                
+                        #Oaxaca                                                 
+                             { :id => 2010, :city_id => 2010, :anumex_id => 2010},
+                             { :id => 2020, :city_id => 2020, :anumex_id => nil },
+                             { :id => 2030, :city_id => 2030, :anumex_id => nil },
+                             { :id => 2040, :city_id => 2040, :anumex_id => nil },
+                             { :id => 2050, :city_id => 2050, :anumex_id => nil },
+                                                                                
+                        #Puebla                                                 
+                             { :id => 2110, :city_id => 2110, :anumex_id => 2110},
+                             { :id => 2120, :city_id => 2120, :anumex_id => 2120},
+                             { :id => 2130, :city_id => 2130, :anumex_id => nil },
+                             { :id => 2140, :city_id => 2140, :anumex_id => nil },
+                             { :id => 2150, :city_id => 2150, :anumex_id => nil },
+                                                                                
+                        #Querétaro                                              
+                             { :id => 2210, :city_id => 2210, :anumex_id => 2210},
+                             { :id => 2220, :city_id => 2220, :anumex_id => 2220},
+                             { :id => 2230, :city_id => 2230, :anumex_id => 2230},
+                             { :id => 2240, :city_id => 2240, :anumex_id => nil },
+                                                                                
+                        #Quintana Roo                                           
+                             { :id => 2310, :city_id => 2310, :anumex_id => 2310},
+                             { :id => 2320, :city_id => 2320, :anumex_id => 2320},
+                             { :id => 2330, :city_id => 2330, :anumex_id => 2330},
+                             { :id => 2340, :city_id => 2340, :anumex_id => nil },
+                                                                                
+                        # San Luis Potosí                                       
+                             { :id => 2410, :city_id => 2410, :anumex_id => 2430},
+                             { :id => 2420, :city_id => 2420, :anumex_id => 2410},
+                             { :id => 2430, :city_id => 2430, :anumex_id => 2420},
+                             { :id => 2440, :city_id => 2440, :anumex_id => nil },
+                             { :id => 2450, :city_id => 2450, :anumex_id => nil },
+                                                                                
+                        #Sinaloa                                                
+                             { :id => 2510, :city_id => 2510, :anumex_id => 2510},
+                             { :id => 2520, :city_id => 2520, :anumex_id => nil },
+                             { :id => 2530, :city_id => 2530, :anumex_id => nil },
+                             { :id => 2540, :city_id => 2540, :anumex_id => nil },
+                             { :id => 2550, :city_id => 2550, :anumex_id => 2530},
+                             { :id => 2560, :city_id => 2560, :anumex_id => 2540},
+                             { :id => 2570, :city_id => 2570, :anumex_id => 2550},
+                             { :id => 2580, :city_id => 2580, :anumex_id => 2560},
+                             { :id => 2590, :city_id => 2590, :anumex_id => nil },
+                                                                                
+                        #Sonora                                                 
+                             { :id => 2610, :city_id => 2610, :anumex_id => 2610},
+                             { :id => 2620, :city_id => 2620, :anumex_id => 2620},
+                             { :id => 2630, :city_id => 2630, :anumex_id => 2630},
+                             { :id => 2640, :city_id => 2640, :anumex_id => nil },
+                             { :id => 2650, :city_id => 2650, :anumex_id => nil },
+                             { :id => 2660, :city_id => 2660, :anumex_id => nil },
+                                                                                
+                        #Tabasco                                                
+                             { :id => 2710, :city_id => 2710, :anumex_id => 2710},
+                             { :id => 2720, :city_id => 2720, :anumex_id => 2720},
+                             { :id => 2730, :city_id => 2730, :anumex_id => nil },
+                             { :id => 2740, :city_id => 2740, :anumex_id => 2730},
+                                                                                
+                        #Tamaulipas                                             
+                             { :id => 2810, :city_id => 2810, :anumex_id => 2810},
+                             { :id => 2820, :city_id => 2820, :anumex_id => 2820},
+                             { :id => 2830, :city_id => 2830, :anumex_id => 2830},
+                             { :id => 2840, :city_id => 2840, :anumex_id => 2840},
+                             { :id => 2850, :city_id => 2850, :anumex_id => 2850},
+                                                                                
+                        #Tlaxcala                                               
+                             { :id => 2910, :city_id => 2910, :anumex_id => 2910},
+                             { :id => 2920, :city_id => 2920, :anumex_id => 2910},
+                             { :id => 2930, :city_id => 2930, :anumex_id => 2930},
+                             { :id => 2940, :city_id => 2940, :anumex_id => 2940},
+                             { :id => 2950, :city_id => 2950, :anumex_id => nil },
+                                                                                
+                        #Veracruz                                               
+                             { :id => 3010, :city_id => 3010, :anumex_id => 3010},
+                             { :id => 3020, :city_id => 3020, :anumex_id => 3020},
+                             { :id => 3030, :city_id => 3030, :anumex_id => 3030},
+                             { :id => 3040, :city_id => 3040, :anumex_id => 3040},
+                             { :id => 3050, :city_id => 3050, :anumex_id => 3050},
+                             { :id => 3060, :city_id => 3060, :anumex_id => 3060},
+                             { :id => 3070, :city_id => 3070, :anumex_id => 3070},
+                                                                                
+                        #Yucatán                                                
+                             { :id => 3110, :city_id => 3110, :anumex_id => 3110},
+                             { :id => 3120, :city_id => 3120, :anumex_id => nil },
+                             { :id => 3130, :city_id => 3130, :anumex_id => 3120},
+                             { :id => 3140, :city_id => 3140, :anumex_id => 3130},
+                             { :id => 3150, :city_id => 3150, :anumex_id => 3140},
+                                                                                
+                        # Zacatecas                                             
+                             { :id => 3210, :city_id => 3210, :anumex_id => 3230},
+                             { :id => 3220, :city_id => 3220, :anumex_id => nil },
+                             { :id => 3230, :city_id => 3230, :anumex_id => 3210},
+                             { :id => 3240, :city_id => 3240, :anumex_id => 3220}
+                      ])
+
