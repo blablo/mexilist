@@ -67,7 +67,8 @@
             %li.btn.btn-danger{:href => "#contactar", :role => "button", 'data-toggle' => "modal"} Contactar
             %li.well.well-sm.mas_anuncios
               %h3 Más anuncios de
-              %span=link_to(@anuncio.user.name, anuncios_user_url(@anuncio.user))
+              %span
+                =link_to(@anuncio.user.nil? ? 'Anunciante' : @aunucio.user.name, anuncios_user_url(@anuncio.user))
             %li
               <div class="fb-like" data-href="#{request.url}" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="box_count" data-action="like" data-show-faces="true" data-send="false"></div>
               <g:plusone size="tall"></g:plusone>
@@ -103,22 +104,22 @@
               %span.label.label-success
                 %span.glyphicon.glyphicon-earphone=tel
 
-
-          .well
-            %h3 Envia un Mensaje
-            =form_tag '/anuncios/contactar', :remote => true do |f|
-              =hidden_field_tag 'anuncio_id', @anuncio.id
-              .form-group
-                %label Nombre
-                =text_field_tag 'nombre', '', :class => "form-control"
-              .form-group
-                %label Email
-                =text_field_tag 'email', current_user ? current_user.email : '', :class => "form-control"
-              .form-group
-                %label Mensaje
-                =text_area_tag 'mensaje', '', :class => "form-control"
-              %button.btn.btn-primary.pull-right.enviar{:onclick => "$(this).hide(); $('.enviar_dis').show()"} Enviar
-              %button.btn.btn-primary.pull-right.enviar_dis.disabled{:style => 'display: none;'} Enviando
+          -if @anuncio.user
+            .well
+              %h3 Envia un Mensaje
+              =form_tag '/anuncios/contactar', :remote => true do |f|
+                =hidden_field_tag 'anuncio_id', @anuncio.id
+                .form-group
+                  %label Nombre
+                  =text_field_tag 'nombre', '', :class => "form-control"
+                .form-group
+                  %label Email
+                  =text_field_tag 'email', current_user ? current_user.email : '', :class => "form-control"
+                .form-group
+                  %label Mensaje
+                  =text_area_tag 'mensaje', '', :class => "form-control"
+                %button.btn.btn-primary.pull-right.enviar{:onclick => "$(this).hide(); $('.enviar_dis').show()"} Enviar
+                %button.btn.btn-primary.pull-right.enviar_dis.disabled{:style => 'display: none;'} Enviando
 
             .clearfix
         .modal-footer
