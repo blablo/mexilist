@@ -65,10 +65,11 @@
 
           %ul.col-md-4
             %li.btn.btn-danger{:href => "#contactar", :role => "button", 'data-toggle' => "modal"} Contactar
-            %li.well.well-sm.mas_anuncios
-              %h3 Más anuncios de
-              %span
-                =link_to(@anuncio.user.nil? ? 'Anunciante' : @aunucio.user.name, anuncios_user_url(@anuncio.user))
+            -if @anuncio.user
+              %li.well.well-sm.mas_anuncios
+                %h3 Más anuncios de
+                %span
+                  =link_to(@aunucio.user.name, anuncios_user_url(@anuncio.user))
             %li
               <div class="fb-like" data-href="#{request.url}" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="box_count" data-action="like" data-show-faces="true" data-send="false"></div>
               <g:plusone size="tall"></g:plusone>
