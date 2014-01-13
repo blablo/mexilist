@@ -5,8 +5,8 @@ var easyimg = require('easyimage');
 
 
 var client = request.newClient('http://www.anumex.com/');
-var mexi = request.newClient('http://mexilist.com/');
-//var mexi = request.newClient('http://localhost:3000/');
+//var mexi = request.newClient('http://mexilist.com/');
+var mexi = request.newClient('http://localhost:3000/');
 
 
 var region = process.argv[2];
@@ -18,11 +18,20 @@ var cat = process.argv[3];
 
 client.get('app?choice=result&region='+ region +'&category=' + cat, function(err, res, body) {
     //    getNextAnuncio('7302805');
-   getNextAnuncio(body.ad);
-  //  getNextAnuncio([{id: '5736518'}]);
+  // getNextAnuncio(body.ad);
+	     getNextAnuncio([{id: '7347437'},{id: '7348335'},{id: '7301886'}]);
+
 
 });
-
+function contains(a, obj) {
+    var i = a.length;
+    while (i--) {
+       if (a[i] === obj) {
+           return true;
+       }
+    }
+    return false;
+}
 function getNextAnuncio(anuncios){
     if(anuncios[0] != undefined){
         anuncio = anuncios.pop();
@@ -48,6 +57,33 @@ function getNextAnuncio(anuncios){
 
                 }
             };
+
+	      if(body2.ad[0].extraEdit[0] != undefined){
+		if(contains(body2.ad[0].extra, 'Modelo')){
+		  data['anuncio']['model_id'] = body2.ad[0].extraEdit[2];
+		  data['anuncio']['year'] = body2.ad[0].extraEdit[4];
+		  data['anuncio']['km'] = body2.ad[0].extraEdit[5];
+		}
+		if(contains(body2.ad[0].extra, 'CC')){
+		  data['anuncio']['brand_id'] = body2.ad[0].extraEdit[2];
+		  data['anuncio']['year'] = body2.ad[0].extraEdit[4];
+		  data['anuncio']['cc'] = body2.ad[0].extraEdit[5];
+		  data['anuncio']['km'] = body2.ad[0].extraEdit[6];
+		}
+		if(contains(body2.ad[0].extra, 'Recámaras')){
+		  data['anuncio']['colonia'] = body2.ad[0].extraEdit[0];
+		  data['anuncio']['rooms'] = body2.ad[0].extraEdit[1];
+		  data['anuncio']['m2int'] = body2.ad[0].extraEdit[2];
+		  data['anuncio']['m2ext'] = body2.ad[0].extraEdit[3];
+		  data['anuncio']['longitude'] = body2.ad[0].lng;
+		  data['anuncio']['latitude'] = body2.ad[0].lat;
+		}
+
+
+	      }
+
+	      console.log(data);
+
 
 	      if(body2.ad[0].pictures[0] != undefined){
 

@@ -19,10 +19,24 @@ class AnunciosController < ApplicationController
     anuncio.user_id = user.id
 
     anuncio.fecha = params[:anuncio][:fecha]
-
-
-
     anuncio.category_id = CategoryMapper.find_by_anumex_id(params[:anuncio][:category]).category_id
+
+    if params[:anuncio][:model_id]
+      model = Model.find(params[:anuncio][:model_id])
+      anuncio.build_car_perk(:brand_id => model.brand_id, :model_id => params[:anuncio][:model_id], :year => params[:anuncio][:year], :km => params[:anuncio][:km])
+    end
+
+    if params[:anuncio][:cc]
+      brand = Brand.find(params[:anuncio][:brand_id])
+      anuncio.build_moto_perk(:brand_id => brand.id, :year => params[:anuncio][:year], :km => params[:anuncio][:km], :cc => params[:anuncio][:cc])
+      
+    end
+    if params[:anuncio][:rooms]
+      anuncio.build_house_perk(:colonia => params[:anuncio][:colonia] ,:rooms => params[:anuncio][:rooms], :m2int => params[:anuncio][:m2int], :m2ext => params[:anuncio][:m2ext])
+      anuncio.latitude = params[:anuncio][:latitude]
+      anuncio.longitude = params[:anuncio][:longitude]
+      anuncio.district = params[:anuncio][:district]
+    end
 
 
     city = CityMapper.find_by_anumex_id(params[:anuncio][:city]).city rescue city = nil
@@ -34,6 +48,8 @@ class AnunciosController < ApplicationController
 
 
     if anuncio.save
+
+      debugger
 
       params[:anuncio][:images].each_pair do |key, value|
         file = File.open(key.gsub('/pictures/', './tmp/images/'), 'wb') {|file| file << (value.unpack('m')).first }
