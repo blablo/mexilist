@@ -49,7 +49,6 @@ class AnunciosController < ApplicationController
 
     if anuncio.save
 
-      debugger
 
       params[:anuncio][:images].each_pair do |key, value|
         file = File.open(key.gsub('/pictures/', './tmp/images/'), 'wb') {|file| file << (value.unpack('m')).first }
