@@ -2,7 +2,7 @@
 
 #anuncios_container
   .grid-sizer
-  #anuncios_home
+  #anuncios_aa
     -@anuncios.each do |anuncio|
       =render anuncio
-    =will_paginate @anuncios
+    =will_paginate @anuncios, :container => 'li'
