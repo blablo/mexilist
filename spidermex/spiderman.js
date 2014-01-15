@@ -82,7 +82,7 @@ function getNextAnuncio(anuncios){
 
 	      }
 
-	      console.log(data);
+
 
 
 	      if(body2.ad[0].pictures[0] != undefined){

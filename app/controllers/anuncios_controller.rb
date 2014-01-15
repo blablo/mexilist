@@ -3,66 +3,69 @@ class AnunciosController < ApplicationController
   load_and_authorize_resource :except => [:contactar, :create_bot]
   require 'will_paginate/array'
   def create_bot
+    if (params[:anuncio][:title] =~ /Tu Tienda en Anumex/).nil?
 
-    user = User.find_or_create_by(email: params[:user][:email])
-    user.name = params[:user][:name]
-    user.password = params[:user][:email]
-    user.save
+      user = User.find_or_create_by(email: params[:user][:email])
+      user.name = params[:user][:name]
+      user.password = params[:user][:email]
+      user.save
 
-    anuncio = Anuncio.find_or_create_by(bot_id: params[:anuncio][:bot_id])
-    anuncio.title = params[:anuncio][:title]
+      anuncio = Anuncio.find_or_create_by(bot_id: params[:anuncio][:bot_id])
+      anuncio.title = params[:anuncio][:title].gsub(/anumex/i, 'mexilist')
 
-    anuncio.tipo = params[:anuncio][:tipo]
-    anuncio.price = params[:anuncio][:price].gsub(',', '')
-    anuncio.texto = params[:anuncio][:texto].gsub(/anumex/i, 'Mexilist')
-    anuncio.tel = params[:anuncio][:tel]
-    anuncio.user_id = user.id
+      anuncio.tipo = params[:anuncio][:tipo]
+      anuncio.price = params[:anuncio][:price].gsub(',', '')
+      anuncio.texto = params[:anuncio][:texto].gsub(/anumex/i, 'mexilist')
+      anuncio.tel = params[:anuncio][:tel]
+      anuncio.user_id = user.id
 
-    anuncio.fecha = params[:anuncio][:fecha]
-    anuncio.category_id = CategoryMapper.find_by_anumex_id(params[:anuncio][:category]).category_id
+      anuncio.fecha = params[:anuncio][:fecha]
+      anuncio.category_id = CategoryMapper.find_by_anumex_id(params[:anuncio][:category]).category_id
 
-    if params[:anuncio][:model_id]
-      model = Model.find(params[:anuncio][:model_id])
-      anuncio.build_car_perk(:brand_id => model.brand_id, :model_id => params[:anuncio][:model_id], :year => params[:anuncio][:year], :km => params[:anuncio][:km])
-    end
-
-    if params[:anuncio][:cc]
-      brand = Brand.find(params[:anuncio][:brand_id])
-      anuncio.build_moto_perk(:brand_id => brand.id, :year => params[:anuncio][:year], :km => params[:anuncio][:km], :cc => params[:anuncio][:cc])
-      
-    end
-    if params[:anuncio][:rooms]
-      anuncio.build_house_perk(:colonia => params[:anuncio][:colonia] ,:rooms => params[:anuncio][:rooms], :m2int => params[:anuncio][:m2int], :m2ext => params[:anuncio][:m2ext])
-      anuncio.latitude = params[:anuncio][:latitude]
-      anuncio.longitude = params[:anuncio][:longitude]
-      anuncio.district = params[:anuncio][:district]
-    end
-
-
-    city = CityMapper.find_by_anumex_id(params[:anuncio][:city]).city rescue city = nil
-    if city
-      anuncio.city_id = city.id
-      anuncio.state_id = city.state_id
-    end
-
-
-
-    if anuncio.save
-
-
-      params[:anuncio][:images].each_pair do |key, value|
-        file = File.open(key.gsub('/pictures/', './tmp/images/'), 'wb') {|file| file << (value.unpack('m')).first }
-        pic = Picture.find_or_create_by(image: File.basename(file.path))
-        pic.image = File.new(file)
-        pic.user_id = user.id
-        pic.anuncio_id = anuncio.id
-        pic.save
+      if params[:anuncio][:model_id]
+        model = Model.find(params[:anuncio][:model_id])
+        anuncio.build_car_perk(:brand_id => model.brand_id, :model_id => params[:anuncio][:model_id], :year => params[:anuncio][:year], :km => params[:anuncio][:km])
       end
 
+      if params[:anuncio][:cc]
+        brand = Brand.find(params[:anuncio][:brand_id])
+        anuncio.build_moto_perk(:brand_id => brand.id, :year => params[:anuncio][:year], :km => params[:anuncio][:km], :cc => params[:anuncio][:cc])
+
+      end
+      if params[:anuncio][:rooms]
+        anuncio.build_house_perk(:colonia => params[:anuncio][:colonia] ,:rooms => params[:anuncio][:rooms], :m2int => params[:anuncio][:m2int], :m2ext => params[:anuncio][:m2ext])
+        anuncio.latitude = params[:anuncio][:latitude]
+        anuncio.longitude = params[:anuncio][:longitude]
+        anuncio.district = params[:anuncio][:district]
+      end
+
+
+      city = CityMapper.find_by_anumex_id(params[:anuncio][:city]).city rescue city = nil
+      if city
+        anuncio.city_id = city.id
+        anuncio.state_id = city.state_id
+      end
+
+
+
+      if anuncio.save
+        if anuncio.fecha > Date.today
+          anuncio.update_attribute(:fecha, Date.today)
+        end
+
+        params[:anuncio][:images].each_pair do |key, value|
+          file = File.open(key.gsub('/pictures/', './tmp/images/'), 'wb') {|file| file << (value.unpack('m')).first }
+          pic = Picture.find_or_create_by(image: File.basename(file.path))
+          pic.image = File.new(file)
+          pic.user_id = user.id
+          pic.anuncio_id = anuncio.id
+          pic.save
+        end
+
+      end
+
+
     end
-
-
-
     render :json => {:status => 200}.to_json, :status => 200
 
   end
