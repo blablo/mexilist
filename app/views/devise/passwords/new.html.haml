@@ -1,0 +1,7 @@
+.col-xs-12
+  %h2 ¿Olvidaste tu contraseña?
+  =simple_form_for(:user, :url => password_path(:user), :html => { :method => :post }) do |f|
+    =f.error_notification
+    =f.input :email, :required => true, :autofocus => true
+    =f.button :submit, "Envienme las instrucciones para resetear mi contraseña"
+

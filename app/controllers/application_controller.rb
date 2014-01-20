@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
- helper_method :fb_user
-
+  helper_method :fb_user
+  before_filter :configure_permitted_parameters, if: :devise_controller?
+                                                 
   rescue_from CanCan::AccessDenied do |exception|
     #redirect_to root_path, :alert => exception.message
     redirect_to root_url, :alert => exception.message
@@ -22,4 +23,10 @@ class ApplicationController < ActionController::Base
     current_user.try(:destroy)
     redirect_to root_url
   end
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :name
+  end
+
 end

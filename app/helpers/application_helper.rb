@@ -1,4 +1,7 @@
 module ApplicationHelper
+  def devise_mapping
+    Devise.mappings[:user]
+  end
 
   def display_base_errors resource
     return '' if (resource.errors.empty?) or (resource.errors[:base].empty?)

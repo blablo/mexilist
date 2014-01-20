@@ -303,6 +303,8 @@ class AnunciosController < ApplicationController
 
 
   def search
+    debugger
+
     @q = params[:q]
     if @q.blank?
       @todos = Anuncio.all.order('fecha desc').paginate(:page => params[:page], :per_page => 5)

@@ -1,0 +1,9 @@
+%h2 Cambia tu contraseña
+=simple_form_for(:user, :url => password_path(:user), :html => { :method => :put }) do |f|
+  =f.error_notification
+  =f.input :reset_password_token, :as => :hidden
+  =f.full_error :reset_password_token
+  =f.input :password, :label => "Nueva Contraseña", :required => true, :autofocus => true
+  =f.input :password_confirmation, :label => "Confirma tu nueva contraseña", :required => true
+  =f.button :submit, "Cambiar mi Contraseña"
+
