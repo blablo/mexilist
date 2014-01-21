@@ -92,19 +92,22 @@
           %button.btn.btn-default.btn-lg.facebook
             =image_tag('icons/fb-login.png')
             Conectar con Facebook
-        O utiliza tu email
-        .email-sign-in.well
-          =simple_form_for(:user, :url => session_path(:user), :html => {:class => 'form-vertical' }) do |f|
-            .row
-              .col-sm-12
-                =f.input :email, :autofocus => true
-              .col-sm-12
-                =f.input :password, :label => 'contraseña'
-                =link_to '¿Olvidaste la contraseña?', new_user_password_url
-                -#f.input :remember_me, :as => :boolean, :label => 'recordarme' if devise_mapping.rememberable?
+        %hr
+        %p{:style => "text-align:center"} - Ó por email -
+        .email-sign-in
+          .well
+            =simple_form_for(:user, :url => session_path(:user), :html => {:class => 'form-vertical' }) do |f|
+              .row
+                .col-sm-12
+                  =f.input :email, :autofocus => true
+                .col-sm-12
+                  =f.input :password, :label => 'Contraseña'
 
-            =f.button :submit, "Ingresar", :class => 'btn-primary'
-            %a.btn.btn-danger.pull-right{:onclick => "$('.email-sign-in').hide();$('.email-sign-up').show();"} Cuenta Nueva
+                  -#f.input :remember_me, :as => :boolean, :label => 'recordarme' if devise_mapping.rememberable?
+              =link_to '¿Olvidaste tu contraseña?', new_user_password_url
+              =f.button :submit, "Ingresar", :class => 'btn-primary pull-right'
+
+
 
         .email-sign-up.well
           =simple_form_for(:user, :url => registration_path(:user), :html => {:class => 'form-vertical' }) do |f|
@@ -115,6 +118,7 @@
             =f.input :password, :required => true, :label => 'Contraseña'
             =f.input :password_confirmation, :required => true, :label => 'Confirmar contraseña'
             =f.button :submit, 'Registrar', :class => 'btn-primary'
-
       .modal-footer
+        %a.btn.btn-warning{:onclick => "$('.email-sign-in').hide();$('.email-sign-up').show();"} Crear Nueva Cuenta
+
 

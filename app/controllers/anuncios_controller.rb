@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+
+
+require 'twitter-text'
+include Twitter::Autolink
+
 class AnunciosController < ApplicationController
   load_and_authorize_resource :except => [:contactar, :create_bot]
   require 'will_paginate/array'
@@ -303,7 +308,7 @@ class AnunciosController < ApplicationController
 
 
   def search
-    debugger
+
 
     @q = params[:q]
     if @q.blank?

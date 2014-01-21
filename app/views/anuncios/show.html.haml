@@ -79,7 +79,7 @@
 
       .col-sm-12{ :itemprop => "description"}
         %p
-          =raw @anuncio.texto
+          =raw(auto_link(@anuncio.texto, :target => "_blank"))
 
       %hr
 

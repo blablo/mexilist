@@ -1,6 +1,7 @@
 .col-sm-12
   .col-md-12
-    .alert.alert-danger=raw @error
+    -if @error
+      .alert.alert-danger=raw(@error)
     %h1 Resumen de Compra
   .col-md-8
     %table.table

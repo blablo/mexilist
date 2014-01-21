@@ -7,7 +7,7 @@
       =link_to('Inicio', root_url)
     -if @city
       %li
-        =link_to(@city.name, '/' + @city.url_name)
+        =link_to(@city.name,  @city.url_name)
     -if @category and @category.parent
       %li
         =link_to(@category.parent.name, @category.parent.name.parameterize )
@@ -18,13 +18,14 @@
 
 
 .col-sm-12
+
   -if !params[:city].blank?
     %h1=(@category.blank? ? "Anuncios" : @category.name) + " en " + params[:city].titlecase
   -elsif !params[:state].blank?
     %h1=(@category.blank? ? "Anuncios" : @category.name) + " en " + params[:state].titlecase
   -else
     %h1= @category.blank? ? "Anuncios" : @category.name
-
+  %span.text-muted Encontrados <strong>#{@todos.total_entries}</strong> anuncios
   -if @category.blank? and action_name != "search"
     #anuncios_container
 
