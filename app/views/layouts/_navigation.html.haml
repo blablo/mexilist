@@ -1,3 +1,7 @@
+-city = params[:city].blank? ? '' : params[:city] + "/"
+-state = params[:state].blank? ? '' : params[:state] + "/"
+-category = params[:category].blank? ? '' : params[:category] + "/"
+
 .navbar-header
   %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
     %span.sr-only Toggle navigation
@@ -17,7 +21,7 @@
   -cache('ciudades') do
     .form-group.col-sm-9
       .row
-        %form.col-sm-12{:action => '/anuncios/search', :method => 'get'}
+        %form.col-sm-12{:action => root_url + state + city + category + 'anuncios/search', :method => 'get'}
           .input-group
             .input-group-btn
               .btn.btn-default.city_states_btn
@@ -40,7 +44,7 @@
                     -state.cities.each do |c|
                       =link_to c.name, c.url_name, :class => 'city'
 
-            %input#search.form-control{:type => "text", :name => 'q'}/
+            %input#search.form-control{:type => "text", :name => 'q', :value => params[:q]}/
             %span.input-group-btn
               %button.btn.btn-default{:type => "submit"} Buscar
 

@@ -28,6 +28,13 @@ Mexilist::Application.routes.draw do
   end
   resources :pictures
 
+  get '/:state/:city/:category/anuncios/search' => 'anuncios#search', :constraints => CityCategoryConstraint
+  get '/:state/:category/anuncios/search' => 'anuncios#search', :constraints => StateCategoryConstraint
+  get '/:state/:city/anuncios/search' => 'anuncios#search', :constraints => CityConstraint
+  get '/:state/anuncios/search' => 'anuncios#search', :constraints => StateConstraint
+  get '/:category/anuncios/search' => 'anuncios#search', :constraints => CategoryConstraint
+
+
   get '/:state/:city/:category' => 'anuncios#index', :constraints => CityCategoryConstraint
   get '/:state/:category' => 'anuncios#index', :constraints => StateCategoryConstraint
   get '/:state/:city/:titulo/:id' => 'anuncios#show', :constraints => CityConstraint

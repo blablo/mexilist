@@ -310,11 +310,27 @@ class AnunciosController < ApplicationController
   def search
 
 
+    with_hash = { }
+    if params[:city].nil? and params[:state]
+      @state = nil
+      State.all.each{|state| @state = state if state.param_name == params[:state]}
+      with_hash = { :state_id => @state.id }
+    elsif params[:city]
+      @city = nil
+      City.all.each{|city| @city = city if city.param_name == params[:city]}
+      with_hash = { :city_id => @city.id }
+    end
+    if params[:category]
+      @cat = nil
+      Category.all.each{|cat| @cat = cat if cat.url_name == params[:category]}
+      with_hash[:category_id] = @cat.id 
+    end
+
     @q = params[:q]
     if @q.blank?
       @todos = Anuncio.all.order('fecha desc').paginate(:page => params[:page], :per_page => 5)
     else
-      @todos = Anuncio.search(@q, :order  => :fecha).paginate(:page => params[:page], :per_page => 5)
+      @todos = Anuncio.search(@q, :order  => 'fecha desc', :with => with_hash).paginate(:page => params[:page], :per_page => 5)
     end
     @title = "Busqueda"
 
