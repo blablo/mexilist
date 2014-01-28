@@ -12,7 +12,7 @@ class State < ActiveRecord::Base
   end
   def self.find_name(param)
     self.all.each do |c|
-      return c.name if c.name.parameterize == param 
+      return c if c.name.parameterize == param 
     end
   end
 

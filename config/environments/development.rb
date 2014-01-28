@@ -13,25 +13,40 @@ Mexilist::Application.configure do
   config.action_controller.perform_caching = false
 
   # ActionMailer Config
-  config.action_mailer.delivery_method = :smtp
+
+
+
+#  config.action_mailer.delivery_method = :smtp
+ # config.action_mailer.delivery_method = :amazon_ses
+
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
 
-  config.action_mailer.smtp_settings = {
-    :enable_starttls_auto => true,
-    :address            => 'smtp.zoho.com',
-    :port               => 465,
-    :domain             => 'zoho.com',
-    :authentication     => :login,
-    :enable_starttls_auto => false,
-    :tls                  => false,
-    :openssl_verify_mode  => 'none',
-    :ssl => true,
-    :user_name          => "envio@mexilist.com",
-    :password           => "mac2009"
-  }
-
+  # config.action_mailer.smtp_settings = {
+  #   :enable_starttls_auto => true,
+  #   :address            => 'smtp.zoho.com',
+  #   :port               => 465,
+  #   :domain             => 'zoho.com',
+  #   :authentication     => :login,
+  #   :enable_starttls_auto => false,
+  #   :tls                  => false,
+  #   :openssl_verify_mode  => 'none',
+  #   :ssl => true,
+  #   :user_name          => "envio@mexilist.com",
+  #   :password           => "mac2009"
+  # }
+# config.action_mailer.delivery_method = :smtp
+#   config.action_mailer.smtp_settings = {
+#       :address => "email-smtp.us-east-1.amazonaws.com",
+#     :port => 587,
+#     :domain => "mexilistmail.com",
+#       :user_name => "AKIAJJYDIAI6DGB5VLZA", # Your SMTP user here.
+#       :password => "Au+M42vEnO+6TtsOjIYP+Ut/agutE+5G6HwihXYFBJXv", # Your SMTP password here.
+#       :authentication => :login,
+#       :enable_starttls_auto => true
+#   }
+ config.action_mailer.delivery_method = :ses
 
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
 

@@ -323,7 +323,7 @@ class AnunciosController < ApplicationController
     if params[:category]
       @cat = nil
       Category.all.each{|cat| @cat = cat if cat.url_name == params[:category]}
-      with_hash[:category_id] = @cat.id 
+      with_hash[:category_id] = @cat.id
     end
 
     @q = params[:q]
@@ -334,8 +334,11 @@ class AnunciosController < ApplicationController
     end
     @title = "Busqueda"
 
-
-    render :index
+    if params[:page]
+      render :index, layout: nil
+    else
+      render :index
+    end
   end
 
 

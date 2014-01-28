@@ -26,9 +26,9 @@
           .input-group-btn
             .btn.btn-default.city_states_btn
               -if !params[:city].blank?
-                =City.find_name(params[:city])
+                =City.find_name(params[:city]).name
               -elsif !params[:state].blank?
-                =State.find_name(params[:state])
+                =State.find_name(params[:state]).name
               -else
                 Todo Mexico
               %span.caret

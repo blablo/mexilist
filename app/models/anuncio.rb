@@ -30,7 +30,19 @@ class Anuncio < ActiveRecord::Base
 
 
   scope :with_picture, -> { joins(:pictures).uniq }
+ 
+  scope :by_location_with_picture, ->(state, city){ 
 
+    if city
+      Anuncio.where(:city_id =>  City.find_name(city).id).joins(:pictures).uniq 
+    elsif state
+      Anuncio.where(:state_id => State.find_name(state).id).joins(:pictures).uniq 
+    else
+      Anuncio.joins(:pictures).uniq 
+    end
+
+  }
+  
   scope :by_category, ->(category){ 
     ids = [category.id]
     category.subcategories.each{|sub| ids << sub.id}
