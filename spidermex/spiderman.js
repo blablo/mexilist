@@ -18,8 +18,8 @@ var cat = process.argv[3];
 
 client.get('app?choice=result&region='+ region +'&category=' + cat, function(err, res, body) {
     //    getNextAnuncio('7302805');
-  // getNextAnuncio(body.ad);
-	     getNextAnuncio([{id: '7347437'},{id: '7348335'},{id: '7301886'}]);
+   getNextAnuncio(body.ad);
+//	     getNextAnuncio([{id: '7347437'},{id: '7348335'},{id: '7301886'}]);
 
 
 });
