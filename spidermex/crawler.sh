@@ -6,39 +6,56 @@ array=(20 30 40 60 70 80 100 220 190 180 140 150 130 240 210 160 200 255 410 450
 echo date > 'spider.log'
 
 entra=0
-
-for r in "${cities[@]}"
-do
-   :
-   echo $r > 'ciudad.txt'
-
-   if [ -n "$1" ]
-   then
-
-       if [ $1 = $r ]
-       then
-	   entra=1
-       fi
-   else
-       entra=1
-   fi
+echo '1' > 'status.txt'
+status=`cat status.txt`
+city=`cat ciudad.txt`
 
 
-   if [ "${entra}" = 1 ]
-   then
+while [ "${status}" = 1 ]; do
+    
+    for r in "${cities[@]}"
+    do
+        :
 
 
-   for i in "${array[@]}"
-   do
-       :
-       echo "${r}-${i}" >> 'spider.log'
-       #node /Users/blablo/Projects/mexilist/spidermex/spiderman.js $r $i
-       echo "${r}-${i}" >> 'spider.log'
-       echo "---" >> 'spider.log'
+        if [ -n $city ]
+        then
+
+            if [ $city = $r ]
+            then
+                entra=1
+            fi
+        else
+            entra=1
+        fi
 
 
-   done
-   fi
+        if [ "${entra}" = 1 ]
+        then
+
+
+            for i in "${array[@]}"
+            do
+                :
+                
+		status=`cat status.txt`
+		if [ "${status}" != 1 ]; then
+		    echo "break"
+		    break
+		else
+		    echo "${r}-${i}" >> 'spider.log'
+		    echo $r > 'ciudad.txt'
+       #node /Users/blablo/Projects/mexilist/spidermex/spiderman.js $r $i		    
+                    echo "${r}-${i}" >> 'spider.log'
+                    echo "---" >> 'spider.log'
+
+		fi
+
+            done
+        fi
+    done
+
+    
 done
 
 echo date >> 'spider.log'
