@@ -330,7 +330,7 @@ class AnunciosController < ApplicationController
     if @q.blank?
       @todos = Anuncio.all.order('fecha desc').paginate(:page => params[:page], :per_page => 5)
     else
-      @todos = Anuncio.search(@q, :order  => 'fecha desc', :with => with_hash).paginate(:page => params[:page], :per_page => 5)
+      @todos = Anuncio.search(@q, :order  => 'fecha desc', :with => with_hash, :page => params[:page], :per_page => 5)
     end
     @title = "Busqueda"
 
