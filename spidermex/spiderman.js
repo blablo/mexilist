@@ -5,8 +5,8 @@ var easyimg = require('easyimage');
 
 
 var client = request.newClient('http://www.anumex.com/');
-//var mexi = request.newClient('http://mexilist.com/');
-var mexi = request.newClient('http://localhost:3000/');
+var mexi = request.newClient('http://mexilist.com/');
+//var mexi = request.newClient('http://localhost:3000/');
 
 
 var region = process.argv[2];
@@ -18,7 +18,10 @@ var cat = process.argv[3];
 
 client.get('app?choice=result&region='+ region +'&category=' + cat, function(err, res, body) {
     //    getNextAnuncio('7302805');
-   getNextAnuncio(body.ad);
+	     if(body.ad != undefined){
+	     getNextAnuncio(body.ad);
+	     }
+
 //	     getNextAnuncio([{id: '7347437'},{id: '7348335'},{id: '7301886'}]);
 
 
@@ -35,6 +38,7 @@ function contains(a, obj) {
 function getNextAnuncio(anuncios){
     if(anuncios[0] != undefined){
         anuncio = anuncios.pop();
+
         client.get('http://www.anumex.com/app?choice=showAd&id='+anuncio.id, function(err2, res2, body2) {
 
             var data = {

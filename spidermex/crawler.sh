@@ -45,7 +45,7 @@ while [ "${status}" = 1 ]; do
 		else
 		    echo "${r}-${i}" >> 'spider.log'
 		    echo $r > 'ciudad.txt'
-       #node /Users/blablo/Projects/mexilist/spidermex/spiderman.js $r $i		    
+		    node /Users/blablo/Projects/mexilist/spidermex/spiderman.js $r $i		    
                     echo "${r}-${i}" >> 'spider.log'
                     echo "---" >> 'spider.log'
 
