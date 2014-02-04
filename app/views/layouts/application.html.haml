@@ -3,12 +3,13 @@
   %head{:prefix => "og: http://ogp.me/ns#"}
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %title= content_for?(:title) ? yield(:title) : "Mexilist"
-    %meta{:content => content_for?(:description) ? yield(:description) : "Red social de anuncios clasificados gratuitos en México. Encuentra vehículos, tecnología, inmuebles, hogar, recreación, personal y mucho más.", :name => "description"}
+    %meta{:content => content_for(:description) ? yield(:description) : "Red social de anuncios clasificados gratuitos en México. Encuentra vehículos, tecnología, inmuebles, hogar, recreación, personal y mucho más.", :name => "description"}
     :javascript
       var CKEDITOR_BASEPATH = '/ckeditor/';
     =stylesheet_link_tag "application", :media => "all"
     =javascript_include_tag "application"
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <link "https://plus.google.com/102065028150788699450"  rel="publisher"/>
     =csrf_meta_tags
     =yield(:head)
 
@@ -79,6 +80,7 @@
       .col-sm-12
         %br
         %p.text-muted.credit Mexilist
+      <a href="https://plus.google.com/102065028150788699450" rel="publisher">Google+</a>
 
 
 #login_modal.modal.fade

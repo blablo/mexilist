@@ -1,11 +1,11 @@
 - size ||= :original
 -cache(anuncio) do
-  .anuncio
+  .anuncio{ :itemscope => true,  :itemtype => "http://schema.org/Offer" }
     .thumbnail
       =link_to(image_tag(anuncio.main_image(size), :class => 'imgrounded'), city_anuncio_url(anuncio))
-      %h3=link_to(truncate(anuncio.title.capitalize, :length => 40, :separator => ' '), city_anuncio_url(anuncio))
+      %h3=link_to(truncate(anuncio.title.capitalize, :length => 40, :separator => ' '), city_anuncio_url(anuncio), :itemprop => "name")
       .price
         -if anuncio.price.blank?
           &nbsp;
         -else
-          =number_to_currency(anuncio.price, :precision => 0)
+          %span{:itemprop => "price"}=number_to_currency(anuncio.price, :precision => 0)
