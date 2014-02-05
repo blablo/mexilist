@@ -14,14 +14,14 @@
   .col-sm-12{ :itemscope => true,  :itemtype => "http://schema.org/Offer" }
     -content_for :breadcrumb do
       .breadcrumb
-        %li
-          =link_to('Inicio', root_url)
-        %li
-          =link_to(@anuncio.city.name, @anuncio.city.url_name)
-        %li
-          =link_to(@anuncio.main_category_name, @anuncio.city.url_name + '/' + @anuncio.main_category_name.parameterize)
-        %li
-          =link_to(@anuncio.category_name, @anuncio.city.url_name + '/' + @anuncio.main_category_name.parameterize, :itemprop => "category" )
+        %li{ :itemscope => true, :itemtype => "http://data-vocabulary.org/Breadcrumb"}
+          =link_to(raw('<span itemprop="title">Inicio</span>'), root_url, :itemprop => "url")
+        %li{ :itemscope => true, :itemtype => "http://data-vocabulary.org/Breadcrumb"}
+          =link_to(raw('<span itemprop="title">'+@anuncio.city.name+'</span>'), @anuncio.city.url_name, :itemprop => "url")
+        %li{ :itemscope => true, :itemtype => "http://data-vocabulary.org/Breadcrumb"}
+          =link_to(raw('<span itemprop="title">'+@anuncio.main_category_name+'</span>'), @anuncio.city.url_name + '/' + @anuncio.main_category_name.parameterize, :itemprop => "url")
+        %li{ :itemscope => true, :itemtype => "http://data-vocabulary.org/Breadcrumb"}
+          =link_to(raw('<span itemprop="title">'+@anuncio.category_name+'</span>'), @anuncio.city.url_name + '/' + @anuncio.main_category_name.parameterize, :itemprop => "url" )
         %li.active=@anuncio.tipo_name
 
 
