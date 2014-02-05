@@ -1,15 +1,16 @@
+
+=content_for :head do
+  %meta{content: @anuncio.title, property: "og:title"}
+  %meta{content: "article", property: "og:type"}
+  %meta{content: @anuncio.main_image, property: "og:image"}
+  %meta{content: @anuncio.url, property: "og:url"}
+  %meta{content: Sanitize.clean(@anuncio.texto), property: "og:description"}
+  %meta{content: Sanitize.clean(@anuncio.texto), name: "description"}
+
+=content_for :title do
+  =@anuncio.title.titlecase
+
 -cache(@anuncio) do
-  =content_for :head do
-    %meta{content: @anuncio.title, property: "og:title"}
-    %meta{content: "article", property: "og:type"}
-    %meta{content: @anuncio.main_image, property: "og:image"}
-    %meta{content: @anuncio.url, property: "og:url"}
-    %meta{content: Sanitize.clean(@anuncio.texto), property: "og:description"}
-    %meta{content: Sanitize.clean(@anuncio.texto), name: "description"}
-
-  =content_for :title do
-    =@anuncio.title.titlecase
-
   .col-sm-12{ :itemscope => true,  :itemtype => "http://schema.org/Offer" }
     -content_for :breadcrumb do
       .breadcrumb
