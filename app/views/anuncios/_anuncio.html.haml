@@ -8,4 +8,5 @@
         -if anuncio.price.blank?
           &nbsp;
         -else
-          %span{:itemprop => "price"}=number_to_currency(anuncio.price, :precision => 0)
+          -if(anuncio.price != -1)
+            %span{:itemprop => "price"}=number_to_currency(anuncio.price, :precision => 0)

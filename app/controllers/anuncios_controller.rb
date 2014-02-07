@@ -71,8 +71,8 @@ class AnunciosController < ApplicationController
 
 
     end
-    render :json => {:status => 200}.to_json, :status => 200
-
+#    render :json => {:status => 200}.to_json, :status => 200
+    render :partial => 'anuncio.html.haml', :locals => {:anuncio => anuncio}
   end
 
   def update_model

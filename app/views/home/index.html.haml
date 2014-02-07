@@ -1,14 +1,14 @@
+.col-sm-12
+  -if !params[:city].blank?
+    %h3 Anuncios Destacados en #{City.find_name(params[:city]).name}
+  -elsif !params[:state].blank?
+    %h3 Anuncios Destacados en #{State.find_name(params[:state]).name}
+  -else
+    %h3 Anuncios Destacados
 
--if !params[:city].blank?
-  %h3 Anuncios Destacados en #{City.find_name(params[:city]).name}
--elsif !params[:state].blank?
-  %h3 Anuncios Destacados en #{State.find_name(params[:state]).name}
--else
-  %h3 Anuncios Destacados
-
-#anuncios_container
-  .grid-sizer
-  #anuncios_aa
-    -@anuncios.each do |anuncio|
-      =render anuncio
-    =will_paginate @anuncios, :container => 'li'
+  #anuncios_container
+    .grid-sizer
+    #anuncios_aa
+      -@anuncios.each do |anuncio|
+        =render anuncio
+      =will_paginate @anuncios, :container => 'li'

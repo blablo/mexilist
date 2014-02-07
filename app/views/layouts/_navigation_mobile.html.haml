@@ -1,0 +1,58 @@
+-city = params[:city].blank? ? '' : params[:city] + "/"
+-state = params[:state].blank? ? '' : params[:state] + "/"
+-category = params[:category].blank? ? '' : params[:category] + "/"
+
+.navbar-header
+  %button.navbar-toggle.search_btn{"data-target" => "#search_toggle", "data-toggle" => "collapse", :type => "button"}
+    %span.sr-only Toggle navigation
+    %span.glyphicon.glyphicon-search
+  %button.navbar-toggle.location_btn{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
+    %span.sr-only Toggle navigation
+    %span.glyphicon.glyphicon-globe
+
+  =link_to image_tag('mexilist.png'), root_path, :class => 'navbar-brand'
+  %button.navbar-toggle.account_btn{"data-target" => "#account_toggle", "data-toggle" => "collapse", :type => "button"}
+    %span.sr-only Toggle navigation
+    %span.glyphicon.glyphicon-user
+
+#search_toggle.collapse.navbar-collapse
+  #search_mobile
+    %form{:action => root_url + state + city + category + 'anuncios/search', :method => 'get'}
+      .col-xs-9
+        %input#search.form-control{:type => "text", :name => 'q', :value => params[:q]}/
+      .col-xs-3
+        %span.input-group-btn
+          %button.btn.btn-default{:type => "submit"} Buscar
+
+  %ul
+    -Category.main_categories.each do |mcat|
+      -if mcat.has_children?
+        %li.main_cat{:onclick => "$('."+mcat.name.parameterize+"_sub').toggle();"}
+          %i=image_tag('icons/' + mcat.name.parameterize + '.png')
+          =mcat.name
+        %a{:href =>  root_url + state + city + mcat.url_name}
+          %li.sub_cat{:class => mcat.name.parameterize + "_sub"}
+            ="Todo en " + mcat.name
+        -mcat.subcategories.each do |sub|
+          %a{:href => root_url + state + city + sub.url_name}
+            %li.sub_cat{:class => mcat.name.parameterize + "_sub"}
+              =sub.name
+      -else
+        %li.main_cat
+          %a{:href => root_url + state + city +  mcat.url_name}=mcat.name
+
+#account_toggle.collapse.navbar-collapse
+  -if user_signed_in?
+    %ul.navbar-nav
+      %li=button_to('Publicar Anuncio', new_anuncio_url, :class => 'btn btn-danger col-xs-12', :method => :get)
+      %li=button_to("Mis Anuncios", anuncios_user_url(current_user), :class => 'btn btn-default col-xs-12', :method => :get)
+      %li=button_to("Editar Cuenta", edit_user_registration_path, :class => 'btn btn-default col-xs-12', :method => :get)
+      %li=button_to('Salir', destroy_user_session_path, :class => 'btn btn-default col-xs-12', :method => :delete)
+
+
+
+  -else
+    %ul.navbar-nav
+      %li
+        %button.btn.btn-danger.col-xs-12{:type=>'button', :onclick => "$('#login_modal').modal('show');"}Publicar Anuncio
+      %li.btn.btn-default.col-xs-12=link_to 'Ingresar', '#', :onclick => "$('#login_modal').modal('show');"

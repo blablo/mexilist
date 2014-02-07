@@ -5,55 +5,100 @@
 #paquetes{
     .mexi{
 
-	padding: 10px;
-	margin-bottom: 15px;
-	color:  darken(#666,10);
-	font-size: 1.3em;
-	font-family: Helvetica;
-	font-weight: 100;
+        padding: 10px;
+        margin-bottom: 15px;
+        color:  darken(#666,10);
+        font-size: 1.3em;
+        font-family: Helvetica;
+        font-weight: 100;
 
-	
+
     }
 }
 
 .paquetes{
     h1{
-	margin-bottom: 30px;
+        margin-bottom: 30px;
     }
     .panel-body{
-	height: 130px;
-	line-height: 1.4em;
-	color: darken(#666,10);
+        height: 130px;
+        line-height: 1.4em;
+        color: darken(#666,10);
     }
     h2{
-	margin: 0;
+        margin: 0;
     }
     .price{
-	font-size: 1.5em;
+        font-size: 1.5em;
     }
     .gratis{
-	.panel-heading{
-	    padding: 20px 0;
-	}
-	.price{
-	    font-size: 0.8em;
-	}
+        .panel-heading{
+            padding: 20px 0;
+        }
+        .price{
+            font-size: 0.8em;
+        }
     }
     div.gratis .panel-body{
-	height: 182px;
+        height: 182px;
     }
     .panel{
-	text-align: center;
-	font-size: 1.5em;
-	font-family: Helvetica;
-	font-weight: 100;
+        text-align: center;
+        font-size: 1.5em;
+        font-family: Helvetica;
+        font-weight: 100;
     }
 
     .comprar-btn{
-	margin-bottom: 20px;
+        margin-bottom: 20px;
     }
     p{
-	margin-bottom: 10px;
+        margin-bottom: 10px;
     }
 
+}
+
+#anuncios_aa{
+    width: 103.125%; /* 990px */
+    overflow: hidden;
+    margin-left: -1.562%; /* 15px */
+    margin-bottom: -1.875em; /* 30px */
+    .anuncio
+    {
+        width: 30.303%; /* 300px */
+        float: left;
+        margin: 0 1.515% 1.875em; /* 15px 30px */
+        margin-bottom: 0.2em; /* 15px */
+
+    }
+}
+
+@media only screen and ( max-width: 40em ) /* 640px */
+{
+    #anuncios_aa .anuncio
+    {
+        width: 46.876%; /* 305px */
+        margin-bottom: 0.938em; /* 15px */
+        margin-bottom: 0.2em; /* 15px */
+
+    }
+}
+@media only screen and ( max-width: 20em ) /* 640px */
+{
+    #anuncios_aa
+    {
+        width: 100%;
+        margin-left: 0;
+
+        .anuncio
+        {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+	    h3{
+		font-size: 1.7em;
+		text-align: center;
+	    }
+        }
+    }
 }

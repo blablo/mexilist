@@ -5,8 +5,8 @@ var easyimg = require('easyimage');
 
 
 var client = request.newClient('http://www.anumex.com/');
-var mexi = request.newClient('http://mexilist.com/');
-//var mexi = request.newClient('http://localhost:3000/');
+//var mexi = request.newClient('http://mexilist.com/');
+var mexi = request.newClient('http://localhost:3000/');
 
 
 var region = process.argv[2];

@@ -39,20 +39,20 @@ $(document).ready(function (){
     });
 
 $('#anuncios_aa').infinitescroll({
- 
-    navSelector  : ".pagination",            
+
+    navSelector  : ".pagination",
                    // selector for the paged navigation (it will be hidden)
-    nextSelector : "a.next_page",  
+    nextSelector : "a.next_page",
     bufferPx     : 1000,
-    loadingImg   : "/agax-loader.gif", 
+    loadingImg   : "/agax-loader.gif",
  loading: {
           finishedMsg: 'No more pages to load.',
           img: 'http://i.imgur.com/6RMhx.gif'
-  
+
       },
                    // selector for the NEXT link (to page 2)
-    itemSelector : ".anuncio",
-          
+    itemSelector : ".anuncio"
+
                    // selector for all items you'll retrieve
 }, function( newElements ) {
         // hide new items while they are loading
@@ -61,15 +61,15 @@ $('#anuncios_aa').infinitescroll({
         $newElems.imagesLoaded(function(){
           // show elems now they're ready
           $newElems.animate({ opacity: 1 });
-          $container.masonry( 'appended', $newElems, true ); 
+          $container.masonry( 'appended', $newElems, true );
         });
       });
 
 
 $('#anuncio_list').infinitescroll({
- 
-    navSelector  : ".pagination",            
-    nextSelector : "a.next_page",  
+
+    navSelector  : ".pagination",
+    nextSelector : "a.next_page",
     bufferPx     : 1500,
     itemSelector : "li.list-group-item",
     loading: {

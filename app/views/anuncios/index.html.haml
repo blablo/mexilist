@@ -18,7 +18,6 @@
 
 
 .col-sm-12
-
   -if !params[:city].blank?
     %h1=(@category.blank? ? "Anuncios" : @category.name) + " en " + params[:city].titlecase
   -elsif !params[:state].blank?

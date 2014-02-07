@@ -58,7 +58,7 @@
           -else
 
             %ul.col-md-4
-              -if !@anuncio.price.blank?
+              -if !@anuncio.price.blank? and @anuncio.price != -1
                 %li.well.well-sm.precio
                   %span{ :itemprop => "price"}=number_to_currency(@anuncio.price)
             .col-md-6
@@ -101,10 +101,11 @@
         .modal-body
 
           .telefonos.well
-            %h3 Llama por Teléfono
-            -@anuncio.tel.split(',').each do |tel|
-              %span.label.label-success
-                %span.glyphicon.glyphicon-earphone=tel
+            -if @anuncio.tel != "-1"
+              %h3 Llama por Teléfono
+              -@anuncio.tel.split(',').each do |tel|
+                %span.label.label-success
+                  %span.glyphicon.glyphicon-earphone=tel
 
           -if @anuncio.user
             .well

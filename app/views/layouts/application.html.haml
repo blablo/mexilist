@@ -1,3 +1,7 @@
+-city = params[:city].blank? ? '' : params[:city] + "/"
+-state = params[:state].blank? ? '' : params[:state] + "/"
+-category = params[:category].blank? ? '' : params[:category] + "/"
+
 !!!
 %html{:prefix=>"og: http://ogp.me/ns#"}
   %head
@@ -46,8 +50,11 @@
 
 
     %header
-      %nav.navbar.navbar-default{:role => "navigation"}
-        = render 'layouts/navigation'
+      %nav.navbar.navbar-default.hidden-xs{:role => "navigation"}
+        =render 'layouts/navigation'
+      %nav.navbar.navbar-default.visible-xs.mobile_menu{:role => "navigation"}
+        =render 'layouts/navigation_mobile'
+
 
 
 
