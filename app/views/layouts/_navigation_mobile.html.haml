@@ -6,7 +6,7 @@
   %button.navbar-toggle.search_btn{"data-target" => "#search_toggle", "data-toggle" => "collapse", :type => "button"}
     %span.sr-only Toggle navigation
     %span.glyphicon.glyphicon-search
-  %button.navbar-toggle.location_btn{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
+  %button.navbar-toggle.location_btn{"data-target" => "#location_toggle", "data-toggle" => "collapse", :type => "button"}
     %span.sr-only Toggle navigation
     %span.glyphicon.glyphicon-globe
 
@@ -40,6 +40,9 @@
       -else
         %li.main_cat
           %a{:href => root_url + state + city +  mcat.url_name}=mcat.name
+
+#location_toggle.collapse.navbar-collapse
+  Aqui van las ciudades
 
 #account_toggle.collapse.navbar-collapse
   -if user_signed_in?
