@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require jquery.pikachoose
 //= require jquery.remotipart
 //= require masonry.pkgd.min
